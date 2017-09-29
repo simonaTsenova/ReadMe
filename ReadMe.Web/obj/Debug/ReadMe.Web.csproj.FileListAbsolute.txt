@@ -123,3 +123,6 @@ D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web\bin\ReadMe.Data.pdb
 D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web\bin\ReadMe.Data.dll.config
 D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web\bin\ReadMe.Models.pdb
 D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web\bin\ReadMe.Models.dll.config
+D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web\bin\ReadMe.Authentication.dll
+D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web\bin\ReadMe.Authentication.pdb
+D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web\bin\ReadMe.Authentication.dll.config

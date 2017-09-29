@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ReadMe.Web.Models;
+using ReadMe.Authentication.Managers;
 
 namespace ReadMe.Web.Controllers
 {
