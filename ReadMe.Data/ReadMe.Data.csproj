@@ -54,13 +54,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configurations\AuthorEntityConfiguration.cs" />
-    <Compile Include="Configurations\BookEntityCOnfiguration.cs" />
+    <Compile Include="Configurations\BookEntityConfiguration.cs" />
     <Compile Include="Configurations\GenreEntityConfiguration.cs" />
     <Compile Include="Configurations\PublisherEntityConfiguration.cs" />
     <Compile Include="Configurations\RatingEntityConfiguration.cs" />
     <Compile Include="Configurations\ReviewEntityConfiguration.cs" />
     <Compile Include="Configurations\UserBooksEntityConfiguration.cs" />
     <Compile Include="Configurations\UserEntityConfiguration.cs" />
+    <Compile Include="Contracts\IEfRepository.cs" />
+    <Compile Include="Contracts\IUnitOfWork.cs" />
+    <Compile Include="EfRepository.cs" />
     <Compile Include="Migrations\201710012138246_Initial.cs" />
     <Compile Include="Migrations\201710012138246_Initial.Designer.cs">
       <DependentUpon>201710012138246_Initial.cs</DependentUpon>
@@ -68,6 +71,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ReadMeDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

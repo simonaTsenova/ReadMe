@@ -29,6 +29,10 @@ namespace ReadMe.Authentication.Managers
             manager.PasswordValidator = new PasswordValidator
             {
                 RequiredLength = 6,
+                RequireNonLetterOrDigit = false,
+                RequireDigit = false,
+                RequireLowercase = false,
+                RequireUppercase = false
             };
 
             // Configure user lockout defaults

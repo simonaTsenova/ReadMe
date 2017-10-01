@@ -44,6 +44,12 @@ namespace ReadMe.Data
             modelBuilder.Configurations.Add(new UserEntityConfiguration());
             modelBuilder.Configurations.Add(new UserBooksEntityConfiguration());
         }
+
+        public IDbSet<TEntity> DbSet<TEntity>() 
+            where TEntity : class
+        {
+            return this.Set<TEntity>();
+        }
     }
 
 }
