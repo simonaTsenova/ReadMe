@@ -7,9 +7,8 @@ namespace ReadMe.Data
     public partial class ReadMeDbContext : IdentityDbContext<User>
     {
         public ReadMeDbContext()
-            : base("ReadMe", throwIfV1Schema: false)
+            : base("LocalReadMeConnection", throwIfV1Schema: false)
         {
-            Database.SetInitializer<ReadMeDbContext>(null);
         }
 
         public static ReadMeDbContext Create()
@@ -20,6 +19,7 @@ namespace ReadMe.Data
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             // TODO
+            base.OnModelCreating(modelBuilder);
         }
     }
 

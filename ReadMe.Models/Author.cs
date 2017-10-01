@@ -1,23 +1,13 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
-using ReadMe.Models.Contracts;
+﻿using ReadMe.Models.Contracts;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ReadMe.Models
 {
-    public class User : IdentityUser, IPerson, IDeletable
+    public class Author : IPerson, IDeletable
     {
-        public User()
-        {
-        }
-
-        public User(string username, string email)
-            : this()
-        {
-            this.UserName = username;
-            this.Email = email;
-        }
+        public Guid Id { get; set; }
 
         public string FirstName { get; set; }
 
@@ -27,7 +17,11 @@ namespace ReadMe.Models
 
         public int Age { get; set; }
 
-        public string FavouriteQuote { get; set; }
+        public string Biography { get; set; }
+
+        public string Website { get; set; }
+
+        public string PhotoUrl { get; set; }
 
         [Index]
         public bool IsDeleted { get; set; }
