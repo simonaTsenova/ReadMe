@@ -1,9 +1,10 @@
 ﻿using ReadMe.Models.Contracts;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace ReadMe.Models
 {
-    public class Review : IDeletable
+    public class Rating : IDeletable
     {
         public Guid Id { get; set; }
 
@@ -15,9 +16,10 @@ namespace ReadMe.Models
 
         public virtual User User { get; set; }
 
-        public string Content { get; set; }
+        [Range(1, 5)]
+        public int Stars { get; set; }
 
-        public DateTime? PostedOn { get; set; }
+        public DateTime? RatedOn { get; set; }
 
         public bool IsDeleted { get; set; }
 

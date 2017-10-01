@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ReadMe.Models
 {
@@ -10,30 +9,25 @@ namespace ReadMe.Models
     {
         public Book()
         {
-
+            this.Genres = new HashSet<Genre>();
+            this.UserBooks = new HashSet<UserBook>();
         }
 
         public Guid Id { get; set; }
 
-        [Required]
         public string Title { get; set; }
 
-        public DateTime? Published { get; set; }
+        public DateTime Published { get; set; }
 
-        [Required]
         public string ISBN { get; set; }
 
         public Guid? AuthorId { get; set; }
 
         public virtual Author Author { get; set; }
 
-        public Guid? GenreId { get; set; }
-
-        public virtual Genre Genre { get; set; }
-
         public string Summary { get; set; }
 
-        [Range(1, 5)]
+        [Range(0, 5)]
         public double Rating { get; set; }
 
         public string PhotoUrl { get; set; }
@@ -46,10 +40,10 @@ namespace ReadMe.Models
 
         public ICollection<Genre> Genres { get; set; }
 
-        [Index]
+        public ICollection<UserBook> UserBooks { get; set; }
+
         public bool IsDeleted { get; set; }
 
-        [DataType(DataType.DateTime)]
         public DateTime? DeletedOn { get; set; }
     }
 }

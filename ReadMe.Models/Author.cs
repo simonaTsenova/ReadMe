@@ -1,11 +1,9 @@
 ﻿using ReadMe.Models.Contracts;
 using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ReadMe.Models
 {
-    public class Author : IPerson, IDeletable
+    public class Author : IDeletable
     {
         public Guid Id { get; set; }
 
@@ -23,10 +21,8 @@ namespace ReadMe.Models
 
         public string PhotoUrl { get; set; }
 
-        [Index]
         public bool IsDeleted { get; set; }
 
-        [DataType(DataType.DateTime)]
         public DateTime? DeletedOn { get; set; }
     }
 }

@@ -53,6 +53,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configurations\AuthorEntityConfiguration.cs" />
+    <Compile Include="Configurations\BookEntityCOnfiguration.cs" />
+    <Compile Include="Configurations\GenreEntityConfiguration.cs" />
+    <Compile Include="Configurations\PublisherEntityConfiguration.cs" />
+    <Compile Include="Configurations\RatingEntityConfiguration.cs" />
+    <Compile Include="Configurations\ReviewEntityConfiguration.cs" />
+    <Compile Include="Configurations\UserBooksEntityConfiguration.cs" />
+    <Compile Include="Configurations\UserEntityConfiguration.cs" />
+    <Compile Include="Migrations\201710012138246_Initial.cs" />
+    <Compile Include="Migrations\201710012138246_Initial.Designer.cs">
+      <DependentUpon>201710012138246_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ReadMeDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -65,6 +78,11 @@
       <Project>{F1375996-F7A4-4877-950D-B847D179DD20}</Project>
       <Name>ReadMe.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201710012138246_Initial.resx">
+      <DependentUpon>201710012138246_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

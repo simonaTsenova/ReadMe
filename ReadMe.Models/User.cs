@@ -1,15 +1,15 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using ReadMe.Models.Contracts;
 using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
 
 namespace ReadMe.Models
 {
-    public class User : IdentityUser, IPerson, IDeletable
+    public class User : IdentityUser, IDeletable
     {
         public User()
         {
+            this.UserBooks = new HashSet<UserBook>();
         }
 
         public User(string username, string email)
@@ -29,10 +29,10 @@ namespace ReadMe.Models
 
         public string FavouriteQuote { get; set; }
 
-        [Index]
+        public ICollection<UserBook> UserBooks { get; set; }
+
         public bool IsDeleted { get; set; }
 
-        [DataType(DataType.DateTime)]
         public DateTime? DeletedOn { get; set; }
     }
 }

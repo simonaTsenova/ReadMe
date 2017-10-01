@@ -1,7 +1,5 @@
 ﻿using ReadMe.Models.Contracts;
 using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ReadMe.Models
 {
@@ -25,10 +23,8 @@ namespace ReadMe.Models
 
         public string LogoUrl { get; set; }
 
-        [Index]
         public bool IsDeleted { get; set; }
 
-        [DataType(DataType.DateTime)]
         public DateTime? DeletedOn { get; set; }
     }
 }

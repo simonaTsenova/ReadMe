@@ -54,12 +54,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Author.cs" />
-    <Compile Include="Contracts\IPerson.cs" />
     <Compile Include="Book.cs" />
     <Compile Include="Contracts\IDeletable.cs" />
     <Compile Include="Enumerations\ReadStatus.cs" />
     <Compile Include="Genre.cs" />
     <Compile Include="Publisher.cs" />
+    <Compile Include="Rating.cs" />
     <Compile Include="Review.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
