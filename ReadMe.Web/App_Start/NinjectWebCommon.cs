@@ -13,6 +13,10 @@ namespace ReadMe.Web.App_Start
     using ReadMe.Data.Contracts;
     using ReadMe.Data;
     using System.Data.Entity;
+    using ReadMe.Authentication.Contracts;
+    using ReadMe.Authentication;
+    using ReadMe.Providers.Contracts;
+    using ReadMe.Providers;
 
     public static class NinjectWebCommon 
     {
@@ -64,9 +68,13 @@ namespace ReadMe.Web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<DbContext>().To<ReadMeDbContext>().InRequestScope();
+            kernel.Bind<IAuthenticationProvider>().To<AuthenticationProvider>().InSingletonScope();
+            kernel.Bind<IDateTimeProvider>().To<DateTimeProvider>().InSingletonScope();
+            kernel.Bind<IHttpContextProvider>().To<HttpContextProvider>().InSingletonScope();
+
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
-            kernel.Bind(typeof(IEfRepository<>)).To(typeof(EfRepository<>));
-        }        
+            kernel.Bind(typeof(IEfRepository<>)).To(typeof(EfRepository<>)).InRequestScope();
+            kernel.Bind<DbContext>().To<ReadMeDbContext>().InRequestScope();
+        }
     }
 }

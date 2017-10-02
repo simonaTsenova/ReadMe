@@ -28,6 +28,8 @@ namespace ReadMe.Data.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            this.SeedAdmin(context);
         }
 
         private void SeedAdmin(ReadMeDbContext context)

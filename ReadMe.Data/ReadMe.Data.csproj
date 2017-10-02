@@ -68,6 +68,10 @@
     <Compile Include="Migrations\201710012138246_Initial.Designer.cs">
       <DependentUpon>201710012138246_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710020657324_Fixed constraints.cs" />
+    <Compile Include="Migrations\201710020657324_Fixed constraints.Designer.cs">
+      <DependentUpon>201710020657324_Fixed constraints.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ReadMeDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -86,6 +90,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201710012138246_Initial.resx">
       <DependentUpon>201710012138246_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710020657324_Fixed constraints.resx">
+      <DependentUpon>201710020657324_Fixed constraints.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
