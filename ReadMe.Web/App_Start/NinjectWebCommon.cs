@@ -17,6 +17,8 @@ namespace ReadMe.Web.App_Start
     using ReadMe.Authentication;
     using ReadMe.Providers.Contracts;
     using ReadMe.Providers;
+    using ReadMe.Factories;
+    using Ninject.Extensions.Factory;
 
     public static class NinjectWebCommon 
     {
@@ -71,6 +73,12 @@ namespace ReadMe.Web.App_Start
             kernel.Bind<IAuthenticationProvider>().To<AuthenticationProvider>().InSingletonScope();
             kernel.Bind<IDateTimeProvider>().To<DateTimeProvider>().InSingletonScope();
             kernel.Bind<IHttpContextProvider>().To<HttpContextProvider>().InSingletonScope();
+
+            kernel.Bind<IAuthorFactory>().ToFactory().InSingletonScope();
+            kernel.Bind<IBookFactory>().ToFactory().InSingletonScope();
+            kernel.Bind<IGenreFactory>().ToFactory().InSingletonScope();
+            kernel.Bind<IPublisherFactory>().ToFactory().InSingletonScope();
+            kernel.Bind<IUserFactory>().ToFactory().InSingletonScope();
 
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
             kernel.Bind(typeof(IEfRepository<>)).To(typeof(EfRepository<>)).InRequestScope();

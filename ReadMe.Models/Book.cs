@@ -13,6 +13,22 @@ namespace ReadMe.Models
             this.UserBooks = new HashSet<UserBook>();
         }
 
+        public Book(string title, DateTime published, string isbn, 
+                    Author author, string summary, string language,
+                    Publisher publisher, ICollection<Genre> genres)
+        {
+            this.Title = title;
+            this.Published = published;
+            this.ISBN = isbn;
+            this.Author = author;
+            this.Summary = summary;
+            this.Rating = 0;
+            this.PhotoUrl = "https://thecliparts.com/wp-content/uploads/2016/12/dark-blue-book-cover-clipart.png";
+            this.Language = language;
+            this.Publisher = publisher;
+            this.Genres = genres;
+        }
+
         public Guid Id { get; set; }
 
         public string Title { get; set; }

@@ -11,6 +11,12 @@ namespace ReadMe.Models
             this.Books = new HashSet<Book>();
         }
 
+        public Genre(string name)
+            : this()
+        {
+            this.Name = name;
+        }
+
         public Guid Id { get; set; }
 
         public string Name { get; set; }

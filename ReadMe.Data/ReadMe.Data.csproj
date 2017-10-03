@@ -76,6 +76,10 @@
     <Compile Include="Migrations\201710030921066_Added User username unique index constraint.Designer.cs">
       <DependentUpon>201710030921066_Added User username unique index constraint.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710032012541_Added photo url property to user.cs" />
+    <Compile Include="Migrations\201710032012541_Added photo url property to user.Designer.cs">
+      <DependentUpon>201710032012541_Added photo url property to user.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ReadMeDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -100,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710030921066_Added User username unique index constraint.resx">
       <DependentUpon>201710030921066_Added User username unique index constraint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710032012541_Added photo url property to user.resx">
+      <DependentUpon>201710032012541_Added photo url property to user.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

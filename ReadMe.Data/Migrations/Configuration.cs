@@ -34,8 +34,11 @@ namespace ReadMe.Data.Migrations
 
         private void SeedAdmin(ReadMeDbContext context)
         {
-            const string AdministratorUserName = "admin@admin.com";
+            const string AdministratorEmail = "admin@admin.com";
+            const string AdministratorUserName = "admin";
             const string AdministratorPassword = "123456";
+            const string AdministratorFirstName = "Admin";
+            const string AdministratorLastName = "Admin";
 
             if (!context.Roles.Any())
             {
@@ -49,8 +52,9 @@ namespace ReadMe.Data.Migrations
                 var user = new User
                 {
                     UserName = AdministratorUserName,
-                    Email = AdministratorUserName,
-                    EmailConfirmed = true,
+                    Email = AdministratorEmail,
+                    FirstName = AdministratorFirstName,
+                    LastName = AdministratorLastName
                 };
 
                 userManager.Create(user, AdministratorPassword);

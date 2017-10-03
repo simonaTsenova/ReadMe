@@ -19,6 +19,7 @@ namespace ReadMe.Models
             this.UserName = username;
             this.FirstName = firstName;
             this.LastName = lastName;
+            this.PhotoUrl = "https://www.haikudeck.com/static/img/hd-avatar.png";
         }
 
         public string FirstName { get; set; }
@@ -30,6 +31,8 @@ namespace ReadMe.Models
         public int Age { get; set; }
 
         public string FavouriteQuote { get; set; }
+
+        public string PhotoUrl { get; set; }
 
         public ICollection<UserBook> UserBooks { get; set; }
 

@@ -5,6 +5,17 @@ namespace ReadMe.Models
 {
     public class Author : IDeletable
     {
+        public Author(string firstName, string lastName, string nationality, int age, string biography, string website)
+        {
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.Nationality = nationality;
+            this.Age = age;
+            this.Biography = biography;
+            this.Website = website;
+            this.PhotoUrl = "https://www.haikudeck.com/static/img/hd-avatar.png";
+        }
+
         public Guid Id { get; set; }
 
         public string FirstName { get; set; }
