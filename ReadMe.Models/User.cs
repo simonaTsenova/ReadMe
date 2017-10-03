@@ -12,11 +12,13 @@ namespace ReadMe.Models
             this.UserBooks = new HashSet<UserBook>();
         }
 
-        public User(string username, string email)
+        public User(string email, string username, string firstName, string lastName)
             : this()
         {
-            this.UserName = username;
             this.Email = email;
+            this.UserName = username;
+            this.FirstName = firstName;
+            this.LastName = lastName;
         }
 
         public string FirstName { get; set; }

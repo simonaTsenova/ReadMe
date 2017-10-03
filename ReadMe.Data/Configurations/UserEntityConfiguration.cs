@@ -9,6 +9,12 @@ namespace ReadMe.Data.Configurations
     {
         public UserEntityConfiguration()
         {
+            this.Property(user => user.UserName)
+                .HasMaxLength(40)
+                .HasColumnAnnotation(
+                    IndexAnnotation.AnnotationName,
+                    new IndexAnnotation(new IndexAttribute("IX_UserUserName") { IsUnique = true }));
+
             this.Property(user => user.FirstName)
                 .HasMaxLength(15);
 

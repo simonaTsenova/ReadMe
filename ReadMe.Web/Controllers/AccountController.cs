@@ -83,7 +83,7 @@ namespace ReadMe.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = model.Email, Email = model.Email };
+                var user = new User(model.Email, model.UserName, model.FirstName, model.LastName);
                 var result = this.authProvider.RegisterAndLoginUser(user, model.Password, isPersistent: false, rememberBrowser: false);
                 if (result.Succeeded)
                 {

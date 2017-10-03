@@ -72,6 +72,10 @@
     <Compile Include="Migrations\201710020657324_Fixed constraints.Designer.cs">
       <DependentUpon>201710020657324_Fixed constraints.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710030921066_Added User username unique index constraint.cs" />
+    <Compile Include="Migrations\201710030921066_Added User username unique index constraint.Designer.cs">
+      <DependentUpon>201710030921066_Added User username unique index constraint.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ReadMeDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -93,6 +97,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710020657324_Fixed constraints.resx">
       <DependentUpon>201710020657324_Fixed constraints.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710030921066_Added User username unique index constraint.resx">
+      <DependentUpon>201710030921066_Added User username unique index constraint.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
