@@ -83,9 +83,9 @@ namespace ReadMe.Authentication
             return result;
         }
 
-        public SignInStatus SignInWithPassword(string email, string password, bool rememberMe, bool shouldLockout)
+        public SignInStatus SignInWithPassword(string userName, string password, bool rememberMe, bool shouldLockout)
         {
-            return this.SignInManager.PasswordSignIn(email, password, rememberMe, shouldLockout);
+            return this.SignInManager.PasswordSignIn(userName, password, rememberMe, shouldLockout);
         }
 
         public bool IsInRole(string userId, string roleName)
