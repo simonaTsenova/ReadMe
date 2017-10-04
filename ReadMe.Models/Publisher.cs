@@ -5,6 +5,11 @@ namespace ReadMe.Models
 {
     public class Publisher : IDeletable
     {
+        public Publisher()
+        {
+
+        }
+
         public Publisher(string name, string owner, string phone, string city, string address, string country, string website)
         {
             this.Name = name;

@@ -3,6 +3,8 @@ namespace ReadMe.Data.Migrations
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using ReadMe.Models;
+    using System;
+    using System.Collections.Generic;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
@@ -30,6 +32,92 @@ namespace ReadMe.Data.Migrations
             //
 
             this.SeedAdmin(context);
+            this.SeedGenres(context);
+            this.SeedAuthors(context);
+            this.SeedPublishers(context);
+            this.SeedBooks(context);
+        }
+
+        private void SeedGenres(ReadMeDbContext context)
+        {
+            if (!context.Genres.Any())
+            {
+                var genres = new Genre[]
+                {
+                    new Genre("Fantasy"),
+                    new Genre("Romance"),
+                    new Genre("Mystery"),
+                    new Genre("Thriller")
+                };
+
+                foreach (var genre in genres)
+                {
+                    context.Genres.Add(genre);
+                }
+            }
+        }
+
+        private void SeedAuthors(ReadMeDbContext context)
+        {
+            if(!context.Authors.Any())
+            {
+                var authors = new Author[]
+                {
+                    new Author("John", "Grisham", "American", 54, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", "http://www.jgrisham.com/"),
+                    new Author("Danielle", "Steel", "American", 56, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", "http://daniellesteel.com")
+                };
+
+                foreach (var author in authors)
+                {
+                    context.Authors.Add(author);
+                }
+            }
+        }
+        
+        private void SeedPublishers(ReadMeDbContext context)
+        {
+            if(!context.Publishers.Any())
+            {
+                var publishers = new Publisher[]
+                {
+                    new Publisher("Paradise press", "John Doe", "1234567899", "California", "35 Hollywood blvd., LA", "USA", "wwww.website.com"),
+                    new Publisher("Bear press", "Jane Doe", "9876543211", "Chicago", "48 Franklin str.", "USA", "www.website.com")
+                };
+
+                foreach (var publisher in publishers)
+                {
+                    context.Publishers.Add(publisher);
+                }
+            }
+        }
+
+        private void SeedBooks(ReadMeDbContext context)
+        {
+            if(!context.Books.Any())
+            {
+                var date = DateTime.Now;
+                var books = new Book[]
+                {
+                    new Book("Sisters", date, "0385340222",
+                        context.Authors.First(x => (x.FirstName == "Danielle" && x.LastName == "Steel")),
+                        "Four sisters, a Manhattan brownstone, and a tumultuous year of loss and courage are at the heart of Danielle Steel's new novel about a remarkable family, a stunning tragedy--and what happens when four very different young women come together under one very lively roof.",
+                        "English", context.Publishers.First(x => x.Name == "Paradise press"),
+                        new Genre[]{ context.Genres.First(x => x.Name == "Romance")}
+                        ),
+                    new Book("The Rooster Bar", date, "0385541171",
+                        context.Authors.First(x => (x.FirstName == "John" && x.LastName == "Grisham")),
+                        "Mark, Todd, and Zola came to law school to change the world, to make it a better place. But now, as third-year students, these close friends realize they have been duped.",
+                        "English", context.Publishers.First(x => x.Name == "Paradise press"),
+                        new Genre[]{ context.Genres.First(x => x.Name == "Thriller"), context.Genres.First(x => x.Name == "Mystery") }
+                        ),
+
+                };
+
+                foreach (var book in books)
+                {
+                    context.Books.Add(book);
+                }
+            }
         }
 
         private void SeedAdmin(ReadMeDbContext context)

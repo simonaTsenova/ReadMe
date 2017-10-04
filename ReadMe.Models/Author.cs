@@ -5,6 +5,11 @@ namespace ReadMe.Models
 {
     public class Author : IDeletable
     {
+        public Author()
+        {
+
+        }
+
         public Author(string firstName, string lastName, string nationality, int age, string biography, string website)
         {
             this.FirstName = firstName;
