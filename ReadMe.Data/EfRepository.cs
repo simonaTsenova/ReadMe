@@ -1,12 +1,8 @@
 ﻿using ReadMe.Data.Contracts;
-using ReadMe.Models.Contracts;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ReadMe.Data
 {

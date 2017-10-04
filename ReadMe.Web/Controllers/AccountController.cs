@@ -38,6 +38,11 @@ namespace ReadMe.Web.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            if(this.authProvider.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
@@ -49,6 +54,11 @@ namespace ReadMe.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginViewModel model, string returnUrl)
         {
+            if (this.authProvider.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -75,6 +85,11 @@ namespace ReadMe.Web.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            if (this.authProvider.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             return View();
         }
 
@@ -85,6 +100,11 @@ namespace ReadMe.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterViewModel model)
         {
+            if (this.authProvider.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             if (ModelState.IsValid)
             {
                 var user = this.userFactory.CreateUser(model.Email, model.UserName, model.FirstName, model.LastName);
@@ -107,6 +127,11 @@ namespace ReadMe.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
+            if (!this.authProvider.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             this.authProvider.SignOut();
 
             return this.RedirectToAction("Index", "Home");

@@ -1,0 +1,81 @@
+﻿@model ReadMe.Web.Models.Profile.UserProfileViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if(@Model.isOwner)
+{
+    <h2>My profile</h2>
+}
+else
+{
+    <h2>Profile</h2>
+}
+
+<div>
+    <hr />
+
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+                        <img alt="User Pic" src="@Model.PhotoUrl" id="profile-image1" class="img-thumbnail img-responsive">
+                    </div>
+                    <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <h2>@Model.UserName</h2>
+                                </div>
+                                <div class="col-md-2">
+                                    <h3>
+                                        @Html.ActionLink("Edit", "Edit", "Profile", routeValues: null, htmlAttributes: new { @class = "btn btn-default btn-lg" })
+                                    </h3>
+                                </div>
+                            </div>
+                            <p>
+                                <span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>
+                                @Model.Email
+                            </p>
+                        </div>
+                        <hr>
+                        <dl class="container details dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.FullName)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.FullName)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Nationality)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Nationality)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Age)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Age)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.FavouriteQuote)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.FavouriteQuote)
+                            </dd>
+                        </dl>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

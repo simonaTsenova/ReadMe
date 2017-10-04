@@ -19,6 +19,10 @@ namespace ReadMe.Web.App_Start
     using ReadMe.Providers;
     using ReadMe.Factories;
     using Ninject.Extensions.Factory;
+    using Ninject.Extensions.Conventions;
+    using ReadMe.Web.Infrastructure.Factories;
+    using ReadMe.Services.Contracts;
+    using ReadMe.Services;
 
     public static class NinjectWebCommon 
     {
@@ -70,6 +74,13 @@ namespace ReadMe.Web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind(x =>
+            {
+                x.FromThisAssembly()
+                 .SelectAllClasses()
+                 .BindDefaultInterface();
+            });
+
             kernel.Bind<IAuthenticationProvider>().To<AuthenticationProvider>().InSingletonScope();
             kernel.Bind<IDateTimeProvider>().To<DateTimeProvider>().InSingletonScope();
             kernel.Bind<IHttpContextProvider>().To<HttpContextProvider>().InSingletonScope();
@@ -79,6 +90,9 @@ namespace ReadMe.Web.App_Start
             kernel.Bind<IGenreFactory>().ToFactory().InSingletonScope();
             kernel.Bind<IPublisherFactory>().ToFactory().InSingletonScope();
             kernel.Bind<IUserFactory>().ToFactory().InSingletonScope();
+            kernel.Bind<IViewModelFactory>().ToFactory().InSingletonScope();
+
+            kernel.Bind<IUserService>().To<UserService>().InRequestScope();
 
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
             kernel.Bind(typeof(IEfRepository<>)).To(typeof(EfRepository<>)).InRequestScope();
