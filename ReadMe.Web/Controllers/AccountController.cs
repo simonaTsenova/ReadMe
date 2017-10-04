@@ -1,15 +1,12 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
+﻿using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ReadMe.Web.Models;
-using ReadMe.Authentication.Managers;
-using ReadMe.Models;
 using ReadMe.Authentication.Contracts;
 using System;
+using ReadMe.Factories;
 
 namespace ReadMe.Web.Controllers
 {
@@ -18,15 +15,22 @@ namespace ReadMe.Web.Controllers
     {
 
         private readonly IAuthenticationProvider authProvider;
-        
-        public AccountController(IAuthenticationProvider authProvider)
+        private readonly IUserFactory userFactory;
+
+        public AccountController(IAuthenticationProvider authProvider, IUserFactory userFactory)
         {
             if(authProvider == null)
             {
                 throw new ArgumentNullException("Auth provider cannot be null.");
             }
 
+            if (userFactory == null)
+            {
+                throw new ArgumentNullException("User factory cannot be null.");
+            }
+
             this.authProvider = authProvider;
+            this.userFactory = userFactory;
         }
 
         //
@@ -83,7 +87,7 @@ namespace ReadMe.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new User(model.Email, model.UserName, model.FirstName, model.LastName);
+                var user = this.userFactory.CreateUser(model.Email, model.UserName, model.FirstName, model.LastName);
                 var result = this.authProvider.RegisterAndLoginUser(user, model.Password, isPersistent: false, rememberBrowser: false);
                 if (result.Succeeded)
                 {
@@ -106,14 +110,6 @@ namespace ReadMe.Web.Controllers
             this.authProvider.SignOut();
 
             return this.RedirectToAction("Index", "Home");
-        }
-
-        //
-        // GET: /Account/ExternalLoginFailure
-        [AllowAnonymous]
-        public ActionResult ExternalLoginFailure()
-        {
-            return View();
         }
 
         #region Helpers

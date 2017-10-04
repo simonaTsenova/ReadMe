@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadMe.Providers", "ReadMe.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadMe.Factories", "ReadMe.Factories\ReadMe.Factories.csproj", "{6796B695-9630-420C-8953-D314034C2050}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadMe.Services", "ReadMe.Services\ReadMe.Services.csproj", "{26660FD5-B03E-4196-9879-90D3D0FFDC6D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{6796B695-9630-420C-8953-D314034C2050}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6796B695-9630-420C-8953-D314034C2050}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6796B695-9630-420C-8953-D314034C2050}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26660FD5-B03E-4196-9879-90D3D0FFDC6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26660FD5-B03E-4196-9879-90D3D0FFDC6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26660FD5-B03E-4196-9879-90D3D0FFDC6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26660FD5-B03E-4196-9879-90D3D0FFDC6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
