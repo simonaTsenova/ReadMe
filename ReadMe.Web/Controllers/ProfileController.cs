@@ -1,9 +1,11 @@
 ﻿using ReadMe.Authentication.Contracts;
+using ReadMe.Models;
 using ReadMe.Services.Contracts;
 using ReadMe.Web.Infrastructure;
 using ReadMe.Web.Infrastructure.Factories;
 using ReadMe.Web.Models.Profile;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -52,7 +54,7 @@ namespace ReadMe.Web.Controllers
 
             var userModel = this.factory.CreateUserProfileViewModel(user.Email, user.UserName, user.FirstName + " " + user.LastName,
                 user.Nationality, user.Age, user.FavouriteQuote, user.PhotoUrl, user.UserBooks, isOwner);
-            ViewBag.IsOwner = isOwner;
+
             return View(userModel);
         }
     }

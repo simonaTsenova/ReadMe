@@ -8,7 +8,7 @@ namespace ReadMe.Web.Models.Profile
     public class UserProfileViewModel : IMapFrom<User>, ICustomMapping
     {
         public UserProfileViewModel(string email, string username, string fullname, string nationality,
-            int age, string favouriteQuote, string photoUrl, ICollection<UserBook> userBooks)
+            int age, string favouriteQuote, string photoUrl, ICollection<UserBook> userBooks, bool isOwner)
         {
             this.Email = email;
             this.UserName = username;
@@ -18,6 +18,7 @@ namespace ReadMe.Web.Models.Profile
             this.FavouriteQuote = favouriteQuote;
             this.PhotoUrl = photoUrl;
             this.UserBooks = userBooks;
+            this.isOwner = isOwner;
         }
 
         public string Email { get; set; }

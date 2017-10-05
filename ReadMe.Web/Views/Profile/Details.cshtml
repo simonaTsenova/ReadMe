@@ -3,7 +3,7 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<p>ViewBag.roles</p>
 @if(@Model.isOwner)
 {
     <h2>My profile</h2>
@@ -16,7 +16,7 @@ else
 <div>
     <hr />
 
-        <div class="row">
+    <div class="row">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
@@ -29,14 +29,24 @@ else
                                     <h2>@Model.UserName</h2>
                                 </div>
                                 <div class="col-md-2">
-                                    <h3>
-                                        @Html.ActionLink("Edit", "Edit", "Profile", routeValues: null, htmlAttributes: new { @class = "btn btn-default btn-lg" })
-                                    </h3>
+                                    @if (Model.isOwner)
+                                    {
+                                        <h3>
+                                            @Html.ActionLink("Edit", "Edit", "Profile", routeValues: null, htmlAttributes: new { @class = "btn btn-primary btn-lg" })
+                                        </h3>
+                                    }
+                                    else
+                                    {
+                                        <h3>
+                                            @Html.ActionLink("Follow", "Edit", "Profile", routeValues: null, htmlAttributes: new { @class = "btn btn-warning btn-lg" })
+                                        </h3>
+                                    }
+
                                 </div>
                             </div>
                             <p>
                                 <span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>
-                                @Model.Email
+                                <span> @Model.Email </span>
                             </p>
                         </div>
                         <hr>
@@ -54,7 +64,15 @@ else
                             </dt>
 
                             <dd>
-                                @Html.DisplayFor(model => model.Nationality)
+                                @if (Model.Nationality != null)
+                                {
+                                    @Html.DisplayFor(model => model.Nationality)
+
+                                }
+                                else
+                                {
+                                    <span>-</span>
+                                }
                             </dd>
 
                             <dt>
@@ -62,7 +80,14 @@ else
                             </dt>
 
                             <dd>
-                                @Html.DisplayFor(model => model.Age)
+                                @if (Model.Age != 0)
+                                {
+                                    @Html.DisplayFor(model => model.Age)
+                                }
+                                else
+                                {
+                                    <span>-</span>
+                                }
                             </dd>
 
                             <dt>
@@ -70,7 +95,14 @@ else
                             </dt>
 
                             <dd>
-                                @Html.DisplayFor(model => model.FavouriteQuote)
+                                @if (Model.FavouriteQuote != null)
+                                {
+                                    @Html.DisplayFor(model => model.FavouriteQuote)
+                                }
+                                else
+                                {
+                                    <span>-</span>
+                                }
                             </dd>
                         </dl>
                         <hr>
@@ -78,4 +110,9 @@ else
                 </div>
             </div>
         </div>
+
+    <div class="container">
+        @Html.Partial("_BooksPartial", @Model.UserBooks)
     </div>
+
+</div>

@@ -3,6 +3,7 @@ namespace ReadMe.Data.Migrations
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using ReadMe.Models;
+    using ReadMe.Models.Enumerations;
     using System;
     using System.Collections.Generic;
     using System.Data.Entity.Migrations;
@@ -36,6 +37,7 @@ namespace ReadMe.Data.Migrations
             this.SeedAuthors(context);
             this.SeedPublishers(context);
             this.SeedBooks(context);
+            this.SeedUserBooks(context);
         }
 
         private void SeedGenres(ReadMeDbContext context)
@@ -116,6 +118,32 @@ namespace ReadMe.Data.Migrations
                 foreach (var book in books)
                 {
                     context.Books.Add(book);
+                }
+            }
+        }
+
+        private void SeedUserBooks(ReadMeDbContext context)
+        {
+            if(!context.UserBooks.Any())
+            {
+                var userBook1 = new UserBook();
+                userBook1.Book = context.Books.FirstOrDefault(b => b.Title == "Sisters");
+                userBook1.User = context.Users.FirstOrDefault(u => u.UserName == "simona");
+                userBook1.ReadStatus = ReadStatus.Read;
+
+                var userBook2 = new UserBook();
+                userBook2.Book = context.Books.FirstOrDefault(b => b.Title == "The Rooster Bar");
+                userBook2.User = context.Users.FirstOrDefault(u => u.UserName == "simona");
+                userBook2.ReadStatus = ReadStatus.WantToRead;
+
+                var userBooks = new UserBook[]
+                {
+                    userBook1, userBook2
+                };
+
+                foreach (var userBook in userBooks)
+                {
+                    context.UserBooks.Add(userBook);
                 }
             }
         }

@@ -5404,11 +5404,71 @@ a.list-group-item:focus {
   color: inherit;
 }
 
+
+
+
 footer {
-    padding: 10px 15px;
-    background-color: #8b532e;
-    border-top: 1px solid #dddddd;
+    background-color: #111111;
+    padding: 20px 15px;
+    overflow: hidden;
 }
+
+footer .footer-containertent {
+    text-align: center;
+}
+
+footer p {
+    color: #828282;
+    margin-bottom: 15px;
+    font-size: 13px;
+}
+
+footer ul {
+    display: inline-block;
+}
+
+footer ul li {
+    float: left;
+    margin-right: 15px;
+    list-style-type: none;
+}
+
+footer ul li:last-child {
+    margin-right: 0;
+}
+
+footer ul li a {
+    font-size: 18px;
+}
+
+footer ul li a i {
+    font-size: 21px;
+    color: #fff;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+}
+
+.footer-container {
+    background-color: #111111;
+    padding: 60px 30px;
+}
+
+.footer-social-info li {
+    width: 44px;
+    height: 44px;
+    margin: 0px 15px 0px auto;
+    text-align: center;
+    float: left;
+    padding: 8px;
+    border: 1px solid #6E6E6E;
+    border-radius: 50%;
+}
+
+
+
 
 .panel-footer {
     padding: 10px 15px;
