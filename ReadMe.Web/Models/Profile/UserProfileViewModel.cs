@@ -7,23 +7,31 @@ namespace ReadMe.Web.Models.Profile
 {
     public class UserProfileViewModel : IMapFrom<User>, ICustomMapping
     {
-        public UserProfileViewModel(string email, string username, string fullname, string nationality,
-            int age, string favouriteQuote, string photoUrl, ICollection<UserBook> userBooks, bool isOwner)
+        public UserProfileViewModel(User user, bool isOwner)
         {
-            this.Email = email;
-            this.UserName = username;
-            this.FullName = fullname;
-            this.Nationality = nationality;
-            this.Age = age;
-            this.FavouriteQuote = favouriteQuote;
-            this.PhotoUrl = photoUrl;
-            this.UserBooks = userBooks;
+            this.Id = user.Id;   
+            this.Email = user.Email;
+            this.UserName = user.UserName;
+            this.FirstName = user.FirstName;
+            this.LastName = user.LastName;
+            this.FullName = this.FirstName + " " + this.LastName;
+            this.Nationality = user.Nationality;
+            this.Age = user.Age;
+            this.FavouriteQuote = user.FavouriteQuote;
+            this.PhotoUrl = user.PhotoUrl;
+            this.UserBooks = user.UserBooks;
             this.isOwner = isOwner;
         }
+
+        public string Id { get; set; }
 
         public string Email { get; set; }
        
         public string UserName { get; set; }
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
 
         public string FullName { get; set; }
 
@@ -46,8 +54,10 @@ namespace ReadMe.Web.Models.Profile
                     cfg => cfg.MapFrom(user => user.Email))
                 .ForMember(userProfileViewModel => userProfileViewModel.UserName,
                     cfg => cfg.MapFrom(user => user.UserName))
-                .ForMember(userProfileViewModel => userProfileViewModel.FullName,
-                    cfg => cfg.MapFrom(user => user.FirstName + " " + user.LastName))
+                .ForMember(userProfileViewModel => userProfileViewModel.FirstName,
+                    cfg => cfg.MapFrom(user => user.FirstName))
+                .ForMember(userProfileViewModel => userProfileViewModel.LastName,
+                    cfg => cfg.MapFrom(user => user.LastName))
                 .ForMember(userProfileViewModel => userProfileViewModel.Nationality,
                     cfg => cfg.MapFrom(user => user.Nationality))
                 .ForMember(userProfileViewModel => userProfileViewModel.Age,

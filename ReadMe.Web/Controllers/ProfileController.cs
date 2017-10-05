@@ -1,12 +1,8 @@
 ﻿using ReadMe.Authentication.Contracts;
-using ReadMe.Models;
 using ReadMe.Services.Contracts;
-using ReadMe.Web.Infrastructure;
 using ReadMe.Web.Infrastructure.Factories;
 using ReadMe.Web.Models.Profile;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web.Mvc;
 
 namespace ReadMe.Web.Controllers
@@ -39,6 +35,7 @@ namespace ReadMe.Web.Controllers
             this.factory = factory;
         }
 
+        //
         // GET: Profile/Details/{username}
         public ActionResult Details(string username)
         {
@@ -47,15 +44,30 @@ namespace ReadMe.Web.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
+            ViewBag.Title = "Details";
             var user = this.userService.GetUserByUsername(username);
             var currentUserId = this.authProvider.CurrentUserId;
 
             var isOwner = user.Id.Equals(currentUserId);
-
-            var userModel = this.factory.CreateUserProfileViewModel(user.Email, user.UserName, user.FirstName + " " + user.LastName,
-                user.Nationality, user.Age, user.FavouriteQuote, user.PhotoUrl, user.UserBooks, isOwner);
+            
+            var userModel = this.factory.CreateUserProfileViewModel(user, isOwner);
 
             return View(userModel);
+        }
+
+        //
+        // POST: Profile/Edit
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(UserProfileViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                this.userService.EditUser(model.Id, model.FirstName, model.LastName, model.Nationality, model.Age, model.FavouriteQuote);
+            }
+
+            return RedirectToAction("Details", "Profile", routeValues: new { model.UserName });
         }
     }
 }

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using AutoMapper;
 using ReadMe.Web.Infrastructure;
+using AutoMapper;
 
 namespace ReadMe.Web
 {
