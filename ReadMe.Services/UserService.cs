@@ -2,6 +2,7 @@
 using ReadMe.Models;
 using ReadMe.Services.Contracts;
 using System;
+using System.Data.Entity;
 using System.Linq;
 
 namespace ReadMe.Services
@@ -27,10 +28,11 @@ namespace ReadMe.Services
             this.unitOfWork = unitOfWork;
         }
 
-        public User GetUserByUsername(string username)
+        public IQueryable<User> GetUserByUsername(string username)
         {
             var user = this.userRepository.All
-                .FirstOrDefault(u => u.UserName == username);
+                .Where(u => u.UserName == username)
+                .Include(u => u.UserBooks);
 
             return user;
         }

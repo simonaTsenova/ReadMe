@@ -19,8 +19,8 @@ namespace ReadMe.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            //var mapper = new AutoMapperConfig();
-            //mapper.Execute(Assembly.GetExecutingAssembly());
+            var mapper = new AutoMapperConfig();
+            mapper.Execute(Assembly.GetExecutingAssembly());
         }
     }
 }

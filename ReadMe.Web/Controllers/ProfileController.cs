@@ -1,8 +1,9 @@
-﻿using ReadMe.Authentication.Contracts;
+﻿using AutoMapper.QueryableExtensions;
+using ReadMe.Authentication.Contracts;
 using ReadMe.Services.Contracts;
-using ReadMe.Web.Infrastructure.Factories;
 using ReadMe.Web.Models.Profile;
 using System;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace ReadMe.Web.Controllers
@@ -11,9 +12,8 @@ namespace ReadMe.Web.Controllers
     {
         private readonly IAuthenticationProvider authProvider;
         private readonly IUserService userService;
-        private readonly IViewModelFactory factory;
 
-        public ProfileController(IAuthenticationProvider authProvider, IUserService userService, IViewModelFactory factory)
+        public ProfileController(IAuthenticationProvider authProvider, IUserService userService)
         {
             if (authProvider == null)
             {
@@ -25,14 +25,8 @@ namespace ReadMe.Web.Controllers
                 throw new ArgumentNullException("User service cannot be null.");
             }
 
-            if (factory == null)
-            {
-                throw new ArgumentNullException("Factory cannot be null.");
-            }
-
             this.authProvider = authProvider;
             this.userService = userService;
-            this.factory = factory;
         }
 
         //
@@ -46,11 +40,9 @@ namespace ReadMe.Web.Controllers
 
             ViewBag.Title = "Details";
             var user = this.userService.GetUserByUsername(username);
-            var currentUserId = this.authProvider.CurrentUserId;
 
-            var isOwner = user.Id.Equals(currentUserId);
-            
-            var userModel = this.factory.CreateUserProfileViewModel(user, isOwner);
+            var userModel = user.ProjectTo<UserProfileViewModel>()
+                .FirstOrDefault();
 
             return View(userModel);
         }

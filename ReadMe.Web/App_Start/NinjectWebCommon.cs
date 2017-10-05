@@ -23,6 +23,7 @@ namespace ReadMe.Web.App_Start
     using ReadMe.Web.Infrastructure.Factories;
     using ReadMe.Services.Contracts;
     using ReadMe.Services;
+    using AutoMapper;
 
     public static class NinjectWebCommon 
     {
@@ -93,6 +94,7 @@ namespace ReadMe.Web.App_Start
             kernel.Bind<IViewModelFactory>().ToFactory().InSingletonScope();
 
             kernel.Bind<IUserService>().To<UserService>().InRequestScope();
+            kernel.Bind<IBookService>().To<BookService>().InRequestScope();
 
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
             kernel.Bind(typeof(IEfRepository<>)).To(typeof(EfRepository<>)).InRequestScope();

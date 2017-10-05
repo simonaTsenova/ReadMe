@@ -1,9 +1,10 @@
-﻿@model ReadMe.Web.Models.Profile.UserProfileViewModel
+﻿@using Microsoft.AspNet.Identity
+@model ReadMe.Web.Models.Profile.UserProfileViewModel
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@if(@Model.isOwner)
+@if(@Model.Id == User.Identity.GetUserId())
 {
     <h2 class="title">My profile</h2>
 }
@@ -27,7 +28,7 @@ else
                                     <h2>@Model.UserName</h2>
                                 </div>
                                 <div class="col-md-2">
-                                    @if (Model.isOwner)
+                                    @if (@Model.Id == User.Identity.GetUserId())
                                     {
                                         <h3>
                                             <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#edit-form-modal">

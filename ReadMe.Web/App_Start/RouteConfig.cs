@@ -11,6 +11,12 @@ namespace ReadMe.Web
             //routes.LowercaseUrls = true;
 
             routes.MapRoute(
+                name: "Books",
+                url: "Books/{id}",
+                defaults: new { controller = "Books", action = "Details" }
+            );
+
+            routes.MapRoute(
                 name: "ProfileDetails",
                 url: "Profile/Details/{username}",
                 defaults: new { controller = "Profile", action = "Details" }

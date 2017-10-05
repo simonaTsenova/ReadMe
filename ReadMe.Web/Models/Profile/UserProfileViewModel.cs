@@ -7,22 +7,6 @@ namespace ReadMe.Web.Models.Profile
 {
     public class UserProfileViewModel : IMapFrom<User>, ICustomMapping
     {
-        public UserProfileViewModel(User user, bool isOwner)
-        {
-            this.Id = user.Id;   
-            this.Email = user.Email;
-            this.UserName = user.UserName;
-            this.FirstName = user.FirstName;
-            this.LastName = user.LastName;
-            this.FullName = this.FirstName + " " + this.LastName;
-            this.Nationality = user.Nationality;
-            this.Age = user.Age;
-            this.FavouriteQuote = user.FavouriteQuote;
-            this.PhotoUrl = user.PhotoUrl;
-            this.UserBooks = user.UserBooks;
-            this.isOwner = isOwner;
-        }
-
         public string Id { get; set; }
 
         public string Email { get; set; }
@@ -43,13 +27,13 @@ namespace ReadMe.Web.Models.Profile
 
         public string PhotoUrl { get; set; }
 
-        public bool isOwner { get; set; }
-
         public ICollection<UserBook> UserBooks { get; set; }
 
         public void CreateMappings(IMapperConfigurationExpression configuration)
         {
             configuration.CreateMap<User, UserProfileViewModel>()
+                .ForMember(userProfileViewModel => userProfileViewModel.Id,
+                    cfg => cfg.MapFrom(user => user.Id))
                 .ForMember(userProfileViewModel => userProfileViewModel.Email,
                     cfg => cfg.MapFrom(user => user.Email))
                 .ForMember(userProfileViewModel => userProfileViewModel.UserName,
@@ -58,6 +42,8 @@ namespace ReadMe.Web.Models.Profile
                     cfg => cfg.MapFrom(user => user.FirstName))
                 .ForMember(userProfileViewModel => userProfileViewModel.LastName,
                     cfg => cfg.MapFrom(user => user.LastName))
+                .ForMember(userProfileViewModel => userProfileViewModel.FullName,
+                    cfg => cfg.MapFrom(user => user.FirstName + " " + user.LastName))
                 .ForMember(userProfileViewModel => userProfileViewModel.Nationality,
                     cfg => cfg.MapFrom(user => user.Nationality))
                 .ForMember(userProfileViewModel => userProfileViewModel.Age,
