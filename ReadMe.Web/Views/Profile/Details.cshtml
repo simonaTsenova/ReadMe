@@ -5,11 +5,11 @@
 }
 @if(@Model.isOwner)
 {
-    <h2>My profile</h2>
+    <h2 class="title">My profile</h2>
 }
 else
 {
-    <h2>Profile</h2>
+    <h2 class="title">Profile</h2>
 }
 
 <div>
@@ -46,8 +46,8 @@ else
                                 </div>
                             </div>
                             <p>
-                                <span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>
-                                <span> @Model.Email </span>
+                                <i class="fa fa-envelope one" style="width:50px;"></i>
+                                @Model.Email
                             </p>
                         </div>
                         <hr>
@@ -106,7 +106,6 @@ else
                                 }
                             </dd>
                         </dl>
-                        <hr>
                     </div>
                 </div>
             </div>
@@ -129,20 +128,21 @@ else
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                @*@using (Ajax.BeginForm("Edit", "Profile", null, new AjaxOptions
+                @using (Ajax.BeginForm("Edit", "Profile", null, new AjaxOptions
                 {
                     InsertionMode = InsertionMode.Replace,
                     HttpMethod = "POST"
                 }))
-                {*@
+                {
                 <div class="modal-body">
                     ...
+                    @Html.AntiForgeryToken()
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <input type="submit" value="Save changes" class="btn btn-primary" id="send" />
                 </div>
-                @*}*@
+                }
             </div>
         </div>
     </div>

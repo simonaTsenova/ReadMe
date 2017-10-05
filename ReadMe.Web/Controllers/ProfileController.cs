@@ -64,7 +64,7 @@ namespace ReadMe.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                this.userService.EditUser(model.Id, model.FirstName, model.LastName, model.Nationality, model.Age, model.FavouriteQuote);
+                //this.userService.EditUser(model.Id, model.FirstName, model.LastName, model.Nationality, model.Age, model.FavouriteQuote);
             }
 
             return RedirectToAction("Details", "Profile", routeValues: new { model.UserName });
