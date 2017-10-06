@@ -1,10 +1,13 @@
-﻿@using Microsoft.AspNet.Identity
-@model ReadMe.Web.Models.Profile.UserProfileViewModel
+﻿@using Microsoft.AspNet.Identity;
+@using ReadMe.Web.Models.Profile;
+
+@model ReadMe.Web.Models.Profile.ProfileViewModel
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@if(@Model.Id == User.Identity.GetUserId())
+
+@if(@Model.UserDetailsViewModel.Id == User.Identity.GetUserId())
 {
     <h2 class="title">My profile</h2>
 }
@@ -19,16 +22,16 @@ else
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
-                        <img alt="User Pic" src="@Model.PhotoUrl" id="profile-image1" class="img-thumbnail img-responsive">
+                        <img alt="User Pic" src="@Model.UserDetailsViewModel.PhotoUrl" id="profile-image1" class="img-thumbnail img-responsive">
                     </div>
                     <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-10">
-                                    <h2>@Model.UserName</h2>
+                                    <h2>@Model.UserDetailsViewModel.UserName</h2>
                                 </div>
                                 <div class="col-md-2">
-                                    @if (@Model.Id == User.Identity.GetUserId())
+                                    @if (@Model.UserDetailsViewModel.Id == User.Identity.GetUserId())
                                     {
                                         <h3>
                                             <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#edit-form-modal">
@@ -48,27 +51,27 @@ else
                             </div>
                             <p>
                                 <i class="fa fa-envelope one" style="width:50px;"></i>
-                                @Model.Email
+                                @Model.UserDetailsViewModel.Email
                             </p>
                         </div>
                         <hr>
                         <dl class="container details dl-horizontal">
                             <dt>
-                                @Html.DisplayNameFor(model => model.FullName)
+                                @Html.DisplayNameFor(model => model.UserDetailsViewModel.FullName)
                             </dt>
 
                             <dd>
-                                @Html.DisplayFor(model => model.FullName)
+                                @Html.DisplayFor(model => model.UserDetailsViewModel.FullName)
                             </dd>
 
                             <dt>
-                                @Html.DisplayNameFor(model => model.Nationality)
+                                @Html.DisplayNameFor(model => model.UserDetailsViewModel.Nationality)
                             </dt>
 
                             <dd>
-                                @if (Model.Nationality != null)
+                                @if (Model.UserDetailsViewModel.Nationality != null)
                                 {
-                                    @Html.DisplayFor(model => model.Nationality)
+                                    @Html.DisplayFor(model => model.UserDetailsViewModel.Nationality)
 
                                 }
                                 else
@@ -78,13 +81,13 @@ else
                             </dd>
 
                             <dt>
-                                @Html.DisplayNameFor(model => model.Age)
+                                @Html.DisplayNameFor(model => model.UserDetailsViewModel.Age)
                             </dt>
 
                             <dd>
-                                @if (Model.Age != 0)
+                                @if (Model.UserDetailsViewModel.Age != 0)
                                 {
-                                    @Html.DisplayFor(model => model.Age)
+                                    @Html.DisplayFor(model => model.UserDetailsViewModel.Age)
                                 }
                                 else
                                 {
@@ -93,13 +96,13 @@ else
                             </dd>
 
                             <dt>
-                                @Html.DisplayNameFor(model => model.FavouriteQuote)
+                                @Html.DisplayNameFor(model => model.UserDetailsViewModel.FavouriteQuote)
                             </dt>
 
                             <dd>
-                                @if (Model.FavouriteQuote != null)
+                                @if (Model.UserDetailsViewModel.FavouriteQuote != null)
                                 {
-                                    @Html.DisplayFor(model => model.FavouriteQuote)
+                                    @Html.DisplayFor(model => model.UserDetailsViewModel.FavouriteQuote)
                                 }
                                 else
                                 {
@@ -113,11 +116,41 @@ else
         </div>
 
     <div class="container">
-        @Html.Partial("_BooksPartial", @Model.UserBooks)
-        @if(!Model.UserBooks.Any())
-        {
-            <p>No books added</p>
-        }
+        <h2>
+            <b>Books</b>
+        </h2>
+        <hr />
+        <div class="profile-wishlist">
+            <h3>
+                <b>Want To Read</b>
+            </h3>
+            <hr />
+            @foreach (var book in Model.WishlistBooks)
+            {
+                @Html.Partial("_BooksPartial", book)
+            }
+
+            @if (!Model.WishlistBooks.Any())
+            {
+                <p>No books added with this status</p>
+            }
+        </div>
+        <hr />
+        <div class="profile-currently-reading">
+            <h3>
+                <b>Currently Reading</b>
+            </h3>
+            <hr />
+            @foreach (var book in Model.CurrentlyReadingBooks)
+            {
+                @Html.Partial("_BooksPartial", book)
+            }
+
+            @if (!Model.CurrentlyReadingBooks.Any())
+            {
+                <p>No books added with this status</p>
+            }
+        </div>
     </div>
 
     <div class="modal fade" id="edit-form-modal" tabindex="-1" role="dialog" aria-labelledby="edit-form-modal" aria-hidden="true">

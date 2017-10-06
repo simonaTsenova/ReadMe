@@ -238,7 +238,9 @@
     <Compile Include="Infrastructure\QueryableExtensions.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Books\BookDetailsViewBodel.cs" />
-    <Compile Include="Models\Profile\UserProfileViewModel.cs" />
+    <Compile Include="Models\Books\BookViewModel.cs" />
+    <Compile Include="Models\Profile\ProfileViewModel.cs" />
+    <Compile Include="Models\Profile\UserDetailsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

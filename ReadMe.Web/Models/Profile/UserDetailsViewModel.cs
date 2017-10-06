@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace ReadMe.Web.Models.Profile
 {
-    public class UserProfileViewModel : IMapFrom<User>, ICustomMapping
+    public class UserDetailsViewModel : IMapFrom<User>, ICustomMapping
     {
         public string Id { get; set; }
 
@@ -27,11 +27,9 @@ namespace ReadMe.Web.Models.Profile
 
         public string PhotoUrl { get; set; }
 
-        public ICollection<UserBook> UserBooks { get; set; }
-
         public void CreateMappings(IMapperConfigurationExpression configuration)
         {
-            configuration.CreateMap<User, UserProfileViewModel>()
+            configuration.CreateMap<User, UserDetailsViewModel>()
                 .ForMember(userProfileViewModel => userProfileViewModel.Id,
                     cfg => cfg.MapFrom(user => user.Id))
                 .ForMember(userProfileViewModel => userProfileViewModel.Email,
@@ -51,9 +49,8 @@ namespace ReadMe.Web.Models.Profile
                 .ForMember(userProfileViewModel => userProfileViewModel.FavouriteQuote,
                     cfg => cfg.MapFrom(user => user.FavouriteQuote))
                 .ForMember(userProfileViewModel => userProfileViewModel.PhotoUrl,
-                    cfg => cfg.MapFrom(user => user.PhotoUrl))
-                .ForMember(userProfileViewModel => userProfileViewModel.UserBooks,
-                    cfg => cfg.MapFrom(user => user.UserBooks));
+                    cfg => cfg.MapFrom(user => user.PhotoUrl));
+                
         }
     }
 }

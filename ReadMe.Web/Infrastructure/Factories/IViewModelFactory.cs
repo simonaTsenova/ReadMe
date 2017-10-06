@@ -5,6 +5,6 @@ namespace ReadMe.Web.Infrastructure.Factories
 {
     public interface IViewModelFactory
     {
-        UserProfileViewModel CreateUserProfileViewModel(User user, bool isOwner);
+        UserDetailsViewModel CreateUserProfileViewModel(User user, bool isOwner);
     }
 }

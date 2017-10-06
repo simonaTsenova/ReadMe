@@ -1,1 +1,12 @@
-﻿Books
+﻿@using ReadMe.Web.Models.Books
+
+@model BookViewModel
+
+<div class="card">
+    <img width="100px" class="card-img-top" src=@Model.PhotoUrl alt="Card image cap">
+    <div class="card-block">
+        <h4 class="card-title">@Model.Title</h4>
+        <p class="card-text">by @Model.Author.FirstName @Model.Author.LastName</p>
+        <p class="card-text"><small class="text-muted">@Model.Published</small></p>
+    </div>
+</div>

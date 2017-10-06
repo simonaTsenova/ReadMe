@@ -24,13 +24,14 @@ namespace ReadMe.Web.Controllers
         // GET: Books/Details/{id}
         public ActionResult Details(Guid id)
         {
-            if(id == null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-
             ViewBag.Title = "Book details";
             var book = this.bookService.GetBookById(id);
+
+            if (!book.Any())
+            {
+                // TODO - return error page
+                return RedirectToAction("Index", "Home");
+            }
 
             var model = book.ProjectTo<BookDetailsViewBodel>()
                 .FirstOrDefault();

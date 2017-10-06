@@ -1,6 +1,8 @@
 ﻿using AutoMapper.QueryableExtensions;
 using ReadMe.Authentication.Contracts;
+using ReadMe.Models.Enumerations;
 using ReadMe.Services.Contracts;
+using ReadMe.Web.Models.Books;
 using ReadMe.Web.Models.Profile;
 using System;
 using System.Linq;
@@ -41,10 +43,34 @@ namespace ReadMe.Web.Controllers
             ViewBag.Title = "Details";
             var user = this.userService.GetUserByUsername(username);
 
-            var userModel = user.ProjectTo<UserProfileViewModel>()
+            var userModel = user
+                .ProjectTo<UserDetailsViewModel>()
                 .FirstOrDefault();
 
-            return View(userModel);
+            var currentlyReading = user
+                .FirstOrDefault().UserBooks
+                .Where(u => u.ReadStatus == ReadStatus.CurrentlyReading)
+                .Select(x => x.Book)
+                .AsQueryable()
+                .ProjectTo<BookViewModel>()
+                .ToList();
+
+            var wishlist = user
+                .FirstOrDefault().UserBooks
+                .Where(u => u.ReadStatus == ReadStatus.WantToRead)
+                .Select(x => x.Book)
+                .AsQueryable()
+                .ProjectTo<BookViewModel>()
+                .ToList();
+
+            var model = new ProfileViewModel()
+            {
+                UserDetailsViewModel = userModel,
+                WishlistBooks = wishlist,
+                CurrentlyReadingBooks = currentlyReading
+            };
+
+            return View(model);
         }
 
         //
@@ -52,7 +78,7 @@ namespace ReadMe.Web.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(UserProfileViewModel model)
+        public ActionResult Edit(UserDetailsViewModel model)
         {
             if (ModelState.IsValid)
             {
