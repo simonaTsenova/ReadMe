@@ -1,5 +1,4 @@
 ﻿@using Microsoft.AspNet.Identity;
-@using ReadMe.Web.Models.Profile;
 
 @model ReadMe.Web.Models.Profile.ProfileViewModel
 
@@ -18,102 +17,8 @@ else
 
 <div>
     <hr />
-    <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
-                        <img alt="User Pic" src="@Model.UserDetailsViewModel.PhotoUrl" id="profile-image1" class="img-thumbnail img-responsive">
-                    </div>
-                    <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-10">
-                                    <h2>@Model.UserDetailsViewModel.UserName</h2>
-                                </div>
-                                <div class="col-md-2">
-                                    @if (@Model.UserDetailsViewModel.Id == User.Identity.GetUserId())
-                                    {
-                                        <h3>
-                                            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#edit-form-modal">
-                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                Edit
-                                            </button>
-                                        </h3>
-                                    }
-                                    else
-                                    {
-                                        <h3>
-                                            @Html.ActionLink("Follow", "Edit", "Profile", routeValues: null, htmlAttributes: new { @class = "btn btn-warning btn-lg" })
-                                        </h3>
-                                    }
-
-                                </div>
-                            </div>
-                            <p>
-                                <i class="fa fa-envelope one" style="width:50px;"></i>
-                                @Model.UserDetailsViewModel.Email
-                            </p>
-                        </div>
-                        <hr>
-                        <dl class="container details dl-horizontal">
-                            <dt>
-                                @Html.DisplayNameFor(model => model.UserDetailsViewModel.FullName)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.UserDetailsViewModel.FullName)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.UserDetailsViewModel.Nationality)
-                            </dt>
-
-                            <dd>
-                                @if (Model.UserDetailsViewModel.Nationality != null)
-                                {
-                                    @Html.DisplayFor(model => model.UserDetailsViewModel.Nationality)
-
-                                }
-                                else
-                                {
-                                    <span>-</span>
-                                }
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.UserDetailsViewModel.Age)
-                            </dt>
-
-                            <dd>
-                                @if (Model.UserDetailsViewModel.Age != 0)
-                                {
-                                    @Html.DisplayFor(model => model.UserDetailsViewModel.Age)
-                                }
-                                else
-                                {
-                                    <span>-</span>
-                                }
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.UserDetailsViewModel.FavouriteQuote)
-                            </dt>
-
-                            <dd>
-                                @if (Model.UserDetailsViewModel.FavouriteQuote != null)
-                                {
-                                    @Html.DisplayFor(model => model.UserDetailsViewModel.FavouriteQuote)
-                                }
-                                else
-                                {
-                                    <span>-</span>
-                                }
-                            </dd>
-                        </dl>
-                    </div>
-                </div>
-            </div>
-        </div>
+    
+    @Html.Partial("_UserInfoPartial", Model.UserDetailsViewModel)
 
     <div class="container">
         <h2>

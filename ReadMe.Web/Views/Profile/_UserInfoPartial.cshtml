@@ -1,0 +1,100 @@
+﻿@using Microsoft.AspNet.Identity;
+@model  ReadMe.Web.Models.Profile.UserDetailsViewModel
+
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+                <img alt="User Pic" src="@Model.PhotoUrl" id="profile-image1" class="img-thumbnail img-responsive">
+            </div>
+            <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h2>@Model.UserName</h2>
+                        </div>
+                        <div class="col-md-2">
+                            @if (@Model.Id == User.Identity.GetUserId())
+                            {
+                                <h3>
+                                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#edit-form-modal">
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                        Edit
+                                    </button>
+                                </h3>
+                            }
+                            else
+                            {
+                                <h3>
+                                    @Html.ActionLink("Follow", "Edit", "Profile", routeValues: null, htmlAttributes: new { @class = "btn btn-warning btn-lg" })
+                                </h3>
+                            }
+
+                        </div>
+                    </div>
+                    <p>
+                        <i class="fa fa-envelope one" style="width:50px;"></i>
+                        @Model.Email
+                    </p>
+                </div>
+                <hr>
+                <dl class="container details dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.FullName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.FullName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Nationality)
+                    </dt>
+
+                    <dd>
+                        @if (Model.Nationality != null)
+                        {
+                            @Html.DisplayFor(model => model.Nationality)
+
+                        }
+                        else
+                        {
+                            <span>-</span>
+                        }
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Age)
+                    </dt>
+
+                    <dd>
+                        @if (Model.Age != 0)
+                        {
+                            @Html.DisplayFor(model => model.Age)
+                        }
+                        else
+                        {
+                            <span>-</span>
+                        }
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.FavouriteQuote)
+                    </dt>
+
+                    <dd>
+                        @if (Model.FavouriteQuote != null)
+                        {
+                            @Html.DisplayFor(model => model.FavouriteQuote)
+                        }
+                        else
+                        {
+                            <span>-</span>
+                        }
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+
