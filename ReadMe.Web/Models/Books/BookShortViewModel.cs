@@ -5,7 +5,7 @@ using AutoMapper;
 
 namespace ReadMe.Web.Models.Books
 {
-    public class BookViewModel : IMapFrom<Book>, ICustomMapping
+    public class BookShortViewModel : IMapFrom<Book>, ICustomMapping
     {
         public Guid Id { get; set; }
 
@@ -19,7 +19,7 @@ namespace ReadMe.Web.Models.Books
 
         public void CreateMappings(IMapperConfigurationExpression configuration)
         {
-            configuration.CreateMap<Book, BookViewModel>()
+            configuration.CreateMap<Book, BookShortViewModel>()
                 .ForMember(bookViewModel => bookViewModel.Id,
                     cfg => cfg.MapFrom(book => book.Id))
                 .ForMember(bookViewModel => bookViewModel.Title,

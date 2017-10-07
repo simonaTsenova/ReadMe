@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace ReadMe.Web.Models.Books
 {
-    public class BookDetailsViewBodel : IMapFrom<Book>, ICustomMapping
+    public class BookInfoViewModel : IMapFrom<Book>, ICustomMapping
     {
         public Guid Id { get; set; }
 
@@ -34,30 +34,30 @@ namespace ReadMe.Web.Models.Books
 
         public void CreateMappings(IMapperConfigurationExpression configuration)
         {
-            configuration.CreateMap<Book, BookDetailsViewBodel>()
-                .ForMember(bookDetailsViewModel => bookDetailsViewModel.Id,
+            configuration.CreateMap<Book, BookInfoViewModel>()
+                .ForMember(bookInfoViewModel => bookInfoViewModel.Id,
                     cfg => cfg.MapFrom(book => book.Id))
-                .ForMember(bookDetailsViewModel => bookDetailsViewModel.Title,
+                .ForMember(bookInfoViewModel => bookInfoViewModel.Title,
                     cfg => cfg.MapFrom(book => book.Title))
-                .ForMember(bookDetailsViewModel => bookDetailsViewModel.Published,
+                .ForMember(bookInfoViewModel => bookInfoViewModel.Published,
                     cfg => cfg.MapFrom(book => book.Published))
-                .ForMember(bookDetailsViewModel => bookDetailsViewModel.ISBN,
+                .ForMember(bookInfoViewModel => bookInfoViewModel.ISBN,
                     cfg => cfg.MapFrom(book => book.ISBN))
-                .ForMember(bookDetailsViewModel => bookDetailsViewModel.Author,
+                .ForMember(bookInfoViewModel => bookInfoViewModel.Author,
                     cfg => cfg.MapFrom(book => book.Author))
-                .ForMember(bookDetailsViewModel => bookDetailsViewModel.Summary,
+                .ForMember(bookInfoViewModel => bookInfoViewModel.Summary,
                     cfg => cfg.MapFrom(book => book.Summary))
-                .ForMember(bookDetailsViewModel => bookDetailsViewModel.Rating,
+                .ForMember(bookInfoViewModel => bookInfoViewModel.Rating,
                     cfg => cfg.MapFrom(book => book.Rating))
-                .ForMember(bookDetailsViewModel => bookDetailsViewModel.PhotoUrl,
+                .ForMember(bookInfoViewModel => bookInfoViewModel.PhotoUrl,
                     cfg => cfg.MapFrom(book => book.PhotoUrl))
-                .ForMember(bookDetailsViewModel => bookDetailsViewModel.Language,
+                .ForMember(bookInfoViewModel => bookInfoViewModel.Language,
                     cfg => cfg.MapFrom(book => book.Language))
-                .ForMember(bookDetailsViewModel => bookDetailsViewModel.Publisher,
+                .ForMember(bookInfoViewModel => bookInfoViewModel.Publisher,
                     cfg => cfg.MapFrom(book => book.Publisher))
-                .ForMember(bookDetailsViewModel => bookDetailsViewModel.Genres,
+                .ForMember(bookInfoViewModel => bookInfoViewModel.Genres,
                     cfg => cfg.MapFrom(book => book.Genres))
-                .ForMember(bookDetailsViewModel => bookDetailsViewModel.UserBooks,
+                .ForMember(bookInfoViewModel => bookInfoViewModel.UserBooks,
                     cfg => cfg.MapFrom(book => book.UserBooks));
         }
     }

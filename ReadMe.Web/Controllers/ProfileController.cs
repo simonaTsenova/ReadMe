@@ -52,7 +52,7 @@ namespace ReadMe.Web.Controllers
                 .Where(u => u.ReadStatus == ReadStatus.CurrentlyReading)
                 .Select(x => x.Book)
                 .AsQueryable()
-                .ProjectTo<BookViewModel>()
+                .ProjectTo<BookShortViewModel>()
                 .ToList();
 
             var wishlist = user
@@ -60,7 +60,7 @@ namespace ReadMe.Web.Controllers
                 .Where(u => u.ReadStatus == ReadStatus.WantToRead)
                 .Select(x => x.Book)
                 .AsQueryable()
-                .ProjectTo<BookViewModel>()
+                .ProjectTo<BookShortViewModel>()
                 .ToList();
 
             var model = new ProfileViewModel()
@@ -80,7 +80,7 @@ namespace ReadMe.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(UserDetailsViewModel model)
         {
-            if(!this.Request.IsAjaxRequest())
+            if (!this.Request.IsAjaxRequest())
             {
                 return this.RedirectToAction("Index", "Home");
             }
@@ -90,7 +90,7 @@ namespace ReadMe.Web.Controllers
                 this.userService.EditUser(model.Id, model.FirstName, model.LastName, model.Nationality, model.Age, model.FavouriteQuote);
             }
 
-            return this.RedirectToAction("Details", "Profile", routeValues: new { username = model.UserName });
+            return this.RedirectToAction("Details", new { username = model.UserName });
         }
     }
 }

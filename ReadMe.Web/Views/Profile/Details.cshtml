@@ -17,10 +17,11 @@ else
 
 <div>
     <hr />
-    
-    @Html.Partial("_UserInfoPartial", Model.UserDetailsViewModel)
+    <div>
+        @Html.Partial("_UserInfoPartial", Model.UserDetailsViewModel)
+    </div>
 
-    <div class="container">
+    <div class="panel">
         <h2>
             <b>Books</b>
         </h2>
@@ -30,15 +31,12 @@ else
                 <b>Want To Read</b>
             </h3>
             <hr />
-            @foreach (var book in Model.WishlistBooks)
+            @*@foreach (var book in Model.WishlistBooks)
             {
                 @Html.Partial("_BookShortPartial", book)
-            }
+            }*@
 
-            @if (!Model.WishlistBooks.Any())
-            {
-                <p>No books added with this status</p>
-            }
+            @Html.Partial("_BooksListPartial", Model.WishlistBooks)
         </div>
         <hr />
         <div class="profile-currently-reading">
@@ -46,18 +44,16 @@ else
                 <b>Currently Reading</b>
             </h3>
             <hr />
-            @foreach (var book in Model.CurrentlyReadingBooks)
+            @*@foreach (var book in Model.CurrentlyReadingBooks)
             {
                 @Html.Partial("_BookShortPartial", book)
-            }
+            }*@
 
-            @if (!Model.CurrentlyReadingBooks.Any())
-            {
-                <p>No books added with this status</p>
-            }
+            @Html.Partial("_BooksListPartial", Model.CurrentlyReadingBooks)
         </div>
     </div>
 
     @Html.Partial("_EditUserPartial", @Model.UserDetailsViewModel)
+
 
 </div>

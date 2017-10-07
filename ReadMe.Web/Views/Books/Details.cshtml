@@ -1,4 +1,4 @@
-﻿@model ReadMe.Web.Models.Books.BookDetailsViewBodel
+﻿@model ReadMe.Web.Models.Books.BookDetailsViewModel
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,69 +9,6 @@
 <div>
     <hr/>
     
-    <div class="row">
-        <div class="col-lg-4 col-md-7 col-sm-6 col-xs-12 animated  animation-done bounceInLeft">
-            <img alt="Book Cover" src="@Model.PhotoUrl" id="details-book-cover" class="img-thumbnail img-responsive">
-            <div>Rating</div>
-        </div>
-        <div class="col-lg-7 col-md-5 col-sm-6 col-xs-12 animated animation-done  bounceInRight">
-            <h3>@Model.Title</h3>
-            <h4>by <b>@Model.Author.FirstName @Model.Author.LastName</b></h4>
-            <hr/>
-            <div>@Model.Summary</div>
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Published)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Published)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.ISBN)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.ISBN)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Rating)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Rating)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Language)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Language)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.Publisher)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Publisher.Name)
-                </dd>
-            </dl>
-            <hr />
-            <div>
-                <b> Genres: </b>
-                @foreach(var genre in @Model.Genres)
-                {
-                    <span>@genre.Name</span>
-                }
-            </div>
-            <hr />
-            <div>
-                <b> Change status </b>
-            </div>
-        </div>
-    </div>
+    @Html.Partial("_BookInfoPartial", @Model.BookInfoViewModel)
     
 </div>

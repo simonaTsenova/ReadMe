@@ -238,8 +238,9 @@
     <Compile Include="Infrastructure\IMapFrom.cs" />
     <Compile Include="Infrastructure\QueryableExtensions.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Books\BookDetailsViewBodel.cs" />
-    <Compile Include="Models\Books\BookViewModel.cs" />
+    <Compile Include="Models\Books\BookDetailsViewModel.cs" />
+    <Compile Include="Models\Books\BookInfoViewModel.cs" />
+    <Compile Include="Models\Books\BookShortViewModel.cs" />
     <Compile Include="Models\Profile\ProfileViewModel.cs" />
     <Compile Include="Models\Profile\UserDetailsViewModel.cs" />
     <Compile Include="Models\Search\SearchViewModel.cs" />
@@ -313,6 +314,7 @@
     <Content Include="Views\Profile\_EditUserPartial.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Shared\_BooksListPartial.cshtml" />
+    <Content Include="Views\Books\_BookInfoPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

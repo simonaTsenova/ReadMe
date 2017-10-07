@@ -33,8 +33,13 @@ namespace ReadMe.Web.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            var model = book.ProjectTo<BookDetailsViewBodel>()
+            var bookInfoModel = book.ProjectTo<BookInfoViewModel>()
                 .FirstOrDefault();
+
+            var model = new BookDetailsViewModel()
+            {
+                BookInfoViewModel = bookInfoModel
+            };
 
             return View(model);
         }

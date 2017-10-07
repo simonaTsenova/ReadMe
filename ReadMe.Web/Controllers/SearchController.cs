@@ -50,7 +50,7 @@ namespace ReadMe.Web.Controllers
         {
             var resultBooks = this.bookService
                 .Search(model.SearchPattern, model.SearchType, genres)
-                .ProjectTo<BookViewModel>()
+                .ProjectTo<BookShortViewModel>()
                 .ToList();
 
             return this.PartialView("_BooksListPartial", resultBooks);

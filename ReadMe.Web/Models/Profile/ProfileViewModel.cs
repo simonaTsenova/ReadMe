@@ -1,8 +1,5 @@
 ﻿using ReadMe.Web.Models.Books;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace ReadMe.Web.Models.Profile
 {
@@ -10,8 +7,8 @@ namespace ReadMe.Web.Models.Profile
     {
         public UserDetailsViewModel UserDetailsViewModel { get; set; }
         
-        public ICollection<BookViewModel> WishlistBooks { get; set; }
+        public ICollection<BookShortViewModel> WishlistBooks { get; set; }
 
-        public ICollection<BookViewModel> CurrentlyReadingBooks { get; set; }
+        public ICollection<BookShortViewModel> CurrentlyReadingBooks { get; set; }
     }
 }
