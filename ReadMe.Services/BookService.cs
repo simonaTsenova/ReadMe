@@ -41,57 +41,92 @@ namespace ReadMe.Services
             return book;
         }
 
-        public IQueryable<Book> Search(string pattern, string searchType)
+        public IQueryable<Book> Search(string pattern, string searchType, string[] genres)
         {
             switch (searchType)
             {
                 case "title":
                     {
-                        return this.SearchByTitle(pattern);
+                        return this.SearchByTitle(pattern, genres);
                     }
                 case "author":
                     {
-                        return this.SearchByAuthor(pattern);
+                        return this.SearchByAuthor(pattern, genres);
                     }
                 case "year":
                     {
-                        return this.SearchByYear(pattern);
+                        return this.SearchByYear(pattern, genres);
                     }
                 default:
                     {
                         return null;
                     }
             }
-
-
         }
 
-        private IQueryable<Book> SearchByTitle(string searchPattern)
+        private IQueryable<Book> SearchByTitle(string searchPattern, string[] genres)
         {
-            var results = this.bookRepository.All
-                .Where(book => book.Title.ToLower().Contains(searchPattern.ToLower()));
+            var books = this.bookRepository.All
+                .Where(book => book.Title.ToLower().Contains(searchPattern.ToLower()))
+                .Include(b => b.Genres);
 
-            return results;
+            if (genres != null)
+            {
+                var results = this.FilterByGenres(books, genres);
+
+                return results;
+            }
+
+            return books;
         }
 
-        private IQueryable<Book> SearchByAuthor(string searchPattern)
+        private IQueryable<Book> SearchByAuthor(string searchPattern, string[] genres)
         {
-            var results = this.bookRepository.All
+            var books = this.bookRepository.All
                 .Where(book =>
                     book.Author.FirstName.ToLower().Contains(searchPattern.ToLower()) ||
                     book.Author.LastName.ToLower().Contains(searchPattern.ToLower())
                 );
-                   
 
-            return results;
+            if (genres != null)
+            {
+                var results = this.FilterByGenres(books, genres);
+
+                return results;
+            }
+
+            return books;
         }
 
-        private IQueryable<Book> SearchByYear(string searchPattern)
+        private IQueryable<Book> SearchByYear(string searchPattern, string[] genres)
         {
-            var results = this.bookRepository.All
+            var books = this.bookRepository.All
                 .Where(book => book.Published.ToString().ToLower().Contains(searchPattern.ToLower()));
 
-            return results;
+            if (genres != null)
+            {
+                var results = this.FilterByGenres(books, genres);
+
+                return results;
+            }
+
+            return books;
+        }
+
+        private IQueryable<Book> FilterByGenres(IQueryable<Book> books, string[] genres)
+        {
+            var genresList = genres.ToList();
+            var filteredByGenres = new HashSet<Book>();
+
+            foreach (var book in books)
+            {
+                if (genresList.All(x => book.Genres.Select(g => g.Name).Contains(x)))
+                {
+                    filteredByGenres.Add(book);
+                }
+            }
+
+            return filteredByGenres.AsQueryable<Book>();
         }
     }
 }

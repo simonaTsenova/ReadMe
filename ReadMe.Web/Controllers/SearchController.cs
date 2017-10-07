@@ -11,29 +11,45 @@ namespace ReadMe.Web.Controllers
     public class SearchController : Controller
     {
         private readonly IBookService bookService;
+        private readonly IGenreService genreService;
 
-        public SearchController(IBookService bookService)
+        public SearchController(IBookService bookService, IGenreService genreService)
         {
             if(bookService == null)
             {
                 throw new ArgumentNullException("Book service cannot be null.");
             }
 
+            if(genreService == null)
+            {
+                throw new ArgumentNullException("Genre service cannot be null.");
+            }
+
             this.bookService = bookService;
+            this.genreService = genreService;
         }
 
         // GET: Search
         public ActionResult Index()
         {
-            return View();
+            var genres = this.genreService
+                .GetAll()
+                .ToList();
+
+            var model = new SearchViewModel()
+            {
+                Genres = genres
+            };
+
+            return View(model);
         }
 
         // POST: Search/Search/{pattern}
         [HttpPost]
-        public PartialViewResult Search(SearchViewModel model)
+        public PartialViewResult Search(SearchViewModel model, string[] genres)
         {
             var resultBooks = this.bookService
-                .Search(model.SearchPattern, model.SearchType)
+                .Search(model.SearchPattern, model.SearchType, genres)
                 .ProjectTo<BookViewModel>()
                 .ToList();
 
