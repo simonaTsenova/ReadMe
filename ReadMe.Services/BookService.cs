@@ -86,7 +86,8 @@ namespace ReadMe.Services
                 .Where(book =>
                     book.Author.FirstName.ToLower().Contains(searchPattern.ToLower()) ||
                     book.Author.LastName.ToLower().Contains(searchPattern.ToLower())
-                );
+                )
+                .Include(book => book.Genres);
 
             if (genres != null)
             {
@@ -101,7 +102,8 @@ namespace ReadMe.Services
         private IQueryable<Book> SearchByYear(string searchPattern, string[] genres)
         {
             var books = this.bookRepository.All
-                .Where(book => book.Published.ToString().ToLower().Contains(searchPattern.ToLower()));
+                .Where(book => book.Published.ToString().ToLower().Contains(searchPattern.ToLower()))
+                .Include(book => book.Genres);
 
             if (genres != null)
             {
