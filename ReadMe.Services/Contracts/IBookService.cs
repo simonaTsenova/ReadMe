@@ -8,6 +8,6 @@ namespace ReadMe.Services.Contracts
     {
         IQueryable<Book> GetBookById(Guid id);
 
-        IQueryable<Book> SearchByTitle(string pattern);
+        IQueryable<Book> Search(string pattern, string searchType);
     }
 }

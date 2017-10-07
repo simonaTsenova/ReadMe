@@ -33,7 +33,7 @@ namespace ReadMe.Web.Controllers
         public PartialViewResult Search(SearchViewModel model)
         {
             var resultBooks = this.bookService
-                .SearchByTitle(model.SearchPattern)
+                .Search(model.SearchPattern, model.SearchType)
                 .ProjectTo<BookViewModel>()
                 .ToList();
 

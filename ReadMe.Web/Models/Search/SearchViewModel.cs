@@ -6,5 +6,7 @@ namespace ReadMe.Web.Models.Search
     public class SearchViewModel
     {
         public string SearchPattern { get; set;  }
+
+        public string SearchType { get; set; }
     }
 }

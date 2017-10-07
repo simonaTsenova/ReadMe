@@ -18,6 +18,9 @@
             <span class="icon"><i class="fa fa-search"></i></span>
             
             @Html.TextBoxFor(m => m.SearchPattern, new { id = "search-pattern", @class = "form-control" })
+            @Html.RadioButtonFor(m => m.SearchType, "title", new { @checked = true }) @Html.Label("title")
+            @Html.RadioButtonFor(m => m.SearchType, "author") @Html.Label("author")
+            @Html.RadioButtonFor(m => m.SearchType, "year") @Html.Label("year")
         </div>
     }
 

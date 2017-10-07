@@ -41,10 +41,55 @@ namespace ReadMe.Services
             return book;
         }
 
-        public IQueryable<Book> SearchByTitle(string searchPattern)
+        public IQueryable<Book> Search(string pattern, string searchType)
+        {
+            switch (searchType)
+            {
+                case "title":
+                    {
+                        return this.SearchByTitle(pattern);
+                    }
+                case "author":
+                    {
+                        return this.SearchByAuthor(pattern);
+                    }
+                case "year":
+                    {
+                        return this.SearchByYear(pattern);
+                    }
+                default:
+                    {
+                        return null;
+                    }
+            }
+
+
+        }
+
+        private IQueryable<Book> SearchByTitle(string searchPattern)
         {
             var results = this.bookRepository.All
                 .Where(book => book.Title.ToLower().Contains(searchPattern.ToLower()));
+
+            return results;
+        }
+
+        private IQueryable<Book> SearchByAuthor(string searchPattern)
+        {
+            var results = this.bookRepository.All
+                .Where(book =>
+                    book.Author.FirstName.ToLower().Contains(searchPattern.ToLower()) ||
+                    book.Author.LastName.ToLower().Contains(searchPattern.ToLower())
+                );
+                   
+
+            return results;
+        }
+
+        private IQueryable<Book> SearchByYear(string searchPattern)
+        {
+            var results = this.bookRepository.All
+                .Where(book => book.Published.ToString().ToLower().Contains(searchPattern.ToLower()));
 
             return results;
         }
