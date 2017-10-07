@@ -1,0 +1,23 @@
+﻿@using ReadMe.Web.Models.Reviews
+
+@model ICollection<ReviewViewModel>
+
+<div class="row book-reviews">
+
+    @if (Model.Any())
+    {
+        <div class="col-xs-12">
+            @foreach (var review in Model)
+            {
+                Html.RenderPartial("_ReviewPartial", review);
+            }
+        </div>
+    }
+    else
+    {
+        <div class="col-xs-12">
+            No reviews
+        </div>
+    }
+
+</div>

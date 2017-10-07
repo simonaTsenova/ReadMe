@@ -243,6 +243,7 @@
     <Compile Include="Models\Books\BookShortViewModel.cs" />
     <Compile Include="Models\Profile\ProfileViewModel.cs" />
     <Compile Include="Models\Profile\UserDetailsViewModel.cs" />
+    <Compile Include="Models\Reviews\ReviewViewModel.cs" />
     <Compile Include="Models\Search\SearchViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -315,6 +316,8 @@
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Shared\_BooksListPartial.cshtml" />
     <Content Include="Views\Books\_BookInfoPartial.cshtml" />
+    <Content Include="Views\Shared\_ReviewsListPartial.cshtml" />
+    <Content Include="Views\Shared\_ReviewPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

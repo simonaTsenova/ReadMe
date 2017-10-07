@@ -38,6 +38,7 @@ namespace ReadMe.Data.Migrations
             this.SeedPublishers(context);
             this.SeedBooks(context);
             this.SeedUserBooks(context);
+            this.SeedReviews(context);
         }
 
         private void SeedGenres(ReadMeDbContext context)
@@ -179,6 +180,42 @@ namespace ReadMe.Data.Migrations
 
                 userManager.Create(user, AdministratorPassword);
                 userManager.AddToRole(user.Id, "Admin");
+            }
+        }
+
+        private void SeedReviews(ReadMeDbContext context)
+        {
+            if(!context.Reviews.Any())
+            {
+                var reviews = new Review[]
+                {
+                    new Review()
+                    {
+                        Book = context.Books.FirstOrDefault(b => b.Title == "Sisters"),
+                        User = context.Users.FirstOrDefault(u => u.UserName == "simona"),
+                        Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                        PostedOn = DateTime.Now
+                    },
+                    new Review()
+                    {
+                        Book = context.Books.FirstOrDefault(b => b.Title == "Sisters"),
+                        User = context.Users.FirstOrDefault(u => u.UserName == "admin"),
+                        Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                        PostedOn = DateTime.Now
+                    },
+                    new Review()
+                    {
+                        Book = context.Books.FirstOrDefault(b => b.Title == "The Rooster Bar"),
+                        User = context.Users.FirstOrDefault(u => u.UserName == "simona"),
+                        Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                        PostedOn = DateTime.Now
+                    }
+                };
+
+                foreach (var review in reviews)
+                {
+                    context.Reviews.Add(review);
+                }
             }
         }
     }
