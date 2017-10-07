@@ -2,6 +2,7 @@
 using ReadMe.Models;
 using ReadMe.Web.Infrastructure;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ReadMe.Web.Models.Profile
 {
@@ -9,6 +10,7 @@ namespace ReadMe.Web.Models.Profile
     {
         public string Id { get; set; }
 
+        [EmailAddress]
         public string Email { get; set; }
        
         public string UserName { get; set; }
@@ -21,6 +23,7 @@ namespace ReadMe.Web.Models.Profile
 
         public string Nationality { get; set; }
 
+        [Range(0, 150)]
         public int Age { get; set; }
 
         public string FavouriteQuote { get; set; }
@@ -50,7 +53,6 @@ namespace ReadMe.Web.Models.Profile
                     cfg => cfg.MapFrom(user => user.FavouriteQuote))
                 .ForMember(userProfileViewModel => userProfileViewModel.PhotoUrl,
                     cfg => cfg.MapFrom(user => user.PhotoUrl));
-                
         }
     }
 }

@@ -47,3 +47,7 @@ h2.title {
 .bounceInLeft {
     padding: 50px 35px;
 }
+
+h4.card-title a {
+    color: black;
+}

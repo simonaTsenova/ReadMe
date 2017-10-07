@@ -75,17 +75,17 @@ namespace ReadMe.Web.Controllers
 
         //
         // POST: Profile/Edit
-        [Authorize]
+        //[Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(UserDetailsViewModel model)
         {
             if (ModelState.IsValid)
             {
-                //this.userService.EditUser(model.Id, model.FirstName, model.LastName, model.Nationality, model.Age, model.FavouriteQuote);
+                this.userService.EditUser(model.Id, model.FirstName, model.LastName, model.Nationality, model.Age, model.FavouriteQuote);
             }
 
-            return RedirectToAction("Details", "Profile", routeValues: new { model.UserName });
+            return this.RedirectToAction("Details", "Profile", routeValues: new { username = model.UserName });
         }
     }
 }

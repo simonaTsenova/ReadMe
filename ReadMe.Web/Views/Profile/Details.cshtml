@@ -58,32 +58,6 @@ else
         </div>
     </div>
 
-    <div class="modal fade" id="edit-form-modal" tabindex="-1" role="dialog" aria-labelledby="edit-form-modal" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLabel">Edit user</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                @using (Ajax.BeginForm("Edit", "Profile", null, new AjaxOptions
-                {
-                    InsertionMode = InsertionMode.Replace,
-                    HttpMethod = "POST"
-                }))
-                {
-                <div class="modal-body">
-                    ...
-                    @Html.AntiForgeryToken()
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <input type="submit" value="Save changes" class="btn btn-primary" id="send" />
-                </div>
-                }
-            </div>
-        </div>
-    </div>
+    @Html.Partial("_EditUserPartial", @Model.UserDetailsViewModel)
 
 </div>

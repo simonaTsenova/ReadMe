@@ -40,7 +40,7 @@ namespace ReadMe.Services
         public void EditUser(string id, string firstName, string lastName, string nationality, int age, string favouriteQuote)
         {
             var user = this.userRepository.GetById(id);
-
+            
             if(user != null)
             {
                 user.FirstName = firstName;
