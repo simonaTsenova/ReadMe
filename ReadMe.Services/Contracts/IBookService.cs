@@ -6,6 +6,8 @@ namespace ReadMe.Services.Contracts
 {
     public interface IBookService
     {
-        IQueryable<Book> GetBookById(Guid title);
+        IQueryable<Book> GetBookById(Guid id);
+
+        IQueryable<Book> SearchByTitle(string pattern);
     }
 }

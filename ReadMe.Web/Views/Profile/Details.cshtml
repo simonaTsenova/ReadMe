@@ -32,7 +32,7 @@ else
             <hr />
             @foreach (var book in Model.WishlistBooks)
             {
-                @Html.Partial("_BooksPartial", book)
+                @Html.Partial("_BookShortPartial", book)
             }
 
             @if (!Model.WishlistBooks.Any())
@@ -48,7 +48,7 @@ else
             <hr />
             @foreach (var book in Model.CurrentlyReadingBooks)
             {
-                @Html.Partial("_BooksPartial", book)
+                @Html.Partial("_BookShortPartial", book)
             }
 
             @if (!Model.CurrentlyReadingBooks.Any())

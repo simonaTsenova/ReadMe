@@ -51,3 +51,16 @@ h2.title {
 h4.card-title a {
     color: black;
 }
+
+input#search-pattern.form-control {
+    display: inline;
+}
+
+div.panel.search-panel {
+    margin-top: 10%;
+}
+
+div#search-results div.card {
+    margin-top: 5%;
+    margin-left: 7%;
+}

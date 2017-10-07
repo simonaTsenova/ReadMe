@@ -1,0 +1,31 @@
+﻿@model ReadMe.Web.Models.Search.SearchViewModel
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="panel search-panel">
+
+    @using (@Ajax.BeginForm("Search", "Search", new AjaxOptions
+    {
+        HttpMethod = "POST",
+        UpdateTargetId = "search-results",
+        InsertionMode = InsertionMode.Replace
+    }, new { id = "search-form" }))
+    {
+        <div class="container">
+            <span class="icon"><i class="fa fa-search"></i></span>
+            
+            @Html.TextBoxFor(m => m.SearchPattern, new { id = "search-pattern", @class = "form-control" })
+        </div>
+    }
+
+    <div id="search-results"></div>
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/search")  
+}
+
+

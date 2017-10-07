@@ -40,5 +40,13 @@ namespace ReadMe.Services
 
             return book;
         }
+
+        public IQueryable<Book> SearchByTitle(string searchPattern)
+        {
+            var results = this.bookRepository.All
+                .Where(book => book.Title.ToLower().Contains(searchPattern.ToLower()));
+
+            return results;
+        }
     }
 }

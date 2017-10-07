@@ -80,6 +80,11 @@ namespace ReadMe.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(UserDetailsViewModel model)
         {
+            if(!this.Request.IsAjaxRequest())
+            {
+                return this.RedirectToAction("Index", "Home");
+            }
+
             if (ModelState.IsValid)
             {
                 this.userService.EditUser(model.Id, model.FirstName, model.LastName, model.Nationality, model.Age, model.FavouriteQuote);

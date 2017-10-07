@@ -1,0 +1,8 @@
+﻿@model IEnumerable<ReadMe.Web.Models.Books.BookViewModel>
+
+<div class="grid">
+    @foreach (var book in @Model)
+    {
+        Html.RenderPartial("_BookShortPartial", book);
+    }
+</div>
