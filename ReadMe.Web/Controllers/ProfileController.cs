@@ -4,6 +4,7 @@ using ReadMe.Models.Enumerations;
 using ReadMe.Services.Contracts;
 using ReadMe.Web.Models.Books;
 using ReadMe.Web.Models.Profile;
+using ReadMe.Web.Models.Reviews;
 using System;
 using System.Linq;
 using System.Web.Mvc;
@@ -14,8 +15,9 @@ namespace ReadMe.Web.Controllers
     {
         private readonly IAuthenticationProvider authProvider;
         private readonly IUserService userService;
+        private readonly IReviewService reviewService;
 
-        public ProfileController(IAuthenticationProvider authProvider, IUserService userService)
+        public ProfileController(IAuthenticationProvider authProvider, IUserService userService, IReviewService reviewService)
         {
             if (authProvider == null)
             {
@@ -27,8 +29,14 @@ namespace ReadMe.Web.Controllers
                 throw new ArgumentNullException("User service cannot be null.");
             }
 
+            if (reviewService == null)
+            {
+                throw new ArgumentNullException("Review service cannot be null.");
+            }
+
             this.authProvider = authProvider;
             this.userService = userService;
+            this.reviewService = reviewService;
         }
 
         //
@@ -63,11 +71,17 @@ namespace ReadMe.Web.Controllers
                 .ProjectTo<BookShortViewModel>()
                 .ToList();
 
+            var reviewsModel = this.reviewService
+                .GetByUserId(userModel.Id)
+                .ProjectTo<ReviewViewModel>()
+                .ToList();
+
             var model = new ProfileViewModel()
             {
                 UserDetailsViewModel = userModel,
                 WishlistBooks = wishlist,
-                CurrentlyReadingBooks = currentlyReading
+                CurrentlyReadingBooks = currentlyReading,
+                ReviewsModels = reviewsModel
             };
 
             return View(model);

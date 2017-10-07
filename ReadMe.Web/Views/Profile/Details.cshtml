@@ -53,7 +53,14 @@ else
         </div>
     </div>
 
-    @Html.Partial("_EditUserPartial", @Model.UserDetailsViewModel)
+    <div class="panel">
+        <h2>
+            <b>Reviews</b>
+        </h2>
+        <hr />
+        @Html.Partial("_UserReviewsPartial", @Model.ReviewsModels)
+    </div>
 
+    @Html.Partial("_EditUserPartial", @Model.UserDetailsViewModel)
 
 </div>

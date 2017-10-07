@@ -316,8 +316,8 @@
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Shared\_BooksListPartial.cshtml" />
     <Content Include="Views\Books\_BookInfoPartial.cshtml" />
-    <Content Include="Views\Shared\_ReviewsListPartial.cshtml" />
-    <Content Include="Views\Shared\_ReviewPartial.cshtml" />
+    <Content Include="Views\Books\_BookReviewsPartial.cshtml" />
+    <Content Include="Views\Profile\_UserReviewsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

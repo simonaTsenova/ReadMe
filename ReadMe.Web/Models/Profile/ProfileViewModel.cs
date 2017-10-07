@@ -1,4 +1,5 @@
 ﻿using ReadMe.Web.Models.Books;
+using ReadMe.Web.Models.Reviews;
 using System.Collections.Generic;
 
 namespace ReadMe.Web.Models.Profile
@@ -10,5 +11,7 @@ namespace ReadMe.Web.Models.Profile
         public ICollection<BookShortViewModel> WishlistBooks { get; set; }
 
         public ICollection<BookShortViewModel> CurrentlyReadingBooks { get; set; }
+
+        public ICollection<ReviewViewModel> ReviewsModels { get; set; }
     }
 }
