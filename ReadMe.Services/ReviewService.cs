@@ -25,6 +25,11 @@ namespace ReadMe.Services
                 throw new ArgumentNullException("Unit of work cannot be null.");
             }
 
+            if (reviewFactory == null)
+            {
+                throw new ArgumentNullException("Review factory cannot be null.");
+            }
+
             this.reviewRepository = reviewRepository;
             this.unitOfWork = unitOfWork;
             this.reviewFactory = reviewFactory;
@@ -68,6 +73,14 @@ namespace ReadMe.Services
                 .FirstOrDefault();
 
             return result;
+        }
+
+        public void DeleteReview(Guid id)
+        {
+            var review = this.reviewRepository.GetById(id);
+
+            this.reviewRepository.Delete(review);
+            this.unitOfWork.Commit();
         }
     }
 }

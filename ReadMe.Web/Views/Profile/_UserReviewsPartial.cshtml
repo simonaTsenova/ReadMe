@@ -11,6 +11,15 @@
             {
                 <div class="mbr-testimonial card">
                     <div class="card-block">
+                        @Ajax.ActionLink(" ", "Index", "Reviews", new { id = review.Id },
+                        new AjaxOptions
+                        {
+                            HttpMethod = "DELETE",
+                            //Confirm = "Are you sure you want to delete review for " + review.Book.Title,
+                            OnSuccess= "removeReview"
+                        },
+                        new { @class = "btn btn-danger glyphicon glyphicon-trash", id = "delete-review" })
+
                         <p>@review.Content</p>
                     </div>
                     <div class="mbr-author card-footer">

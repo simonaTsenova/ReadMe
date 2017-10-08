@@ -15,5 +15,7 @@ namespace ReadMe.Services.Contracts
         Review GetByUserIdAndBookId(string userId, Guid bookId);
 
         void AddReview(string userId, Guid bookId, string content);
+
+        void DeleteReview(Guid id);
     }
 }

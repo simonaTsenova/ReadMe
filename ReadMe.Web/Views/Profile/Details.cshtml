@@ -64,3 +64,7 @@ else
     @Html.Partial("_EditUserPartial", @Model.UserDetailsViewModel)
 
 </div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/reviews")
+}

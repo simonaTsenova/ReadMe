@@ -36,5 +36,14 @@ namespace ReadMe.Web.Controllers
             
             return RedirectToAction("Details", "Books", routeValues: new { id = model.BookId });
         }
+
+        [Authorize]
+        [HttpDelete]
+        public ActionResult Index(Guid id)
+        {
+            this.reviewService.DeleteReview(id);
+
+            return this.RedirectToAction("Index", "Home");
+        }
     }
 }
