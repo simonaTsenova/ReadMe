@@ -5,7 +5,9 @@
         <div class="modal-content">
             @using (@Ajax.BeginForm("Edit", "Profile", null, new AjaxOptions
             {
-                HttpMethod = "POST"
+                HttpMethod = "POST",
+                UpdateTargetId = "user-info",
+                OnSuccess = "closeModal"
             }))
             {
                 @Html.AntiForgeryToken()
@@ -17,7 +19,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-horizontal">
-                        @Html.AntiForgeryToken()
+                        @*@Html.AntiForgeryToken()*@
                         <div class="form-group">
                             @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
@@ -66,7 +68,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" id="close-modal" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <input type="submit" value="Save changes" class="btn btn-primary" id="send" />
                 </div>
             }

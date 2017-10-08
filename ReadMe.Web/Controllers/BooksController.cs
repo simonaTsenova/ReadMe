@@ -99,7 +99,7 @@ namespace ReadMe.Web.Controllers
         // POST: Books/Status
         [Authorize]
         [HttpPost]
-        public ActionResult Status(BookInfoViewModel model)
+        public ContentResult Status(BookInfoViewModel model)
         {
             if(ModelState.IsValid)
             {
@@ -108,7 +108,7 @@ namespace ReadMe.Web.Controllers
                 this.userBookService.UpdateStatus(userId, model.Id, model.CurrentStatus);
             }
 
-            return this.PartialView();
+            return this.Content("Status updated");
         }
     }
 }

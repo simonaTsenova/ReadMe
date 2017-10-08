@@ -37,7 +37,7 @@ namespace ReadMe.Services
             return user;
         }
 
-        public void EditUser(string id, string firstName, string lastName, string nationality, int age, string favouriteQuote)
+        public User EditUser(string id, string firstName, string lastName, string nationality, int age, string favouriteQuote)
         {
             var user = this.userRepository.GetById(id);
             
@@ -52,6 +52,8 @@ namespace ReadMe.Services
                 this.userRepository.Update(user);
                 this.unitOfWork.Commit();
             }
+
+            return user;
         }
     }
 }

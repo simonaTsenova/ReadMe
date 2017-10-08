@@ -1,4 +1,5 @@
-﻿using AutoMapper.QueryableExtensions;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using ReadMe.Authentication.Contracts;
 using ReadMe.Models.Enumerations;
 using ReadMe.Services.Contracts;
@@ -16,8 +17,10 @@ namespace ReadMe.Web.Controllers
         private readonly IAuthenticationProvider authProvider;
         private readonly IUserService userService;
         private readonly IReviewService reviewService;
+        private readonly IMapper mapper;
 
-        public ProfileController(IAuthenticationProvider authProvider, IUserService userService, IReviewService reviewService)
+        public ProfileController(IAuthenticationProvider authProvider, IUserService userService,
+            IReviewService reviewService, IMapper mapper)
         {
             if (authProvider == null)
             {
@@ -34,9 +37,15 @@ namespace ReadMe.Web.Controllers
                 throw new ArgumentNullException("Review service cannot be null.");
             }
 
+            if(mapper == null)
+            {
+                throw new ArgumentNullException("Mapper cannot be null");
+            }
+
             this.authProvider = authProvider;
             this.userService = userService;
             this.reviewService = reviewService;
+            this.mapper = mapper;
         }
 
         //
@@ -87,15 +96,17 @@ namespace ReadMe.Web.Controllers
         // POST: Profile/Edit
         [Authorize]
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(UserDetailsViewModel model)
+        //[ValidateAntiForgeryToken]
+        public PartialViewResult Edit(UserDetailsViewModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                this.userService.EditUser(model.Id, model.FirstName, model.LastName, model.Nationality, model.Age, model.FavouriteQuote);
             }
 
-            return this.RedirectToAction("Details", new { username = model.UserName });
+            var updatedUser = this.userService.EditUser(model.Id, model.FirstName, model.LastName, model.Nationality, model.Age, model.FavouriteQuote);
+            var userInfoModel = this.mapper.Map<UserDetailsViewModel>(updatedUser);
+
+            return this.PartialView("_UserInfoPartial", userInfoModel);
         }
     }
 }

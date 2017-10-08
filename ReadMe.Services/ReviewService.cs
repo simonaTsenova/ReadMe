@@ -4,6 +4,8 @@ using ReadMe.Services.Contracts;
 using ReadMe.Data.Contracts;
 using System;
 using ReadMe.Factories;
+using ReadMe.Data;
+using System.Data.SqlClient;
 
 namespace ReadMe.Services
 {
@@ -12,8 +14,9 @@ namespace ReadMe.Services
         private readonly IEfRepository<Review> reviewRepository;
         private readonly IUnitOfWork unitOfWork;
         private readonly IReviewFactory reviewFactory;
+        private readonly ReadMeDbContext context;
 
-        public ReviewService(IEfRepository<Review> reviewRepository, IUnitOfWork unitOfWork, IReviewFactory reviewFactory)
+        public ReviewService(IEfRepository<Review> reviewRepository, IUnitOfWork unitOfWork, IReviewFactory reviewFactory, ReadMeDbContext context)
         {
             if (reviewRepository == null)
             {
@@ -33,6 +36,7 @@ namespace ReadMe.Services
             this.reviewRepository = reviewRepository;
             this.unitOfWork = unitOfWork;
             this.reviewFactory = reviewFactory;
+            this.context = context;
         }
 
         public void AddReview(string userId, Guid bookId, string content)
@@ -81,8 +85,11 @@ namespace ReadMe.Services
                 .Where(r => r.Id == id)
                 .FirstOrDefault();
 
-            this.reviewRepository.Delete(review);
-            this.unitOfWork.Commit();
+            if(review != null)
+            {
+                this.reviewRepository.Delete(review);
+                this.unitOfWork.Commit();
+            }
         }
     }
 }

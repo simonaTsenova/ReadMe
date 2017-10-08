@@ -17,7 +17,7 @@ else
 
 <div>
     <hr />
-    <div>
+    <div id="user-info">
         @Html.Partial("_UserInfoPartial", Model.UserDetailsViewModel)
     </div>
 
@@ -67,4 +67,5 @@ else
 
 @section scripts {
     @Scripts.Render("~/bundles/reviews")
+    @Scripts.Render("~/bundles/user-profile")
 }

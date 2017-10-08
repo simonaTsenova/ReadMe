@@ -4,6 +4,7 @@ body {
     padding-top: 50px;
     padding-bottom: 20px;
     font-family: Garamond, sans-serif;
+    font-size: 20px;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -247,4 +248,10 @@ div#search-results div.card {
 
 .mbr-small-footer a:hover {
     text-decoration: none;
+}
+
+#stat-message {
+    color: orange;
+    font-size: 20px;
+    font-weight: bolder;
 }

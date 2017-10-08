@@ -60,17 +60,23 @@
         </div>
         <hr />
 
-        @if (User.Identity.IsAuthenticated)
-        {
-            using (@Ajax.BeginForm("Status", "Books", null, new AjaxOptions
+        <div class="row">
+            @if (User.Identity.IsAuthenticated)
             {
-                HttpMethod = "POST"
-            }, new { id = "status-form" }))
-            {
-                @Html.EnumDropDownListFor(model => @Model.CurrentStatus, htmlAttributes: new { @class = "btn btn-warning" })
-                @Html.HiddenFor(Model => Model.Id)
+                using (@Ajax.BeginForm("Status", "Books", null, new AjaxOptions
+                {
+                    HttpMethod = "POST",
+                    UpdateTargetId = "stat-message"
+                }, new { @class = "col-md-4", id = "status-form" }))
+                {
+                    @Html.EnumDropDownListFor(model => @Model.CurrentStatus, htmlAttributes: new { @class = "btn btn-warning" })
+                    @Html.HiddenFor(Model => Model.Id)
+                }
             }
-        }
+
+            <div id="stat-message"></div>
+        </div>
+        
 
     </div>
 </div>

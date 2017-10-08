@@ -7,7 +7,7 @@ namespace ReadMe.Services.Contracts
     {
         IQueryable<User> GetUserByUsername(string username);
 
-        void EditUser(string id, string firstName, string lastName,
+        User EditUser(string id, string firstName, string lastName,
             string nationality, int age, string favouriteQuote);
     }
 }
