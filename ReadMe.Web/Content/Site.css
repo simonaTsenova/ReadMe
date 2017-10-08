@@ -86,7 +86,7 @@ div#search-results div.card {
     background: #f4f4f4;
     color: #565656;
     font-family: "Lora";
-    font-size: 1.125rem;
+    font-size: 2rem;
     font-style: italic;
     font-weight: 400;
     line-height: 2;
@@ -141,7 +141,7 @@ div#search-results div.card {
 .mbr-author-name {
     color: #2d2d2d;
     font-family: "Montserrat";
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: 700;
     letter-spacing: -1px;
     line-height: 1.3;

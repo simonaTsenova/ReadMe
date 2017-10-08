@@ -4,6 +4,7 @@ using ReadMe.Models.Enumerations;
 using ReadMe.Web.Infrastructure;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ReadMe.Web.Models.Books
 {
@@ -13,6 +14,8 @@ namespace ReadMe.Web.Models.Books
 
         public string Title { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public DateTime Published { get; set; }
 
         public string ISBN { get; set; }

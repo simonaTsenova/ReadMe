@@ -2,12 +2,13 @@
 
 @model ReviewViewModel
 
-<div class="post-review">
+<div class="post-review" id="post-review">
     <div class="mbr-testimonial card">
         <div class="card-block">
             @using (@Ajax.BeginForm("Post", "Reviews", null, new AjaxOptions
             {
                 HttpMethod = "POST",
+                UpdateTargetId = "post-review",
                 OnSuccess = "addReview"
             }, null))
             {

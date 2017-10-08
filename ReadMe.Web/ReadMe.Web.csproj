@@ -324,6 +324,7 @@
     <Content Include="Views\Books\_BookReviewsPartial.cshtml" />
     <Content Include="Views\Profile\_UserReviewsPartial.cshtml" />
     <Content Include="Views\Books\_FormReviewPartial.cshtml" />
+    <Content Include="Views\Shared\_ReviewPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

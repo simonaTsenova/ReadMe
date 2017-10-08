@@ -39,12 +39,14 @@ namespace ReadMe.Services
             this.context = context;
         }
 
-        public void AddReview(string userId, Guid bookId, string content)
+        public Review AddReview(string userId, Guid bookId, string content)
         {
             var date = DateTime.Now;
             var review = this.reviewFactory.CreateReview(userId, bookId, content, date);
             this.reviewRepository.Add(review);
             this.unitOfWork.Commit();
+
+            return review;
         }
 
         public IQueryable<Review> GetAll()

@@ -101,6 +101,7 @@ namespace ReadMe.Web.Controllers
         {
             if (!ModelState.IsValid)
             {
+                // TODO
             }
 
             var updatedUser = this.userService.EditUser(model.Id, model.FirstName, model.LastName, model.Nationality, model.Age, model.FavouriteQuote);

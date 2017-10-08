@@ -2,6 +2,7 @@
 using ReadMe.Web.Infrastructure;
 using System;
 using AutoMapper;
+using System.ComponentModel.DataAnnotations;
 
 namespace ReadMe.Web.Models.Books
 {
@@ -15,6 +16,8 @@ namespace ReadMe.Web.Models.Books
 
         public string PhotoUrl { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public DateTime Published { get; set; }
 
         public void CreateMappings(IMapperConfigurationExpression configuration)

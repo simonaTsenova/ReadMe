@@ -55,5 +55,12 @@ namespace ReadMe.Services
 
             return user;
         }
+
+        public User GetUserById(string id)
+        {
+            var user = this.userRepository.GetById(id);
+
+            return user;
+        }
     }
 }
