@@ -16,7 +16,7 @@
     {
         <div class="container">
             <span class="icon"><i class="fa fa-search"></i></span>
-            
+            @Html.AntiForgeryToken()
             @Html.TextBoxFor(m => m.SearchPattern, new { id = "search-pattern", @class = "form-control" })
             @Html.RadioButtonFor(m => m.SearchType, "title", new { @checked = true }) @Html.Label("title")
             @Html.RadioButtonFor(m => m.SearchType, "author") @Html.Label("author")

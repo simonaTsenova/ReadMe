@@ -101,12 +101,6 @@ namespace ReadMe.Web.Controllers
         [HttpPost]
         public ActionResult Status(BookInfoViewModel model)
         {
-            if(!this.authProvider.IsAuthenticated)
-            {
-                //TODO
-                // return not authorized error page
-            }
-
             if(ModelState.IsValid)
             {
                 var userId = this.authProvider.CurrentUserId;

@@ -41,13 +41,9 @@ namespace ReadMe.Web.Controllers
 
         //
         // GET: Profile/Details/{username}
+        [Authorize]
         public ActionResult Details(string username)
         {
-            if(!this.authProvider.IsAuthenticated || username == null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-
             ViewBag.Title = "Details";
             var user = this.userService.GetUserByUsername(username);
 
@@ -89,16 +85,11 @@ namespace ReadMe.Web.Controllers
 
         //
         // POST: Profile/Edit
-        //[Authorize]
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(UserDetailsViewModel model)
         {
-            if (!this.Request.IsAjaxRequest())
-            {
-                return this.RedirectToAction("Index", "Home");
-            }
-
             if (ModelState.IsValid)
             {
                 this.userService.EditUser(model.Id, model.FirstName, model.LastName, model.Nationality, model.Age, model.FavouriteQuote);

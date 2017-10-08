@@ -11,6 +11,7 @@
                 OnSuccess = "addReview"
             }, null))
             {
+                @Html.AntiForgeryToken()
                 @Html.TextAreaFor(r => r.Content, new { @class = "form-control", placeholder = "Post your review here...", style = "min-width: 100%" })
 
                 @Html.HiddenFor(model => model.UserId)

@@ -46,6 +46,7 @@ namespace ReadMe.Web.Controllers
 
         // POST: Search/Search/{pattern}
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public PartialViewResult Search(SearchViewModel model, string[] genres)
         {
             var resultBooks = this.bookService

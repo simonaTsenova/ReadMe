@@ -1,9 +1,6 @@
 ﻿using ReadMe.Services.Contracts;
 using ReadMe.Web.Models.Reviews;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ReadMe.Web.Controllers
@@ -25,6 +22,7 @@ namespace ReadMe.Web.Controllers
         // Post: Reviews/Post
         [Authorize]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Post(ReviewViewModel model)
         {
             if(!ModelState.IsValid)

@@ -8,6 +8,7 @@
                 HttpMethod = "POST"
             }))
             {
+                @Html.AntiForgeryToken()
                 <div class="modal-header">
                     <h3 class="modal-title" id="exampleModalLabel">Edit user</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
