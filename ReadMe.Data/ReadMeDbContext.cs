@@ -17,6 +17,11 @@ namespace ReadMe.Data
             return new ReadMeDbContext();
         }
 
+        public override int SaveChanges()
+        {
+            return base.SaveChanges();
+        }
+
         public DbSet<Author> Authors { get; set; }
 
         public DbSet<Book> Books { get; set; }
@@ -45,8 +50,7 @@ namespace ReadMe.Data
             modelBuilder.Configurations.Add(new UserBooksEntityConfiguration());
         }
 
-        public IDbSet<TEntity> DbSet<TEntity>() 
-            where TEntity : class
+        public IDbSet<TEntity> DbSet<TEntity>() where TEntity : class
         {
             return this.Set<TEntity>();
         }

@@ -15,8 +15,8 @@
                         new AjaxOptions
                         {
                             HttpMethod = "DELETE",
-                            //Confirm = "Are you sure you want to delete review for " + review.Book.Title,
-                            OnSuccess= "removeReview"
+                            Confirm = "Are you sure you want to delete review for " + review.Book.Title,
+                            OnSuccess = "removeReview"
                         },
                         new { @class = "btn btn-danger glyphicon glyphicon-trash", id = "delete-review" })
 

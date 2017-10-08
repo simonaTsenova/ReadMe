@@ -3,3 +3,7 @@
     let $review = $this.closest('.mbr-testimonial');
     $review.remove();
 }
+
+function addReview() {
+    console.log(this);
+}

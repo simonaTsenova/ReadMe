@@ -77,7 +77,9 @@ namespace ReadMe.Services
 
         public void DeleteReview(Guid id)
         {
-            var review = this.reviewRepository.GetById(id);
+            var review = this.reviewRepository.All
+                .Where(r => r.Id == id)
+                .FirstOrDefault();
 
             this.reviewRepository.Delete(review);
             this.unitOfWork.Commit();

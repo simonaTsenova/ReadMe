@@ -24,3 +24,7 @@
     @Html.Partial("_BookReviewsPartial", @Model.ReviewViewModels)
     
 </div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/reviews")
+}

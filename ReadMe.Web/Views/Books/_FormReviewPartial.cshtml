@@ -5,7 +5,11 @@
 <div class="post-review">
     <div class="mbr-testimonial card">
         <div class="card-block">
-            @using (Html.BeginForm("Post", "Reviews", FormMethod.Post))
+            @using (@Ajax.BeginForm("Post", "Reviews", null, new AjaxOptions
+            {
+                HttpMethod = "POST",
+                OnSuccess = "addReview"
+            }, null))
             {
                 @Html.TextAreaFor(r => r.Content, new { @class = "form-control", placeholder = "Post your review here...", style = "min-width: 100%" })
 
