@@ -8,5 +8,7 @@ namespace ReadMe.Web.Models.Books
         public BookInfoViewModel BookInfoViewModel { get; set; }
 
         public ICollection<ReviewViewModel> ReviewViewModels { get; set; }
+
+        public ReviewViewModel FormReviewViewModel { get; set; }
     }
 }

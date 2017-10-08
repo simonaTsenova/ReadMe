@@ -228,6 +228,7 @@
     <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\ReviewsController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
@@ -318,9 +319,11 @@
     <Content Include="Views\Books\_BookInfoPartial.cshtml" />
     <Content Include="Views\Books\_BookReviewsPartial.cshtml" />
     <Content Include="Views\Profile\_UserReviewsPartial.cshtml" />
+    <Content Include="Views\Books\_FormReviewPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Reviews\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

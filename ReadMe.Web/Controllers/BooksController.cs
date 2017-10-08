@@ -1,4 +1,5 @@
 ﻿using AutoMapper.QueryableExtensions;
+using ReadMe.Authentication.Contracts;
 using ReadMe.Services.Contracts;
 using ReadMe.Web.Models.Books;
 using ReadMe.Web.Models.Reviews;
@@ -12,21 +13,28 @@ namespace ReadMe.Web.Controllers
     {
         private readonly IBookService bookService;
         private readonly IReviewService reviewService;
+        private readonly IAuthenticationProvider authProvider;
 
-        public BooksController(IBookService bookService, IReviewService reviewService)
+        public BooksController(IBookService bookService, IReviewService reviewService, IAuthenticationProvider authProvider)
         {
             if(bookService == null)
             {
                 throw new ArgumentNullException("Book service canot be null.");
             }
 
-            if (bookService == null)
+            if (reviewService == null)
             {
                 throw new ArgumentNullException("Review service canot be null.");
             }
 
+            if (authProvider == null)
+            {
+                throw new ArgumentNullException("Auth provider canot be null.");
+            }
+
             this.bookService = bookService;
             this.reviewService = reviewService;
+            this.authProvider = authProvider;
         }
 
         // GET: Books/Details/{id}
@@ -49,10 +57,23 @@ namespace ReadMe.Web.Controllers
                 .ProjectTo<ReviewViewModel>()
                 .ToList();
 
+            var currentUserId = this.authProvider.CurrentUserId;
+            var currentBookId = book.FirstOrDefault().Id;
+            ReviewViewModel formReviewModel = null;
+            if (this.reviewService.GetByUserIdAndBookId(currentUserId, currentBookId) == null)
+            {
+                formReviewModel = new ReviewViewModel()
+                {
+                    UserId = this.authProvider.CurrentUserId,
+                    BookId = book.FirstOrDefault().Id
+                };
+            }
+
             var model = new BookDetailsViewModel()
             {
                 BookInfoViewModel = bookInfoModel,
-                ReviewViewModels = reviewModels
+                ReviewViewModels = reviewModels,
+                FormReviewViewModel = formReviewModel
             };
 
             return View(model);

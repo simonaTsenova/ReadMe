@@ -2,12 +2,11 @@
 
 @model ICollection<ReviewViewModel>
 
-<div class="row book-reviews">
-
-    @if (Model.Any())
-    {
-        <div class="col-xs-12">
-            @foreach (var review in Model)
+<div class="row book-reviews-list">
+    <div class="col-xs-12">
+        @if (Model.Any())
+        {
+            foreach (var review in Model)
             {
                 <div class="mbr-testimonial card">
                     <div class="card-block">
@@ -21,13 +20,12 @@
                     </div>
                 </div>
             }
-        </div>
-    }
-    else
-    {
-        <div class="col-xs-12">
-            No reviews
-        </div>
-    }
+        }
+        else
+        {
+            <div>No reviews </div>
+        }
+    </div>
+    
 
 </div>

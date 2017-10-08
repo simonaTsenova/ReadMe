@@ -90,6 +90,7 @@ namespace ReadMe.Web.App_Start
             kernel.Bind<IBookFactory>().ToFactory().InSingletonScope();
             kernel.Bind<IGenreFactory>().ToFactory().InSingletonScope();
             kernel.Bind<IPublisherFactory>().ToFactory().InSingletonScope();
+            kernel.Bind<IReviewFactory>().ToFactory().InSingletonScope();
             kernel.Bind<IUserFactory>().ToFactory().InSingletonScope();
             kernel.Bind<IViewModelFactory>().ToFactory().InSingletonScope();
 

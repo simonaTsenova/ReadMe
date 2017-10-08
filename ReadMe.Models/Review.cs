@@ -5,6 +5,19 @@ namespace ReadMe.Models
 {
     public class Review : IDeletable
     {
+        public Review()
+        {
+
+        }
+
+        public Review(string userId, Guid bookId, string content, DateTime postedOn)
+        {
+            this.UserId = userId;
+            this.BookId = bookId;
+            this.Content = content;
+            this.PostedOn = postedOn;
+        }
+
         public Guid Id { get; set; }
 
         public Guid? BookId { get; set; }

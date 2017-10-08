@@ -1,9 +1,6 @@
 ﻿using ReadMe.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ReadMe.Services.Contracts
 {
@@ -15,5 +12,8 @@ namespace ReadMe.Services.Contracts
 
         IQueryable<Review> GetByUserId(string id);
 
+        Review GetByUserIdAndBookId(string userId, Guid bookId);
+
+        void AddReview(string userId, Guid bookId, string content);
     }
 }
