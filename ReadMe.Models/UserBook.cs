@@ -8,6 +8,18 @@ namespace ReadMe.Models
 {
     public class UserBook : IDeletable
     {
+        public UserBook()
+        {
+
+        }
+
+        public UserBook(string userId, Guid bookId, ReadStatus status)
+        {
+            this.UserId = userId;
+            this.BookId = bookId;
+            this.ReadStatus = status;
+        }
+
         [Key, Column(Order = 0)]
         public string UserId { get; set; }
 

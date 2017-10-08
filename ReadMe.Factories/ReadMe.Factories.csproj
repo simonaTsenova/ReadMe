@@ -45,6 +45,7 @@
     <Compile Include="IGenreFactory.cs" />
     <Compile Include="IPublisherFactory.cs" />
     <Compile Include="IReviewFactory.cs" />
+    <Compile Include="IUserBookFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IUserFactory.cs" />
   </ItemGroup>

@@ -25,7 +25,7 @@ namespace ReadMe.Data
         {
             get
             {
-                // TODO where clause
+                //  TODO where clause
                 return this.dbContext.DbSet<T>();
             }
         }

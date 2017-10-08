@@ -12,7 +12,7 @@ namespace ReadMe.Web
     {
         protected void Application_Start()
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ReadMeDbContext, Configuration>());
+            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<ReadMeDbContext, Configuration>());
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

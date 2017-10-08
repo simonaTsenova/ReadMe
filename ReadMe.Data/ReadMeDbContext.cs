@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using ReadMe.Data.Configurations;
+using ReadMe.Data.Migrations;
 using ReadMe.Models;
 using System.Data.Entity;
 
@@ -10,6 +11,7 @@ namespace ReadMe.Data
         public ReadMeDbContext()
             : base("LocalReadMeConnection", throwIfV1Schema: false)
         {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ReadMeDbContext, Configuration>());
         }
 
         public static ReadMeDbContext Create()

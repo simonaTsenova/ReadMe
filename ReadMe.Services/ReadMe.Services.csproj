@@ -58,9 +58,11 @@
     <Compile Include="Contracts\IBookService.cs" />
     <Compile Include="Contracts\IGenreService.cs" />
     <Compile Include="Contracts\IReviewService.cs" />
+    <Compile Include="Contracts\IUserBookService.cs" />
     <Compile Include="Contracts\IUserService.cs" />
     <Compile Include="GenreService.cs" />
     <Compile Include="ReviewService.cs" />
+    <Compile Include="UserBookService.cs" />
     <Compile Include="UserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

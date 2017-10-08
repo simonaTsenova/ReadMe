@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ReadMe.Models;
+using ReadMe.Models.Enumerations;
 using ReadMe.Web.Infrastructure;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,8 @@ namespace ReadMe.Web.Models.Books
         public ICollection<Genre> Genres { get; set; }
 
         public ICollection<UserBook> UserBooks { get; set; }
+
+        public ReadStatus CurrentStatus { get; set; }
 
         public void CreateMappings(IMapperConfigurationExpression configuration)
         {

@@ -246,6 +246,7 @@
     <Compile Include="Models\Profile\UserDetailsViewModel.cs" />
     <Compile Include="Models\Reviews\ReviewViewModel.cs" />
     <Compile Include="Models\Search\SearchViewModel.cs" />
+    <Compile Include="Models\UserBookViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -273,6 +274,7 @@
     <Content Include="fonts\Birds of Paradise.ttf" />
     <Content Include="fonts\Actonia.ttf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Custom\book-status.js" />
     <Content Include="Scripts\Custom\reviews.js" />
     <Content Include="Scripts\Custom\search.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -321,6 +323,7 @@
     <Content Include="Views\Books\_BookReviewsPartial.cshtml" />
     <Content Include="Views\Profile\_UserReviewsPartial.cshtml" />
     <Content Include="Views\Books\_FormReviewPartial.cshtml" />
+    <Content Include="Views\Books\_BookStatusPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

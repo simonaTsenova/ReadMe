@@ -129,16 +129,12 @@ namespace ReadMe.Data.Migrations
             {
                 var userBook1 = new UserBook();
                 userBook1.Book = context.Books.FirstOrDefault(b => b.Title == "Sisters");
-                //userBook1.BookId = userBook1.Book.Id;
                 userBook1.User = context.Users.FirstOrDefault(u => u.UserName == "simona");
-                //userBook1.UserId = userBook1.User.Id;
                 userBook1.ReadStatus = ReadStatus.Read;
 
                 var userBook2 = new UserBook();
                 userBook2.Book = context.Books.FirstOrDefault(b => b.Title == "The Rooster Bar");
-                //userBook2.BookId = userBook2.Book.Id;
                 userBook2.User = context.Users.FirstOrDefault(u => u.UserName == "simona");
-                //userBook2.UserId = userBook2.User.Id;
                 userBook2.ReadStatus = ReadStatus.WantToRead;
 
                 var userBooks = new UserBook[]

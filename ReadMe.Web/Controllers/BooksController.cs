@@ -1,6 +1,8 @@
 ﻿using AutoMapper.QueryableExtensions;
 using ReadMe.Authentication.Contracts;
+using ReadMe.Models.Enumerations;
 using ReadMe.Services.Contracts;
+using ReadMe.Web.Models;
 using ReadMe.Web.Models.Books;
 using ReadMe.Web.Models.Reviews;
 using System;
@@ -14,8 +16,10 @@ namespace ReadMe.Web.Controllers
         private readonly IBookService bookService;
         private readonly IReviewService reviewService;
         private readonly IAuthenticationProvider authProvider;
+        private readonly IUserBookService userBookService;
 
-        public BooksController(IBookService bookService, IReviewService reviewService, IAuthenticationProvider authProvider)
+        public BooksController(IBookService bookService, IReviewService reviewService,
+            IAuthenticationProvider authProvider, IUserBookService userBookService)
         {
             if(bookService == null)
             {
@@ -32,9 +36,15 @@ namespace ReadMe.Web.Controllers
                 throw new ArgumentNullException("Auth provider canot be null.");
             }
 
+            if (userBookService == null)
+            {
+                throw new ArgumentNullException("UserBook service canot be null.");
+            }
+
             this.bookService = bookService;
             this.reviewService = reviewService;
             this.authProvider = authProvider;
+            this.userBookService = userBookService;
         }
 
         // GET: Books/Details/{id}
@@ -64,19 +74,47 @@ namespace ReadMe.Web.Controllers
             {
                 formReviewModel = new ReviewViewModel()
                 {
-                    UserId = this.authProvider.CurrentUserId,
-                    BookId = book.FirstOrDefault().Id
+                    UserId = currentUserId,
+                    BookId = currentBookId
                 };
             }
+
+            ReadStatus status = bookInfoModel.UserBooks
+                .Where(x => x.BookId == currentBookId)
+                .Select(x => x.ReadStatus)
+                .FirstOrDefault();
+
+            bookInfoModel.CurrentStatus = status;
 
             var model = new BookDetailsViewModel()
             {
                 BookInfoViewModel = bookInfoModel,
                 ReviewViewModels = reviewModels,
-                FormReviewViewModel = formReviewModel
+                FormReviewViewModel = formReviewModel,
             };
 
             return View(model);
+        }
+
+        // POST: Books/Status
+        [Authorize]
+        [HttpPost]
+        public ActionResult Status(BookInfoViewModel model)
+        {
+            if(!this.authProvider.IsAuthenticated)
+            {
+                //TODO
+                // return not authorized error page
+            }
+
+            if(ModelState.IsValid)
+            {
+                var userId = this.authProvider.CurrentUserId;
+
+                this.userBookService.UpdateStatus(userId, model.Id, model.CurrentStatus);
+            }
+
+            return this.PartialView();
         }
     }
 }

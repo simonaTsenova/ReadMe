@@ -59,9 +59,15 @@
             }
         </div>
         <hr />
-        <div>
-            <b> Change status </b>
-        </div>
+
+        @using (@Ajax.BeginForm("Status", "Books", null, new AjaxOptions
+        {
+            HttpMethod = "POST"
+        }, new { id = "status-form" }))
+        {
+            @Html.EnumDropDownListFor(model => @Model.CurrentStatus, htmlAttributes: new { @class = "btn btn-warning" })
+            @Html.HiddenFor(Model => Model.Id)
+        }
+
     </div>
 </div>
-

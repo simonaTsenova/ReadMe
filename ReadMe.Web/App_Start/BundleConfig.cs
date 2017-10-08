@@ -35,6 +35,10 @@ namespace ReadMe.Web
             bundles.Add(new ScriptBundle("~/bundles/reviews").Include(
                      //"~/Scripts/jquery.unobtrusive-ajax.min.js",
                      "~/Scripts/Custom/reviews.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/book-status").Include(
+                     //"~/Scripts/jquery.unobtrusive-ajax.min.js",
+                     "~/Scripts/Custom/book-status.js"));
         }
     }
 }
