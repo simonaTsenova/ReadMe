@@ -13,7 +13,8 @@ namespace ReadMe.Web
                         "~/Scripts/jquery.unobtrusive-ajax.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.validate*"));
+                        "~/Scripts/jquery.validate.min.js",
+                        "~/Scripts/jquery.validate.unobtrusive.min.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at https://modernizr.com to pick only the tests you need.
@@ -51,6 +52,10 @@ namespace ReadMe.Web
             bundles.Add(new ScriptBundle("~/bundles/rating").Include(
                      //"~/Scripts/jquery.unobtrusive-ajax.min.js",
                      "~/Scripts/Custom/book-rating.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/admin-area").Include(
+                     //"~/Scripts/jquery.unobtrusive-ajax.min.js",
+                     "~/Scripts/Custom/admin-area.js"));
         }
     }
 }

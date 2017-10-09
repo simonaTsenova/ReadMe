@@ -19,7 +19,8 @@ namespace ReadMe.Web.Areas.Administration
             context.MapRoute(
                 name: "Administration_default",
                 url: "administration/{controller}/{action}/{id}",
-                defaults: new { controller = "Main", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Main", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "ReadMe.Web.Areas.Administration.Controllers" }
             );
         }
     }

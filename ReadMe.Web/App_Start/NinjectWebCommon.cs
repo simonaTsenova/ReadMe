@@ -96,11 +96,13 @@ namespace ReadMe.Web.App_Start
             kernel.Bind<IUserBookFactory>().ToFactory().InSingletonScope();
             kernel.Bind<IViewModelFactory>().ToFactory().InSingletonScope();
 
+            kernel.Bind<IAuthorService>().To<AuthorService>().InRequestScope();
             kernel.Bind<IUserService>().To<UserService>().InRequestScope();
             kernel.Bind<IBookService>().To<BookService>().InRequestScope();
             kernel.Bind<IGenreService>().To<GenreService>().InRequestScope();
             kernel.Bind<IRatingService>().To<RatingService>().InRequestScope();
             kernel.Bind<IReviewService>().To<ReviewService>().InRequestScope();
+            kernel.Bind<IPublisherService>().To<PublisherService>().InRequestScope();
             kernel.Bind<IUserBookService>().To<UserBookService>().InRequestScope();
 
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();

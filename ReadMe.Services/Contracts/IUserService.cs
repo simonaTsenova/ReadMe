@@ -7,6 +7,8 @@ namespace ReadMe.Services.Contracts
     {
         IQueryable<User> GetAll();
 
+        IQueryable<User> GetAllAndDeleted();
+
         IQueryable<User> GetUserByUsername(string username);
 
         User GetUserById(string id);

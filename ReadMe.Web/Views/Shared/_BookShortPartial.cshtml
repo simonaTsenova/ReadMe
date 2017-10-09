@@ -7,7 +7,7 @@
         <img width="100px" class="card-img-top" src=@Model.PhotoUrl alt="Card image cap">
     </a>
     <div class="card-block">
-        <h4 class="card-title">@Html.ActionLink(@Model.Title, "Details", "Books", routeValues: new { id = @Model.Id }, htmlAttributes: null)</h4>
+        <h4 class="card-title">@Html.ActionLink(@Model.Title, "Details", "Books", routeValues: new { area = "", id = @Model.Id }, htmlAttributes: null)</h4>
         <p class="card-text">by @Model.Author.FirstName @Model.Author.LastName</p>
         <p class="card-text"><small class="text-muted">Published on @Html.DisplayFor(model => model.Published)</small></p>
     </div>

@@ -1,4 +1,5 @@
 ﻿using ReadMe.Data.Contracts;
+using ReadMe.Models.Contracts;
 using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
@@ -7,7 +8,7 @@ using System.Linq;
 namespace ReadMe.Data
 {
     public class EfRepository<T> : IEfRepository<T>
-        where T : class
+        where T : class, IDeletable
     {
         private readonly ReadMeDbContext dbContext;
 
@@ -26,7 +27,7 @@ namespace ReadMe.Data
             get
             {
                 //  TODO where clause
-                return this.dbContext.DbSet<T>();
+                return this.dbContext.DbSet<T>().Where(x => !x.IsDeleted);
             }
         }
 

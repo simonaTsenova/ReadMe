@@ -54,14 +54,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthorService.cs" />
     <Compile Include="BookService.cs" />
+    <Compile Include="Contracts\IAuthorService.cs" />
     <Compile Include="Contracts\IBookService.cs" />
     <Compile Include="Contracts\IGenreService.cs" />
+    <Compile Include="Contracts\IPublisherService.cs" />
     <Compile Include="Contracts\IRatingService.cs" />
     <Compile Include="Contracts\IReviewService.cs" />
     <Compile Include="Contracts\IUserBookService.cs" />
     <Compile Include="Contracts\IUserService.cs" />
     <Compile Include="GenreService.cs" />
+    <Compile Include="PublisherService.cs" />
     <Compile Include="RatingService.cs" />
     <Compile Include="ReviewService.cs" />
     <Compile Include="UserBookService.cs" />

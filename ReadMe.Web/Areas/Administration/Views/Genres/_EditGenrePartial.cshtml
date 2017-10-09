@@ -1,0 +1,19 @@
+﻿@model ReadMe.Web.Areas.Administration.Models.GenreViewModel
+
+@Scripts.Render("~/bundles/jqueryval")
+
+@using (@Ajax.BeginForm("Edit", "Genres", null,
+ajaxOptions: new AjaxOptions
+{
+    HttpMethod = "POST",
+    UpdateTargetId = "admin-main"
+}, htmlAttributes: new { @class = "invisible", id = "edit-form" }))
+{
+    @*@Html.AntiForgeryToken()*@
+    @Html.LabelFor(model => model.Name, new { @class = "control-label" })
+    @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.Name, null, new { @class = "text-danger" })
+
+    @Html.HiddenFor(model => model.Id)
+    <button class="btn btn-primary" type="submit"><i class="fa fa-check" aria-hidden="true"></i></button>
+}

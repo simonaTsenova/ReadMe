@@ -7,19 +7,26 @@ using System.Threading.Tasks;
 using ReadMe.Models;
 using ReadMe.Data.Contracts;
 using System.Data.Entity;
+using ReadMe.Factories;
 
 namespace ReadMe.Services
 {
     public class BookService : IBookService
     {
         private readonly IEfRepository<Book> bookRepository;
+        private readonly IBookFactory bookFactory;
         private readonly IUnitOfWork unitOfWork;
 
-        public BookService(IEfRepository<Book> bookRepository, IUnitOfWork unitOfWork)
+        public BookService(IEfRepository<Book> bookRepository, IBookFactory bookFactory, IUnitOfWork unitOfWork)
         {
             if (bookRepository == null)
             {
                 throw new ArgumentNullException("Book repository cannot be null.");
+            }
+
+            if (bookFactory == null)
+            {
+                throw new ArgumentNullException("Book factory cannot be null.");
             }
 
             if (unitOfWork == null)
@@ -28,6 +35,7 @@ namespace ReadMe.Services
             }
 
             this.bookRepository = bookRepository;
+            this.bookFactory = bookFactory;
             this.unitOfWork = unitOfWork;
         }
 
@@ -142,6 +150,22 @@ namespace ReadMe.Services
                 this.bookRepository.Update(book);
                 this.unitOfWork.Commit();
             }
+        }
+
+        public IQueryable<Book> GetAllAndDeleted()
+        {
+            return this.bookRepository.AllAndDeleted;
+        }
+
+        public void AddBook(string title, DateTime published, string isbn, 
+            Author author, string summary, string language, Publisher publisher, 
+            ICollection<Genre> genres)
+        {
+            var book = this.bookFactory.CreateBook(title, published, isbn, author, summary,
+                language, publisher, genres);
+
+            this.bookRepository.Add(book);
+            this.unitOfWork.Commit();
         }
     }
 }

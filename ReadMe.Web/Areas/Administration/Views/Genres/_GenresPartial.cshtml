@@ -1,0 +1,58 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<ReadMe.Web.Areas.Administration.Models.GenreViewModel>
+
+@Scripts.Render("~/bundles/jqueryval")
+
+<h2>Genres</h2>
+<div id="add-genre">
+    @Ajax.ActionLink(
+    "+ Add",
+    "Add",
+    "Genres",
+    new AjaxOptions
+    {
+        HttpMethod = "GET",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "add-genre"
+    }, new { @class = "btn btn-success" })
+</div>
+
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                <button class="btn btn-primary btn-sm edit-btn">Edit</button>
+                @Html.Partial("_EditGenrePartial", item)
+            </td>
+        </tr>
+    }
+
+</table>
+<div class="pages total">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, pageNum => Url.Action("Index", "Genres",
+        new { page = pageNum }))
+</div>
+
+@Scripts.Render("~/bundles/admin-area")
+

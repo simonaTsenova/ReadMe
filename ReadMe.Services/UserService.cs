@@ -97,5 +97,10 @@ namespace ReadMe.Services
                 this.unitOfWork.Commit();
             }
         }
+
+        public IQueryable<User> GetAllAndDeleted()
+        {
+            return this.userRepository.AllAndDeleted;
+        }
     }
 }

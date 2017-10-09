@@ -13,25 +13,29 @@ namespace ReadMe.Web
             routes.MapRoute(
                 name: "Status",
                 url: "books/status",
-                defaults: new { controller = "Books", action = "Status" }
+                defaults: new { area = "", controller = "Books", action = "Status" },
+                namespaces: new[] { "ReadMe.Web.Controllers" }
             );
 
             routes.MapRoute(
                 name: "Books",
                 url: "books/details/{id}",
-                defaults: new { controller = "Books", action = "Details" }
+                defaults: new { area = "", controller = "Books", action = "Details" },
+                namespaces: new[] { "ReadMe.Web.Controllers" }
             );
 
             routes.MapRoute(
                 name: "ProfileDetails",
                 url: "profile/details/{username}",
-                defaults: new { controller = "Profile", action = "Details" }
+                defaults: new { controller = "Profile", action = "Details" },
+                namespaces: new[] { "ReadMe.Web.Controllers" }
             );
 
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "ReadMe.Web.Controllers" }
             );
         }
     }

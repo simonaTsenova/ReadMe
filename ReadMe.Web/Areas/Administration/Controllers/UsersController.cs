@@ -4,6 +4,7 @@ using ReadMe.Services.Contracts;
 using ReadMe.Web.Areas.Administration.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace ReadMe.Web.Areas.Administration.Controllers
@@ -34,7 +35,7 @@ namespace ReadMe.Web.Areas.Administration.Controllers
         // GET: Administration/Users
         public PartialViewResult Index(int? page)
         {
-            var users = this.userService.GetAll();
+            var users = this.userService.GetAllAndDeleted().OrderBy(u => u.UserName);
             var pageNumber = page ?? 1;
 
             var models = new List<UserViewModel>();

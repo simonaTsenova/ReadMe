@@ -1,0 +1,24 @@
+﻿@model ReadMe.Web.Areas.Administration.Models.GenreViewModel
+
+@Scripts.Render("~/bundles/jqueryval")
+
+<div class="post-genre col-md-10" id="post-genre">
+
+    @using (@Ajax.BeginForm("Add", "Genres", null, new AjaxOptions
+    {
+        HttpMethod = "POST",
+        UpdateTargetId = "admin-main"
+    }, null))
+    {
+        @Html.ValidationSummary(true)
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Name, null, new { @class = "text-danger" })
+            </div>
+        </div>
+        <input type="submit" value="Add genre" class="btn btn-sm btn-success" />
+    }
+</div>
