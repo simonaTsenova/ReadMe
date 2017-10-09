@@ -6,6 +6,18 @@ namespace ReadMe.Models
 {
     public class Rating : IDeletable
     {
+        public Rating()
+        {
+        }
+
+        public Rating(Guid bookId, string userId, int stars, DateTime ratedOn)
+        {
+            this.BookId = bookId;
+            this.UserId = userId;
+            this.Stars = stars;
+            this.RatedOn = ratedOn;
+        }
+
         public Guid Id { get; set; }
 
         public Guid? BookId { get; set; }

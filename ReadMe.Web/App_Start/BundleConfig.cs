@@ -43,6 +43,10 @@ namespace ReadMe.Web
             bundles.Add(new ScriptBundle("~/bundles/user-profile").Include(
                      //"~/Scripts/jquery.unobtrusive-ajax.min.js",
                      "~/Scripts/Custom/user-profile.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/rating").Include(
+                     //"~/Scripts/jquery.unobtrusive-ajax.min.js",
+                     "~/Scripts/Custom/book-rating.js"));
         }
     }
 }

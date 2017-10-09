@@ -9,5 +9,7 @@ namespace ReadMe.Services.Contracts
         IQueryable<Book> GetBookById(Guid id);
 
         IQueryable<Book> Search(string pattern, string searchType, string[] genres);
+
+        void UpdateRating(Guid id, double rating);
     }
 }

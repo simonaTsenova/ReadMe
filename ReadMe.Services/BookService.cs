@@ -130,5 +130,18 @@ namespace ReadMe.Services
 
             return filteredByGenres.AsQueryable<Book>();
         }
+
+        public void UpdateRating(Guid id, double rating)
+        {
+            var book = this.GetBookById(id).FirstOrDefault();
+
+            if(book != null)
+            {
+                book.Rating = rating;
+
+                this.bookRepository.Update(book);
+                this.unitOfWork.Commit();
+            }
+        }
     }
 }

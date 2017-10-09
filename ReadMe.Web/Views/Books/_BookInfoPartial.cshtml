@@ -3,7 +3,42 @@
 <div class="row">
     <div class="col-lg-4 col-md-7 col-sm-6 col-xs-12 animated  animation-done bounceInLeft">
         <img alt="Book Cover" src="@Model.PhotoUrl" id="details-book-cover" class="img-thumbnail img-responsive">
-        <div>Rating</div>
+        <div id="book-rating">
+            <fieldset>
+                Rate this book:
+            </fieldset>
+                @using (Html.BeginForm("Index", "Ratings", FormMethod.Post, new { id = "rating-form" }))
+                {
+                    <fieldset class="rating">
+                        <input type="radio"
+                               value="5"
+                               @(Math.Floor(Model.Rating) == 5 ? "checked='checked'" : string.Empty) />
+                        <label title="Rocks!" rate-value='5'></label>
+
+                        <input type="radio"
+                               value="4"
+                               @(Math.Floor(Model.Rating) == 4 ? "checked='checked'" : string.Empty) />
+                        <label title="Pretty good" rate-value='4'></label>
+
+                        <input type="radio"
+                               value="3"
+                               @(Math.Floor(Model.Rating) == 3 ? "checked='checked'" : string.Empty) />
+                        <label title="Meh" rate-value='3'></label>
+
+                        <input type="radio"
+                               value="2"
+                               @(Math.Floor(Model.Rating) == 2 ? "checked='checked'" : string.Empty) />
+                        <label title="Kinda bad" rate-value='2'></label>
+
+                        <input type="radio"
+                               value="1"
+                               @(Math.Floor(Model.Rating) == 1 ? "checked='checked'" : string.Empty) />
+                        <label title="Sucks big time" rate-value='1'></label>
+                        @Html.HiddenFor(model => model.Id)
+                        @Html.HiddenFor(model => model.Rating, htmlAttributes: new { id = "rating" })
+                    </fieldset>
+                }
+        </div>
     </div>
     <div class="col-lg-7 col-md-5 col-sm-6 col-xs-12 animated animation-done  bounceInRight">
         <h3>@Model.Title</h3>
@@ -33,6 +68,7 @@
 
             <dd>
                 @Html.DisplayFor(model => model.Rating)
+                <i class="fa fa-star star" aria-hidden="true"></i>
             </dd>
 
             <dt>

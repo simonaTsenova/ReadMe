@@ -9,7 +9,7 @@ namespace ReadMe.Services.Contracts
 
         User GetUserById(string id);
 
-        User EditUser(string id, string firstName, string lastName,
+        User EditUser(string id, string email, string firstName, string lastName,
             string nationality, int age, string favouriteQuote);
     }
 }

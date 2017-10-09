@@ -228,6 +228,7 @@
     <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\RatingsController.cs" />
     <Compile Include="Controllers\ReviewsController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
@@ -274,6 +275,7 @@
     <Content Include="fonts\Birds of Paradise.ttf" />
     <Content Include="fonts\Actonia.ttf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Custom\book-rating.js" />
     <Content Include="Scripts\Custom\book-status.js" />
     <Content Include="Scripts\Custom\reviews.js" />
     <Content Include="Scripts\Custom\search.js" />
@@ -328,7 +330,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Reviews\" />
+    <Folder Include="Views\Ratings\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

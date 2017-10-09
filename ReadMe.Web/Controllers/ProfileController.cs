@@ -101,10 +101,10 @@ namespace ReadMe.Web.Controllers
         {
             if (!ModelState.IsValid)
             {
-                // TODO
+                return this.PartialView("_EditUserPartial", model);
             }
 
-            var updatedUser = this.userService.EditUser(model.Id, model.FirstName, model.LastName, model.Nationality, model.Age, model.FavouriteQuote);
+            var updatedUser = this.userService.EditUser(model.Id, model.Email, model.FirstName, model.LastName, model.Nationality, model.Age, model.FavouriteQuote);
             var userInfoModel = this.mapper.Map<UserDetailsViewModel>(updatedUser);
 
             return this.PartialView("_UserInfoPartial", userInfoModel);

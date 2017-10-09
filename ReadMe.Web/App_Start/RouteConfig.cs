@@ -8,23 +8,23 @@ namespace ReadMe.Web
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            //routes.LowercaseUrls = true;
+            routes.LowercaseUrls = true;
 
             routes.MapRoute(
                 name: "Status",
-                url: "Books/Status",
+                url: "books/status",
                 defaults: new { controller = "Books", action = "Status" }
             );
 
             routes.MapRoute(
                 name: "Books",
-                url: "Books/{id}",
+                url: "books/details/{id}",
                 defaults: new { controller = "Books", action = "Details" }
             );
 
             routes.MapRoute(
                 name: "ProfileDetails",
-                url: "Profile/Details/{username}",
+                url: "profile/details/{username}",
                 defaults: new { controller = "Profile", action = "Details" }
             );
 
