@@ -31,12 +31,16 @@ else
                 <b>Want To Read</b>
             </h3>
             <hr />
-            @*@foreach (var book in Model.WishlistBooks)
-            {
-                @Html.Partial("_BookShortPartial", book)
-            }*@
 
-            @Html.Partial("_BooksListPartial", Model.WishlistBooks)
+            @if (!Model.WishlistBooks.Any())
+            {
+                <div class="list-group">No books added with this status</div>
+            }
+            else
+            {
+                @Html.Partial("_BooksListPartial", Model.WishlistBooks)
+            }
+
         </div>
         <hr />
         <div class="profile-currently-reading">
@@ -44,12 +48,33 @@ else
                 <b>Currently Reading</b>
             </h3>
             <hr />
-            @*@foreach (var book in Model.CurrentlyReadingBooks)
-            {
-                @Html.Partial("_BookShortPartial", book)
-            }*@
 
-            @Html.Partial("_BooksListPartial", Model.CurrentlyReadingBooks)
+            @if (!Model.CurrentlyReadingBooks.Any())
+            {
+                <div class="list-group">No books added with this status</div>
+            }
+            else
+            {
+                @Html.Partial("_BooksListPartial", Model.CurrentlyReadingBooks)
+            }
+        </div>
+        <hr />
+
+        <div class="profile-read">
+            <h3>
+                <b>Read books</b>
+            </h3>
+            <hr />
+
+            @if (!Model.ReadBooks.Any())
+            {
+                <div class="list-group">No books added with this status</div>
+            }
+            else
+            {
+                @Html.Partial("_BooksListPartial", Model.ReadBooks)
+            }
+
         </div>
     </div>
 

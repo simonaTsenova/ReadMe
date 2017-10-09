@@ -1,16 +1,8 @@
 ﻿@model IEnumerable<ReadMe.Web.Models.Books.BookShortViewModel>
 
-@if (!Model.Any())
-{
-    <div class="list-group">No books added with this status</div>
-}
-else
-{
-    <div class="list-group">
-        @foreach (var book in @Model)
-        {
-            Html.RenderPartial("_BookShortPartial", book);
-        }
-    </div>
-}
-
+<div class="list-group">
+    @foreach (var book in @Model)
+    {
+        Html.RenderPartial("_BookShortPartial", book);
+    }
+</div>

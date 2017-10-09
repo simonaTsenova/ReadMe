@@ -76,6 +76,14 @@ namespace ReadMe.Web.Controllers
                 .ProjectTo<BookShortViewModel>()
                 .ToList();
 
+            var read = user
+                .FirstOrDefault().UserBooks
+                .Where(u => u.ReadStatus == ReadStatus.Read)
+                .Select(x => x.Book)
+                .AsQueryable()
+                .ProjectTo<BookShortViewModel>()
+                .ToList();
+
             var reviewsModel = this.reviewService
                 .GetByUserId(userModel.Id)
                 .ProjectTo<ReviewViewModel>()
@@ -86,6 +94,7 @@ namespace ReadMe.Web.Controllers
                 UserDetailsViewModel = userModel,
                 WishlistBooks = wishlist,
                 CurrentlyReadingBooks = currentlyReading,
+                ReadBooks = read,
                 ReviewsModels = reviewsModel
             };
 

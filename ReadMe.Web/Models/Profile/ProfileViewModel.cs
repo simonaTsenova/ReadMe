@@ -12,6 +12,8 @@ namespace ReadMe.Web.Models.Profile
 
         public ICollection<BookShortViewModel> CurrentlyReadingBooks { get; set; }
 
+        public ICollection<BookShortViewModel> ReadBooks { get; set; }
+
         public ICollection<ReviewViewModel> ReviewsModels { get; set; }
     }
 }
