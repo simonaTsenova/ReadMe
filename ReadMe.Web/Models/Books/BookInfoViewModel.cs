@@ -13,17 +13,12 @@ namespace ReadMe.Web.Models.Books
     {
         public Guid Id { get; set; }
 
-        [Required]
-        [Remote("CheckTitleExists", "Books")]
-        [StringLength(60, ErrorMessage = "Title must be between 4 and 60 characters long", MinimumLength = 4)]
         public string Title { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public DateTime Published { get; set; }
 
-        [Required]
-        [StringLength(13, ErrorMessage = "ISBN must be between 10 and 13 characters long", MinimumLength = 10)]
         public string ISBN { get; set; }
         
         public Author Author { get; set; }
