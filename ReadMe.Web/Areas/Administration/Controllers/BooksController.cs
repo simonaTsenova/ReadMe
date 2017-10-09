@@ -100,6 +100,50 @@ namespace ReadMe.Web.Areas.Administration.Controllers
             return this.RedirectToAction("Index", "Books");
         }
 
+        // GET: Administration/Books/Edit
+        [HttpGet]
+        public PartialViewResult Edit(Guid bookId)
+        {
+            var book = this.bookService.GetBookById(bookId);
+            if(book.Count() == 0)
+            {
+                // TODO
+                return this.PartialView("Error");
+            }
+
+            var genres = this.genreService.GetAll().ToList();
+            var model = book.ProjectTo<BookViewModel>().FirstOrDefault();
+            model.Genres = genres;
+
+            return this.PartialView("_EditBookPartial", model);
+        }
+
+        // POST: Administration/Books/Edit
+        [HttpPost]
+        public ActionResult Edit(BookViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return this.PartialView("_EditBookPartial", model);
+            }
+
+            var bookGenres = new List<Genre>();
+            foreach (var i in model.GenresIds)
+            {
+                var genre = this.genreService.GetById(i);
+                bookGenres.Add(genre);
+            }
+
+            var authorNames = model.Author.Split(' ');
+            var author = this.authorService.GetAuthorByName(authorNames[0], authorNames[1]);
+            var publisher = this.publisherService.GetPublisherByName(model.Publisher);
+
+            this.bookService.UpdateBook(model.Id, model.Title, model.Published, model.ISBN,
+                model.Summary, model.Language, bookGenres, author, publisher);
+
+            return this.RedirectToAction("Index", "Books");
+        }
+
         [HttpGet]
         public JsonResult CheckTitleExists(string title)
         {

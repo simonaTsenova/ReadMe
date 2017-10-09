@@ -167,5 +167,26 @@ namespace ReadMe.Services
             this.bookRepository.Add(book);
             this.unitOfWork.Commit();
         }
+
+        public void UpdateBook(Guid id, string title, DateTime published, 
+            string isbn, string summary, string language, ICollection<Genre> genres, Author author, Publisher publisher)
+        {
+            var book = this.GetBookById(id).FirstOrDefault();
+
+            if (book != null)
+            {
+                book.Title = title;
+                book.Published = published;
+                book.ISBN = isbn;
+                book.Summary = summary;
+                book.Language = language;
+                book.Genres = genres;
+                book.Author = author;
+                book.Publisher = publisher;
+
+                this.bookRepository.Update(book);
+                this.unitOfWork.Commit();
+            }
+        }
     }
 }

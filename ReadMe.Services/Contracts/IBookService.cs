@@ -18,5 +18,8 @@ namespace ReadMe.Services.Contracts
         IQueryable<Book> Search(string pattern, string searchType, string[] genres);
 
         void UpdateRating(Guid id, double rating);
+
+        void UpdateBook(Guid id, string title, DateTime published, string isbn,
+                string summary, string language, ICollection<Genre> genres, Author author, Publisher publisher);
     }
 }

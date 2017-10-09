@@ -75,13 +75,21 @@
                 }
                 else
                 {
-                    @Ajax.ActionLink("Delete |", "Delete", routeValues: new { controller = "Books", userId = item.Id, page = Model.PageNumber },
+                    @Ajax.ActionLink("Delete |", "Delete", routeValues: new { controller = "Books", bookId = item.Id, page = Model.PageNumber },
                     ajaxOptions: new AjaxOptions
                     {
                         HttpMethod = "GET",
                         UpdateTargetId = "admin-main"
                     });
                 }
+            </td>
+            <td>
+                @Ajax.ActionLink("Edit |", "Edit", routeValues: new { controller = "Books", bookId = item.Id, page = Model.PageNumber },
+                    ajaxOptions: new AjaxOptions
+                    {
+                        HttpMethod = "GET",
+                        UpdateTargetId = "admin-main"
+                    })
             </td>
         </tr>
     }

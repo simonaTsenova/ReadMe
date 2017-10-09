@@ -299,6 +299,7 @@
     <Content Include="Areas\Administration\Views\Genres\_EditGenrePartial.cshtml" />
     <Content Include="Areas\Administration\Views\Books\_BooksPartial.cshtml" />
     <Content Include="Areas\Administration\Views\Books\_AddBookPartial.cshtml" />
+    <Content Include="Areas\Administration\Views\Books\_EditBookPartial.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Custom\book-rating.js" />
     <Content Include="Scripts\Custom\book-status.js" />
