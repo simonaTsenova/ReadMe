@@ -63,5 +63,39 @@ namespace ReadMe.Services
 
             return user;
         }
+
+        public IQueryable<User> GetAll()
+        {
+            return this.userRepository.All;
+        }
+
+        public void DeleteUser(string userId)
+        {
+            var user = this.userRepository.GetById(userId);
+            var dateDeleted = DateTime.Now;
+
+            if(user != null)
+            {
+                user.IsDeleted = true;
+                user.DeletedOn = DateTime.Now;
+
+                this.userRepository.Update(user);
+                this.unitOfWork.Commit();
+            }
+        }
+
+        public void RestoreUser(string userId)
+        {
+            var user = this.userRepository.GetById(userId);
+
+            if (user != null)
+            {
+                user.IsDeleted = false;
+                user.DeletedOn = null;
+
+                this.userRepository.Update(user);
+                this.unitOfWork.Commit();
+            }
+        }
     }
 }

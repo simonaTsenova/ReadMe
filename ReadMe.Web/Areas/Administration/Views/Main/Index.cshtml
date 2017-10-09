@@ -10,22 +10,58 @@
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li>
-                <a href="/administration/genres">Genres</a>
+               @Ajax.ActionLink("Genres",
+                                "Index",
+                                "Genres",
+                                new AjaxOptions
+                                {
+                                    HttpMethod = "GET",
+                                    InsertionMode = InsertionMode.Replace,
+                                    UpdateTargetId = "admin-main"
+                                });
+                @*<a href="/administration/genres">Genres</a>*@
             </li>
             <li>
-                <a href="/administration/books">Books</a>
+                @Ajax.ActionLink("Books",
+                                "Index",
+                                "Books",
+                                new AjaxOptions
+                                {
+                                    HttpMethod = "GET",
+                                    InsertionMode = InsertionMode.Replace,
+                                    UpdateTargetId = "admin-main"
+                                });
+                @*<a href="/administration/books">Books</a>*@
             </li>
             <li>
-                <a href="/administration/users">Users</a>
+                @Ajax.ActionLink("Users",
+                                "Index",
+                                "Users",
+                                new AjaxOptions
+                                {
+                                    HttpMethod = "GET",
+                                    InsertionMode = InsertionMode.Replace,
+                                    UpdateTargetId = "admin-main"
+                                });
+                @*<a href="/administration/users">Users</a>*@
             </li>
             <li>
-                <a href="/administration/reviews">Reviews</a>
+                @Ajax.ActionLink("Reviews",
+                                "Index",
+                                "Reviews",
+                                new AjaxOptions
+                                {
+                                    HttpMethod = "GET",
+                                    InsertionMode = InsertionMode.Replace,
+                                    UpdateTargetId = "admin-main"
+                                });
+                @*<a href="/administration/reviews">Reviews</a>*@
             </li>
             <li>
-                <a href="/administration/authors">Authors</a>
+                @*<a href="/administration/authors">Authors</a>*@
             </li>
             <li>
-                <a href="/administration/publishers">Publishers</a>
+                @*<a href="/administration/publishers">Publishers</a>*@
             </li>
         </ul>
     </div>
@@ -36,6 +72,7 @@
             <h1>Admin panel</h1>
             <p>Choose what you want to administer</p>
             <a href="#menu-toggle" class="btn btn-primary" id="menu-toggle">Toggle Menu</a>
+            <div id="admin-main"></div>
         </div>
     </div>
     <!-- /#page-content-wrapper -->

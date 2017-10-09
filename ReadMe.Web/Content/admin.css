@@ -10,9 +10,9 @@
     transition: all 0.5s ease;
 }
 
-    #wrapper.toggled {
-        padding-left: 250px;
-    }
+#wrapper.toggled {
+    padding-left: 80px;
+}
 
 #sidebar-wrapper {
     z-index: 1000;
@@ -30,7 +30,7 @@
 }
 
 #wrapper.toggled #sidebar-wrapper {
-    width: 250px;
+    width: 150px;
 }
 
 #page-content-wrapper {
@@ -97,16 +97,16 @@
         padding-left: 0;
     }
 
-        #wrapper.toggled {
-            padding-left: 250px;
-        }
+    #wrapper.toggled {
+        padding-left: 80px;
+    }
 
     #sidebar-wrapper {
         width: 0;
     }
 
     #wrapper.toggled #sidebar-wrapper {
-        width: 250px;
+        width: 150px;
     }
 
     #page-content-wrapper {
@@ -118,4 +118,8 @@
         position: relative;
         margin-right: 0;
     }
+}
+
+footer {
+    display: none;
 }

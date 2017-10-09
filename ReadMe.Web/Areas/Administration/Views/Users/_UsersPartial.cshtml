@@ -1,0 +1,98 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<ReadMe.Web.Areas.Administration.Models.UserViewModel>
+
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().PhotoUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().IsAdmin)
+        </th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                <img src="@item.PhotoUrl" width="20px" height="20px" alt="No image"/>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsAdmin)
+            </td>
+            <td>
+                @Html.ActionLink("Details |", "Details", new { controller = "Profile", area = "", username = item.UserName })
+            </td>
+            <td>
+                @if (item.IsDeleted)
+                {
+                    @Ajax.ActionLink("Restore |", "Restore", routeValues: new { controller = "Users", userId = item.Id, page = Model.PageNumber },
+                    ajaxOptions: new AjaxOptions
+                    {
+                        HttpMethod = "GET",
+                        UpdateTargetId = "admin-main"
+                    })
+
+                }
+                else
+                {
+                    @Ajax.ActionLink("Delete |", "Delete", routeValues: new { controller = "Users", userId = item.Id, page = Model.PageNumber },
+                    ajaxOptions: new AjaxOptions {
+                        HttpMethod =  "GET",
+                        UpdateTargetId = "admin-main"
+                    }); 
+                }
+            </td>
+            <td>
+                @if (item.IsAdmin)
+                {
+                    @Ajax.ActionLink("Remove Admin", "RemoveAdmin", routeValues: new { userId = item.Id, page = Model.PageNumber },
+                    ajaxOptions: new AjaxOptions
+                    {
+                        HttpMethod = "GET",
+                        UpdateTargetId = "admin-main"
+                    });
+                }
+                else
+                {
+                    @Ajax.ActionLink("Make Admin", "AddAdmin", routeValues: new { userId = item.Id, page = Model.PageNumber },
+                    ajaxOptions: new AjaxOptions
+                    {
+                        HttpMethod = "GET",
+                        UpdateTargetId = "admin-main"
+                    });
+                }
+            </td>
+        </tr>
+    }
+
+</table>
+<div class="pages total">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, pageNum => Url.Action("Index", "Users",
+        new { page = pageNum }))
+</div>
