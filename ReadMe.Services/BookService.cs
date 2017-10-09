@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ReadMe.Models;
 using ReadMe.Data.Contracts;
 using System.Data.Entity;
@@ -183,6 +181,35 @@ namespace ReadMe.Services
                 book.Genres = genres;
                 book.Author = author;
                 book.Publisher = publisher;
+
+                this.bookRepository.Update(book);
+                this.unitOfWork.Commit();
+            }
+        }
+
+        public void DeleteBook(Guid bookId)
+        {
+            var book = this.bookRepository.GetById(bookId);
+            var dateDeleted = DateTime.Now;
+
+            if (book != null)
+            {
+                book.IsDeleted = true;
+                book.DeletedOn = DateTime.Now;
+
+                this.bookRepository.Update(book);
+                this.unitOfWork.Commit();
+            }
+        }
+
+        public void RestoreBook(Guid bookId)
+        {
+            var book = this.bookRepository.GetById(bookId);
+
+            if (book != null)
+            {
+                book.IsDeleted = false;
+                book.DeletedOn = null;
 
                 this.bookRepository.Update(book);
                 this.unitOfWork.Commit();

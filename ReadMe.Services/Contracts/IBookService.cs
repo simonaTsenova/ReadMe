@@ -21,5 +21,9 @@ namespace ReadMe.Services.Contracts
 
         void UpdateBook(Guid id, string title, DateTime published, string isbn,
                 string summary, string language, ICollection<Genre> genres, Author author, Publisher publisher);
+
+        void DeleteBook(Guid bookId);
+
+        void RestoreBook(Guid bookId);
     }
 }

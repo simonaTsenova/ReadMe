@@ -65,10 +65,10 @@
             <td>
                 @if (item.IsDeleted)
                 {
-                    @Ajax.ActionLink("Restore |", "Restore", routeValues: new { controller = "Books", userId = item.Id, page = Model.PageNumber },
+                    @Ajax.ActionLink("Restore |", "Restore", routeValues: new { controller = "Books", bookId = item.Id, page = Model.PageNumber },
                     ajaxOptions: new AjaxOptions
                     {
-                        HttpMethod = "GET",
+                        HttpMethod = "POST",
                         UpdateTargetId = "admin-main"
                     })
 
@@ -78,7 +78,7 @@
                     @Ajax.ActionLink("Delete |", "Delete", routeValues: new { controller = "Books", bookId = item.Id, page = Model.PageNumber },
                     ajaxOptions: new AjaxOptions
                     {
-                        HttpMethod = "GET",
+                        HttpMethod = "POST",
                         UpdateTargetId = "admin-main"
                     });
                 }

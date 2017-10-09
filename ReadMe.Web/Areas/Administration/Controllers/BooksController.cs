@@ -144,6 +144,20 @@ namespace ReadMe.Web.Areas.Administration.Controllers
             return this.RedirectToAction("Index", "Books");
         }
 
+        public ActionResult Delete(Guid bookId, int page)
+        {
+            this.bookService.DeleteBook(bookId);
+
+            return this.RedirectToAction("Index", "Books", new { page = page });
+        }
+
+        public ActionResult Restore(Guid bookId, int page)
+        {
+            this.bookService.RestoreBook(bookId);
+
+            return this.RedirectToAction("Index", "Books", new { page = page });
+        }
+
         [HttpGet]
         public JsonResult CheckTitleExists(string title)
         {
