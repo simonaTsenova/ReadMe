@@ -100,5 +100,7 @@
 
     @Html.PagedListPager(Model, pageNum => Url.Action("Index", "Books",
         new { page = pageNum }))
+
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "admin-main" }))
 </div>
 
