@@ -1,33 +1,21 @@
-﻿using ReadMe.Models;
+﻿using AutoMapper;
+using ReadMe.Models;
 using ReadMe.Web.Infrastructure;
-using System;
-using AutoMapper;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
 namespace ReadMe.Web.Areas.Administration.Models
 {
-    public class AuthorViewModel : IMapFrom<Author>, ICustomMapping
+    public class AddAuthorViewModel : AuthorViewModel, IMapFrom<Author>, ICustomMapping
     {
-        public Guid Id { get; set; }
+        [Required]
+        [RegularExpression("[a-zA-Z]{3,15} [a-zA-Z]{3,20}", ErrorMessage = "Author name must be in format - [firstname] [lastname]")]
+        [Remote("CheckAuthorExists", "Authors")]
+        public override string FullName { get => base.FullName; set => base.FullName = value; }
 
-        public virtual string FullName { get; set; }
-
-        public string Nationality { get; set; }
-
-        public int Age { get; set; }
-
-        public string Biography { get; set; }
-
-        public string Website { get; set; }
-
-        public string PhotoUrl { get; set; }
-
-        public bool IsDeleted { get; set; }
-
-        public void CreateMappings(IMapperConfigurationExpression configuration)
+        public new void CreateMappings(IMapperConfigurationExpression configuration)
         {
-            configuration.CreateMap<Author, AuthorViewModel>()
+            configuration.CreateMap<Author, AddAuthorViewModel>()
                 .ForMember(authorViewModel => authorViewModel.Id,
                     cfg => cfg.MapFrom(author => author.Id))
                 .ForMember(authorViewModel => authorViewModel.Nationality,

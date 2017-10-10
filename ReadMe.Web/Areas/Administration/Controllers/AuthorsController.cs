@@ -53,7 +53,7 @@ namespace ReadMe.Web.Areas.Administration.Controllers
 
         // POST: Administration/Authors/Add
         [HttpPost]
-        public ActionResult Add(AuthorViewModel model)
+        public ActionResult Add(AddAuthorViewModel model)
         {
             if (!ModelState.IsValid)
             {

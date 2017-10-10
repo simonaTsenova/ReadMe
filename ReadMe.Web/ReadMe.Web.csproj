@@ -236,6 +236,7 @@
     <Compile Include="Areas\Administration\Controllers\GenresController.cs" />
     <Compile Include="Areas\Administration\Controllers\MainController.cs" />
     <Compile Include="Areas\Administration\Controllers\UsersController.cs" />
+    <Compile Include="Areas\Administration\Models\AddAuthorViewModel.cs" />
     <Compile Include="Areas\Administration\Models\AuthorViewModel.cs" />
     <Compile Include="Areas\Administration\Models\BookViewModel.cs" />
     <Compile Include="Areas\Administration\Models\GenreViewModel.cs" />
