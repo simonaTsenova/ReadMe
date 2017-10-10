@@ -3,9 +3,7 @@ using PagedList;
 using ReadMe.Services.Contracts;
 using ReadMe.Web.Areas.Administration.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ReadMe.Web.Areas.Administration.Controllers
