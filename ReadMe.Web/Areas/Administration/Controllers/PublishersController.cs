@@ -13,15 +13,22 @@ namespace ReadMe.Web.Areas.Administration.Controllers
     {
         private const int count = 15;
         private readonly IPublisherService publisherService;
+        private readonly IBookService bookService;
 
-        public PublishersController(IPublisherService publisherService)
+        public PublishersController(IPublisherService publisherService, IBookService bookService)
         {
             if (publisherService == null)
             {
                 throw new ArgumentNullException("Publisher service cannot be null");
             }
 
+            if (bookService == null)
+            {
+                throw new ArgumentNullException("Book service cannot be null");
+            }
+
             this.publisherService = publisherService;
+            this.bookService = bookService;
         }
 
         // GET: Administration/Publishers
@@ -93,12 +100,11 @@ namespace ReadMe.Web.Areas.Administration.Controllers
         [HttpPost]
         public ActionResult Delete(Guid publisherId, int page)
         {
-            //var authorBooks = this.bookService.GetBooksByAuthor(authorId);
-            //foreach (var book in authorBooks)
-            //{
-            //    // TODO
-            //    //this.bookService.DeleteBook(book.Id);
-            //}
+            var publisherBooks = this.bookService.GetBooksByPublisher(publisherId).ToList();
+            foreach (var book in publisherBooks)
+            {
+                this.bookService.DeleteBook(book.Id);
+            }
 
             this.publisherService.DeletePublisher(publisherId);
 
@@ -108,11 +114,11 @@ namespace ReadMe.Web.Areas.Administration.Controllers
         [HttpPost]
         public ActionResult Restore(Guid publisherId, int page)
         {
-            //var authorBooks = this.bookService.GetBooksByAuthor(authorId);
-            //foreach (var book in authorBooks)
-            //{
-            //    //this.bookService.DeleteBook(book.Id);
-            //}
+            var publisherBooks = this.bookService.GetAllBooksByPublisher(publisherId).ToList();
+            foreach (var book in publisherBooks)
+            {
+                this.bookService.RestoreBook(book.Id);
+            }
 
             this.publisherService.RestorePublisher(publisherId);
 

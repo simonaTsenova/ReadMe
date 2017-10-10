@@ -103,10 +103,9 @@ namespace ReadMe.Web.Areas.Administration.Controllers
         [HttpPost]
         public ActionResult Delete(Guid authorId, int page)
         {
-            var authorBooks = this.bookService.GetBooksByAuthor(authorId);
+            var authorBooks = this.bookService.GetBooksByAuthor(authorId).ToList();
             foreach (var book in authorBooks)
             {
-                // TODO
                 this.bookService.DeleteBook(book.Id);
             }
 
@@ -118,10 +117,10 @@ namespace ReadMe.Web.Areas.Administration.Controllers
         [HttpPost]
         public ActionResult Restore(Guid authorId, int page)
         {
-            var authorBooks = this.bookService.GetBooksByAuthor(authorId);
+            var authorBooks = this.bookService.GetAllBooksByAuthor(authorId).ToList();
             foreach (var book in authorBooks)
             {
-                //this.bookService.DeleteBook(book.Id);
+                this.bookService.RestoreBook(book.Id);
             }
 
             this.authorService.RestoreAuthor(authorId);

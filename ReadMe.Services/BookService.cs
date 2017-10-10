@@ -225,5 +225,29 @@ namespace ReadMe.Services
 
             return books;
         }
+
+        public IQueryable<Book> GetAllBooksByAuthor(Guid authorId)
+        {
+            var books = this.bookRepository.AllAndDeleted
+                .Where(b => b.Author.Id == authorId);
+
+            return books;
+        }
+
+        public IQueryable<Book> GetBooksByPublisher(Guid publisherId)
+        {
+            var books = this.bookRepository.All
+                .Where(b => b.Publisher.Id == publisherId);
+
+            return books;
+        }
+
+        public IQueryable<Book> GetAllBooksByPublisher(Guid publisherId)
+        {
+            var books = this.bookRepository.AllAndDeleted
+                .Where(b => b.Publisher.Id == publisherId);
+
+            return books;
+        }
     }
 }
