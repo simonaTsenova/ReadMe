@@ -38,6 +38,43 @@ namespace ReadMe.Services
             this.unitOfWork = unitOfWork;
         }
 
+        public void AddPublisher(string name, string owner, string phone, string city, string address, string country, string website)
+        {
+            var publisher = this.publisherFactory.CreatePublisher(name, owner, phone, city,
+                address, country, website);
+
+            this.publisherRepository.Add(publisher);
+            this.unitOfWork.Commit();
+        }
+
+        public void DeletePublisher(Guid id)
+        {
+            var publisher = this.publisherRepository.GetById(id);
+            var dateDeleted = DateTime.Now;
+
+            if(publisher != null)
+            {
+                publisher.IsDeleted = true;
+                publisher.DeletedOn = dateDeleted;
+
+                this.publisherRepository.Update(publisher);
+                this.unitOfWork.Commit();
+            }
+        }
+
+        public IQueryable<Publisher> GetAllAndDeleted()
+        {
+            return this.publisherRepository.AllAndDeleted;
+        }
+
+        public IQueryable<Publisher> GetPublisherById(Guid id)
+        {
+            var publisher = this.publisherRepository.All
+                .Where(x => x.Id == id);
+
+            return publisher;
+        }
+
         public Publisher GetPublisherByName(string name)
         {
             var publisher = this.publisherRepository
@@ -46,6 +83,41 @@ namespace ReadMe.Services
                 .FirstOrDefault();
 
             return publisher;
+        }
+
+        public void RestorePublisher(Guid id)
+        {
+            var publisher = this.publisherRepository.GetById(id);
+
+            if(publisher != null)
+            {
+                publisher.IsDeleted = false;
+                publisher.DeletedOn = null;
+
+                this.publisherRepository.Update(publisher);
+                this.unitOfWork.Commit();
+            }
+        }
+
+        public void UpdatePublisher(Guid id, string name, string owner, string phone, string city,
+            string address, string country, string website, string logoUrl)
+        {
+            var publisher = this.publisherRepository.GetById(id);
+
+            if(publisher != null)
+            {
+                publisher.Name = name;
+                publisher.Owner = owner;
+                publisher.PhoneNumber = phone;
+                publisher.City = city;
+                publisher.Address = address;
+                publisher.Country = country;
+                publisher.Website = website;
+                publisher.LogoUrl = logoUrl;
+
+                this.publisherRepository.Update(publisher);
+                this.unitOfWork.Commit();
+            }
         }
     }
 }

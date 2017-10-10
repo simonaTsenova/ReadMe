@@ -12,9 +12,8 @@ namespace ReadMe.Web.Areas.Administration.Models
     {
         public Guid Id { get; set; }
 
-        //[Required]
-        //[Remote("CheckTitleExists", "Books")]
-        //[StringLength(60, ErrorMessage = "Title must be between 4 and 60 characters long", MinimumLength = 4)]
+        [Required]
+        [StringLength(60, ErrorMessage = "Title must be between 4 and 60 characters long", MinimumLength = 4)]
         public virtual string Title { get; set; }
 
         [DataType(DataType.Date)]

@@ -128,3 +128,5 @@ D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web.Tests\bin\Debug\AutoMapper.xml
 D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web.Tests\bin\Debug\ReadMe.Services.pdb
 D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web.Tests\bin\Debug\ReadMe.Services.dll.config
 D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web.Tests\bin\Debug\Ninject.Extensions.Conventions.xml
+D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web.Tests\bin\Debug\PagedList.dll
+D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web.Tests\bin\Debug\PagedList.xml

@@ -11,6 +11,8 @@ namespace ReadMe.Web.Areas.Administration.Models
     {
         public Guid Id { get; set; }
 
+        [Required]
+        [RegularExpression("[a-zA-Z]{3,15} [a-zA-Z]{3,20}", ErrorMessage = "Author name must be in format - [firstname] [lastname]")]
         public virtual string FullName { get; set; }
 
         public string Nationality { get; set; }

@@ -107,7 +107,7 @@ namespace ReadMe.Web.Areas.Administration.Controllers
             foreach (var book in authorBooks)
             {
                 // TODO
-                //this.bookService.DeleteBook(book.Id);
+                this.bookService.DeleteBook(book.Id);
             }
 
             this.authorService.DeleteAuthor(authorId);

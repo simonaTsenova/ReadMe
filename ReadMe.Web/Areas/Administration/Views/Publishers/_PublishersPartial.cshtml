@@ -1,0 +1,118 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<ReadMe.Web.Areas.Administration.Models.PublisherViewModel>
+
+<h2>Publishers</h2>
+@Ajax.ActionLink("+ Add", "Add", null, new AjaxOptions
+{
+    HttpMethod = "GET",
+    UpdateTargetId = "admin-main"
+}, htmlAttributes: new { @class = "btn btn-success" })
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().LogoUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Owner)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().PhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Country)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Website)
+        </th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                <img src="@item.LogoUrl" width="20px" height="20px" alt="No image" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Owner)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Website)
+            </td>
+            <td>
+                @Html.ActionLink("Details |", "Details", new { controller = "Publishers", area = "", id = item.Id })
+            </td>
+            <td>
+                @if (item.IsDeleted)
+                {
+                    @Ajax.ActionLink("Restore |", "Restore", routeValues: new { controller = "Publishers", publisherId = item.Id, page = Model.PageNumber },
+                    ajaxOptions: new AjaxOptions
+                    {
+                        HttpMethod = "POST",
+                        UpdateTargetId = "admin-main"
+                    })
+
+                }
+                else
+                {
+                    @Ajax.ActionLink("Delete |", "Delete", routeValues: new { controller = "Publishers", publisherId = item.Id, page = Model.PageNumber },
+                    ajaxOptions: new AjaxOptions
+                    {
+                        HttpMethod = "POST",
+                        UpdateTargetId = "admin-main"
+                    });
+                }
+            </td>
+            <td>
+                @Ajax.ActionLink("Edit |", "Edit", routeValues: new { controller = "Publishers", publisherId = item.Id, page = Model.PageNumber },
+                    ajaxOptions: new AjaxOptions
+                    {
+                        HttpMethod = "GET",
+                        UpdateTargetId = "admin-main"
+                    })
+            </td>
+        </tr>
+    }
+
+</table>
+<div class="pages total">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions() { HttpMethod = "GET", UpdateTargetId = "admin-main" }))
+</div>
+
+
+
