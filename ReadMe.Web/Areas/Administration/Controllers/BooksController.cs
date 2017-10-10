@@ -66,7 +66,7 @@ namespace ReadMe.Web.Areas.Administration.Controllers
         {
             var genres = this.genreService.GetAll().ToList();
 
-            var model = new BookViewModel()
+            var model = new AddBookViewModel()
             {
                 Genres = genres
             };
@@ -76,7 +76,7 @@ namespace ReadMe.Web.Areas.Administration.Controllers
 
         // POST: Administration/Books/Add
         [HttpPost]
-        public ActionResult Add(BookViewModel model)
+        public ActionResult Add(AddBookViewModel model)
         {
             if(!ModelState.IsValid)
             {
@@ -139,7 +139,7 @@ namespace ReadMe.Web.Areas.Administration.Controllers
             var publisher = this.publisherService.GetPublisherByName(model.Publisher);
 
             this.bookService.UpdateBook(model.Id, model.Title, model.Published, model.ISBN,
-                model.Summary, model.Language, bookGenres, author, publisher);
+                model.Summary, model.Language, bookGenres, author, publisher, model.PhotoUrl);
 
             return this.RedirectToAction("Index", "Books");
         }

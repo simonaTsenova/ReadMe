@@ -1,55 +1,21 @@
-﻿using ReadMe.Models;
+﻿using AutoMapper;
+using ReadMe.Models;
 using ReadMe.Web.Infrastructure;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
-using AutoMapper;
 
 namespace ReadMe.Web.Areas.Administration.Models
 {
-    public class BookViewModel : IMapFrom<Book>, ICustomMapping
+    public class AddBookViewModel : BookViewModel, IMapFrom<Book>, ICustomMapping
     {
-        public Guid Id { get; set; }
-
-        //[Required]
-        //[Remote("CheckTitleExists", "Books")]
-        //[StringLength(60, ErrorMessage = "Title must be between 4 and 60 characters long", MinimumLength = 4)]
-        public virtual string Title { get; set; }
-
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
-        public DateTime Published { get; set; }
-
         [Required]
-        [StringLength(13, ErrorMessage = "ISBN must be between 10 and 13 characters long", MinimumLength = 10)]
-        public string ISBN { get; set; }
+        [Remote("CheckTitleExists", "Books")]
+        [StringLength(60, ErrorMessage = "Title must be between 4 and 60 characters long", MinimumLength = 4)]
+        public override string Title { get => base.Title; set => base.Title = value; }
 
-        [Required]
-        [RegularExpression("[a-zA-Z]{3,15} [a-zA-Z]{3,15}", ErrorMessage = "Author name must be in format - [firstname] [lastname]")]
-        [Remote("CheckAuthorExists", "Books")]
-        public string Author { get; set; }
-
-        public string Summary { get; set; }
-
-        public string PhotoUrl { get; set; }
-
-        public string Language { get; set; }
-
-        [Required]
-        [StringLength(40, ErrorMessage = "Publisher name must be between 2 and 40 characters long", MinimumLength = 2)]
-        [Remote("CheckPublisherExists", "Books")]
-        public string Publisher { get; set; }
-
-        public Guid[] GenresIds { get; set; }
-
-        public ICollection<Genre> Genres { get; set; }
-
-        public bool IsDeleted { get; set; }
-
-        public void CreateMappings(IMapperConfigurationExpression configuration)
+        public new void CreateMappings(IMapperConfigurationExpression configuration)
         {
-            configuration.CreateMap<Book, BookViewModel>()
+            configuration.CreateMap<Book, AddBookViewModel>()
                 .ForMember(bookViewModel => bookViewModel.Id,
                     cfg => cfg.MapFrom(book => book.Id))
                 .ForMember(bookViewModel => bookViewModel.Title,
