@@ -3,10 +3,12 @@
 <div class="row col-md-12">
     <div class="col-lg-4 col-md-7 col-sm-6 col-xs-12 animated  animation-done bounceInLeft">
         <img alt="Book Cover" src="@Model.PhotoUrl" id="details-book-cover" class="img-thumbnail img-responsive">
-        <div id="book-rating">
-            <fieldset>
-                Rate this book:
-            </fieldset>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div id="book-rating">
+                <fieldset>
+                    Rate this book:
+                </fieldset>
                 @using (Html.BeginForm("Index", "Ratings", FormMethod.Post, new { id = "rating-form" }))
                 {
                     <fieldset class="rating">
@@ -38,11 +40,17 @@
                         @Html.HiddenFor(model => model.Rating, htmlAttributes: new { id = "rating" })
                     </fieldset>
                 }
-        </div>
+            </div>
+        }
     </div>
     <div class="col-lg-7 col-md-5 col-sm-6 col-xs-12 animated animation-done  bounceInRight">
         <h3>@Model.Title</h3>
-        <h4>by <b>@Model.Author.FirstName @Model.Author.LastName</b></h4>
+        <h4>
+            by 
+            <b> 
+                @Html.ActionLink(@Model.Author.FirstName + " " + @Model.Author.LastName, "Details", "Authors", new { id = Model.Author.Id }, null) 
+            </b>
+        </h4>
         <hr />
         <div>@Model.Summary</div>
         <dl class="dl-horizontal">

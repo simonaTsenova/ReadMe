@@ -24,6 +24,13 @@ namespace ReadMe.Web
                 namespaces: new[] { "ReadMe.Web.Controllers" }
             );
 
+            //routes.MapRoute(
+            //    name: "Authors",
+            //    url: "authors/details/{id}",
+            //    defaults: new { area = "", controller = "Authors", action = "Details" },
+            //    namespaces: new[] { "ReadMe.Web.Controllers" }
+            //);
+
             routes.MapRoute(
                 name: "ProfileDetails",
                 url: "profile/details/{username}",

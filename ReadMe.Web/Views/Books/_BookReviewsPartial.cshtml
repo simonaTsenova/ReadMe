@@ -17,7 +17,7 @@
                         <div class="mbr-author-name">
                             by
                             <img id="review-user-img" class="img-circle" src="@review.User.PhotoUrl" width="2%" />
-                            - @review.User.UserName
+                            - @Html.ActionLink(@review.User.UserName, "Details", "Profile", new { id = review.User.UserName }, null)
                         </div>
                     </div>
                 </div>

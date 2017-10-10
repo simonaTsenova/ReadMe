@@ -32,7 +32,7 @@
                         <div class="mbr-author-name">
                             for
                             <img id="review-user-img" class="img-circle" src="@review.Book.PhotoUrl" width="2%;" />
-                            @review.Book.Title
+                            @Html.ActionLink(review.Book.Title, "Details", "Books", new { id = review.BookId }, null)
                         </div>
                     </div>
                 </div>

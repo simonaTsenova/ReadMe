@@ -246,6 +246,7 @@
     <Compile Include="Areas\Administration\Models\PublisherViewModel.cs" />
     <Compile Include="Areas\Administration\Models\UserViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AuthorsController.cs" />
     <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
@@ -261,6 +262,7 @@
     <Compile Include="Infrastructure\IMapFrom.cs" />
     <Compile Include="Infrastructure\QueryableExtensions.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Authors\AuthorViewModel.cs" />
     <Compile Include="Models\Books\BookDetailsViewModel.cs" />
     <Compile Include="Models\Books\BookInfoViewModel.cs" />
     <Compile Include="Models\Books\BookShortViewModel.cs" />
@@ -366,6 +368,7 @@
     <Content Include="Views\Profile\_UserReviewsPartial.cshtml" />
     <Content Include="Views\Books\_FormReviewPartial.cshtml" />
     <Content Include="Views\Shared\_ReviewPartial.cshtml" />
+    <Content Include="Views\Authors\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,5 +1,14 @@
 ﻿@using Microsoft.AspNet.Identity;
-@model  ReadMe.Web.Models.Profile.UserDetailsViewModel
+@model  ReadMe.Web.Models.Authors.AuthorViewModel
+
+@{
+    ViewBag.Title = "Author";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="title">Author details</h2>
+
+<hr />
 
 <div class="row">
     <div class="panel panel-default">
@@ -11,42 +20,16 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-10">
-                            <h2>@Model.UserName</h2>
-                        </div>
-                        <div class="col-md-2">
-                            @if (@Model.Id == User.Identity.GetUserId())
-                            {
-                                <h3>
-                                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#edit-form-modal">
-                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                        Edit
-                                    </button>
-                                </h3>
-                            }
-                            else
-                            {
-                                <h3>
-                                    @Html.ActionLink("Follow", "Edit", "Profile", routeValues: null, htmlAttributes: new { @class = "btn btn-warning btn-lg disabled" })
-                                </h3>
-                            }
-
+                            <h2>@Model.FullName</h2>
                         </div>
                     </div>
                     <p>
                         <i class="fa fa-envelope one" style="width:50px;"></i>
-                        @Model.Email
+                        <a href="@Model.Website">@Model.Website</a>
                     </p>
                 </div>
                 <hr>
                 <dl class="container details dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.FullName)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.FullName)
-                    </dd>
-
                     <dt>
                         @Html.DisplayNameFor(model => model.Nationality)
                     </dt>
@@ -79,13 +62,13 @@
                     </dd>
 
                     <dt>
-                        @Html.DisplayNameFor(model => model.FavouriteQuote)
+                        @Html.DisplayNameFor(model => model.Biography)
                     </dt>
 
                     <dd>
-                        @if (Model.FavouriteQuote != null)
+                        @if (Model.Biography != null)
                         {
-                            @Html.DisplayFor(model => model.FavouriteQuote)
+                            @Html.DisplayFor(model => model.Biography)
                         }
                         else
                         {
@@ -97,4 +80,6 @@
         </div>
     </div>
 </div>
+
+
 
