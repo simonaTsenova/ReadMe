@@ -11,7 +11,7 @@ namespace ReadMe.Web.Areas.Administration.Controllers
     [Authorize(Roles = "Admin")]
     public class GenresController : Controller
     {
-        private const int count = 15;
+        private const int count = 6;
         private readonly IGenreService genreService;
 
         public GenresController(IGenreService genreService)

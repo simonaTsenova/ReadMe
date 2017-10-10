@@ -7,7 +7,6 @@ namespace ReadMe.Models
     {
         public Author()
         {
-
         }
 
         public Author(string firstName, string lastName, string nationality, int age, string biography, string website)

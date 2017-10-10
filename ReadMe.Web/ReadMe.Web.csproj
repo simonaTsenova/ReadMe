@@ -231,10 +231,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
+    <Compile Include="Areas\Administration\Controllers\AuthorsController.cs" />
     <Compile Include="Areas\Administration\Controllers\BooksController.cs" />
     <Compile Include="Areas\Administration\Controllers\GenresController.cs" />
     <Compile Include="Areas\Administration\Controllers\MainController.cs" />
     <Compile Include="Areas\Administration\Controllers\UsersController.cs" />
+    <Compile Include="Areas\Administration\Models\AuthorViewModel.cs" />
     <Compile Include="Areas\Administration\Models\BookViewModel.cs" />
     <Compile Include="Areas\Administration\Models\GenreViewModel.cs" />
     <Compile Include="Areas\Administration\Models\UserViewModel.cs" />
@@ -300,6 +302,9 @@
     <Content Include="Areas\Administration\Views\Books\_BooksPartial.cshtml" />
     <Content Include="Areas\Administration\Views\Books\_AddBookPartial.cshtml" />
     <Content Include="Areas\Administration\Views\Books\_EditBookPartial.cshtml" />
+    <Content Include="Areas\Administration\Views\Authors\_AuthorsPartial.cshtml" />
+    <Content Include="Areas\Administration\Views\Authors\_AddAuthorPartial.cshtml" />
+    <Content Include="Areas\Administration\Views\Authors\_EditAuthorPartial.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Custom\book-rating.js" />
     <Content Include="Scripts\Custom\book-status.js" />

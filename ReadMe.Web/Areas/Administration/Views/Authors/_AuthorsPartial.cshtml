@@ -1,0 +1,106 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<ReadMe.Web.Areas.Administration.Models.AuthorViewModel>
+
+<h2>Books</h2>
+@Ajax.ActionLink("+ Add", "Add", null, new AjaxOptions
+{
+    HttpMethod = "GET",
+    UpdateTargetId = "admin-main"
+}, htmlAttributes: new { @class = "btn btn-success" })
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().PhotoUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Nationality)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Biography)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Website)
+        </th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                <img src="@item.PhotoUrl" width="20px" height="20px" alt="No image" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nationality)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Biography)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Website)
+            </td>
+            <td>
+                @Html.ActionLink("Details |", "Details", new { controller = "Authors", area = "", id = item.Id })
+            </td>
+            <td>
+                @if (item.IsDeleted)
+                {
+                    @Ajax.ActionLink("Restore |", "Restore", routeValues: new { controller = "Authors", authorId = item.Id, page = Model.PageNumber },
+                    ajaxOptions: new AjaxOptions
+                    {
+                        HttpMethod = "POST",
+                        UpdateTargetId = "admin-main"
+                    })
+
+                }
+                else
+                {
+                    @Ajax.ActionLink("Delete |", "Delete", routeValues: new { controller = "Authors", authorId = item.Id, page = Model.PageNumber },
+                    ajaxOptions: new AjaxOptions
+                    {
+                        HttpMethod = "POST",
+                        UpdateTargetId = "admin-main"
+                    });
+                }
+            </td>
+            <td>
+                @Ajax.ActionLink("Edit |", "Edit", routeValues: new { controller = "Authors", authorId = item.Id, page = Model.PageNumber },
+                    ajaxOptions: new AjaxOptions
+                    {
+                        HttpMethod = "GET",
+                        UpdateTargetId = "admin-main"
+                    })
+            </td>
+        </tr>
+    }
+
+</table>
+<div class="pages total">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, pageNum => Url.Action("Index", "Authors",
+        new { page = pageNum }))
+</div>
+
+

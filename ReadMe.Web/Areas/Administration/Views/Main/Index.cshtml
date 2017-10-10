@@ -46,7 +46,7 @@
                 @*<a href="/administration/users">Users</a>*@
             </li>
             <li>
-                @Ajax.ActionLink("Reviews",
+                @*@Ajax.ActionLink("Reviews",
                                 "Index",
                                 "Reviews",
                                 new AjaxOptions
@@ -54,13 +54,31 @@
                                     HttpMethod = "GET",
                                     InsertionMode = InsertionMode.Replace,
                                     UpdateTargetId = "admin-main"
-                                });
+                                });*@
                 @*<a href="/administration/reviews">Reviews</a>*@
             </li>
             <li>
+                @Ajax.ActionLink("Authors",
+                                "Index",
+                                "Authors",
+                                new AjaxOptions
+                                {
+                                    HttpMethod = "GET",
+                                    InsertionMode = InsertionMode.Replace,
+                                    UpdateTargetId = "admin-main"
+                                });
                 @*<a href="/administration/authors">Authors</a>*@
             </li>
             <li>
+                @Ajax.ActionLink("Publishers",
+                                "Index",
+                                "Publishers",
+                                new AjaxOptions
+                                {
+                                    HttpMethod = "GET",
+                                    InsertionMode = InsertionMode.Replace,
+                                    UpdateTargetId = "admin-main"
+                                });
                 @*<a href="/administration/publishers">Publishers</a>*@
             </li>
         </ul>

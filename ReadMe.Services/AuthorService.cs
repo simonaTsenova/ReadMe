@@ -1,9 +1,6 @@
 ﻿using ReadMe.Services.Contracts;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ReadMe.Models;
 using ReadMe.Data.Contracts;
 using ReadMe.Factories;
@@ -38,6 +35,42 @@ namespace ReadMe.Services
             this.unitOfWork = unitOfWork;
         }
 
+        public void AddAuthor(string firstName, string lastName, string nationality, int age, string biography, string website)
+        {
+            var author = this.authorFactory.CreateAuthor(firstName, lastName, nationality, age, biography, website);
+
+            this.authorRepository.Add(author);
+            this.unitOfWork.Commit();
+        }
+
+        public void DeleteAuthor(Guid id)
+        {
+            var author = this.authorRepository.GetById(id);
+            var dateDeleted = DateTime.Now;
+
+            if(author != null)
+            {
+                author.IsDeleted = true;
+                author.DeletedOn = dateDeleted;
+
+                this.authorRepository.Update(author);
+                this.unitOfWork.Commit();
+            }
+        }
+
+        public IQueryable<Author> GetAllAndDeleted()
+        {
+            return this.authorRepository.AllAndDeleted;
+        }
+
+        public IQueryable<Author> GetAuthorById(Guid authorId)
+        {
+            var author = this.authorRepository.All
+                .Where(x => x.Id == authorId);
+
+            return author;
+        }
+
         public Author GetAuthorByName(string firstName, string lastName)
         {
             var author = this.authorRepository
@@ -47,6 +80,39 @@ namespace ReadMe.Services
                 .FirstOrDefault();
 
             return author;
+        }
+
+        public void RestoreAuthor(Guid id)
+        {
+            var author = this.authorRepository.GetById(id);
+
+            if (author != null)
+            {
+                author.IsDeleted = false;
+                author.DeletedOn = null;
+
+                this.authorRepository.Update(author);
+                this.unitOfWork.Commit();
+            }
+        }
+
+        public void UpdateAuthor(Guid id, string firstName, string lastName, string nationality, int age, string biography, string website, string photoUrl)
+        {
+            var author = this.authorRepository.GetById(id);
+
+            if (author != null)
+            {
+                author.FirstName = firstName;
+                author.LastName = lastName;
+                author.Nationality = nationality;
+                author.Age = age;
+                author.Biography = biography;
+                author.Website = website;
+                author.PhotoUrl = photoUrl;
+
+                this.authorRepository.Update(author);
+                this.unitOfWork.Commit();
+            }
         }
     }
 }

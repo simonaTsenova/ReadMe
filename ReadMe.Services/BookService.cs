@@ -215,5 +215,13 @@ namespace ReadMe.Services
                 this.unitOfWork.Commit();
             }
         }
+
+        public IQueryable<Book> GetBooksByAuthor(Guid authorId)
+        {
+            var books = this.bookRepository.All
+                .Where(b => b.Author.Id == authorId);
+
+            return books;
+        }
     }
 }
