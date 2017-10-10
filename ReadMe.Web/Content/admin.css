@@ -1,5 +1,7 @@
 ﻿#wrapper {
     overflow-x: hidden;
+    font-family: Garamond, Verdana, sans-serif;
+    font-size: 1.7rem;
 }
 
 #wrapper {
@@ -22,7 +24,7 @@
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
-    background: #000;
+    background: #544d55;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -52,7 +54,7 @@
     top: 0;
     width: 250px;
     margin: 0;
-    padding: 0;
+    padding: 20% 0 0 0;
     list-style: none;
 }
 
@@ -64,7 +66,7 @@
         .sidebar-nav li a {
             display: block;
             text-decoration: none;
-            color: #999999;
+            color: #ffffff;
         }
 
             .sidebar-nav li a:hover {

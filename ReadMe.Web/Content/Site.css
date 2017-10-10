@@ -319,3 +319,9 @@ Colour for hovered stars when decreasing the rating
 .rating > label:hover ~ input:checked ~ label {
     color: #ea0;
 }
+
+#post-review-btn {
+    margin-top: 1%;
+    margin-left: auto;
+    margin-right: auto;
+}

@@ -13,11 +13,11 @@
             }, null))
             {
                 @Html.AntiForgeryToken()
-                @Html.TextAreaFor(r => r.Content, new { @class = "form-control", placeholder = "Post your review here...", style = "min-width: 100%" })
+                @Html.TextAreaFor(r => r.Content, new { @class = "form-control", placeholder = "Write your review here...", style = "min-width: 100%" })
 
                 @Html.HiddenFor(model => model.UserId)
                 @Html.HiddenFor(model => model.BookId)
-                <input type="submit" value="Post" class="btn btn-sm btn-success" />
+                <input type="submit" value="Leave review" id="post-review-btn" class="btn btn-block btn-success" />
             }
             
         </div>

@@ -2092,20 +2092,20 @@ fieldset[disabled] .btn-default.active {
 }
 
 .btn-primary {
-  color: #ffffff;
-  background-color: #428bca;
-  border-color: #357ebd;
+    color: #ffffff;
+    background-color: #989499;
+    border-color: #989499;
 }
 
-.btn-primary:hover,
-.btn-primary:focus,
-.btn-primary:active,
-.btn-primary.active,
-.open .dropdown-toggle.btn-primary {
-  color: #ffffff;
-  background-color: #3276b1;
-  border-color: #285e8e;
-}
+    .btn-primary:hover,
+    .btn-primary:focus,
+    .btn-primary:active,
+    .btn-primary.active,
+    .open .dropdown-toggle.btn-primary {
+        color: #ffffff;
+        background-color: #989499;
+        border-color: #989499;
+    }
 
 .btn-primary:active,
 .btn-primary.active,
@@ -2215,20 +2215,20 @@ fieldset[disabled] .btn-danger.active {
 }
 
 .btn-success {
-  color: #ffffff;
-  background-color: #5cb85c;
-  border-color: #4cae4c;
+    color: #ffffff;
+    background-color: #4eb980;
+    border-color: #4eb980;
 }
 
-.btn-success:hover,
-.btn-success:focus,
-.btn-success:active,
-.btn-success.active,
-.open .dropdown-toggle.btn-success {
-  color: #ffffff;
-  background-color: #47a447;
-  border-color: #398439;
-}
+    .btn-success:hover,
+    .btn-success:focus,
+    .btn-success:active,
+    .btn-success.active,
+    .open .dropdown-toggle.btn-success {
+        color: #ffffff;
+        background-color: #46a673;
+        border-color: #46a673;
+    }
 
 .btn-success:active,
 .btn-success.active,
@@ -4505,8 +4505,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse {
-    background-color: #6dc14b;
-    border-color: #6dc14b;
+    background-color: #4eb980;
+    border-color: #4eb980;
 }
 
 .navbar-inverse .navbar-brand {
@@ -4688,18 +4688,18 @@ textarea.input-group-sm > .input-group-btn > .btn {
   background-color: #eeeeee;
 }
 
-.pagination > .active > a,
-.pagination > .active > span,
-.pagination > .active > a:hover,
-.pagination > .active > span:hover,
-.pagination > .active > a:focus,
-.pagination > .active > span:focus {
-  z-index: 2;
-  color: #ffffff;
-  cursor: default;
-  background-color: #428bca;
-  border-color: #428bca;
-}
+    .pagination > .active > a,
+    .pagination > .active > span,
+    .pagination > .active > a:hover,
+    .pagination > .active > span:hover,
+    .pagination > .active > a:focus,
+    .pagination > .active > span:focus {
+        z-index: 2;
+        color: #ffffff;
+        cursor: default;
+        background-color: #4eb980;
+        border-color: #4eb980;
+    }
 
 .pagination > .disabled > span,
 .pagination > .disabled > a,
@@ -5413,7 +5413,7 @@ a.list-group-item:focus {
 
 
 footer {
-    background-color: #111111;
+    background-color: #544d55;
     padding: 20px 15px;
     overflow: hidden;
 }
