@@ -37,7 +37,8 @@ namespace ReadMe.Services
             return user;
         }
 
-        public User EditUser(string id, string email, string firstName, string lastName, string nationality, int age, string favouriteQuote)
+        public User EditUser(string id, string email, string firstName, string lastName,
+            string nationality, int age, string favouriteQuote)
         {
             var user = this.userRepository.GetById(id);
             

@@ -130,3 +130,10 @@ D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web.Tests\bin\Debug\ReadMe.Services
 D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web.Tests\bin\Debug\Ninject.Extensions.Conventions.xml
 D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web.Tests\bin\Debug\PagedList.dll
 D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web.Tests\bin\Debug\PagedList.xml
+D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web.Tests\bin\Debug\NUnit3.TestAdapter.dll
+D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web.Tests\bin\Debug\nunit.engine.dll
+D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web.Tests\bin\Debug\nunit.engine.api.dll
+D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web.Tests\bin\Debug\Mono.Cecil.dll
+D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web.Tests\bin\Debug\Mono.Cecil.Pdb.dll
+D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web.Tests\bin\Debug\Mono.Cecil.Mdb.dll
+D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web.Tests\bin\Debug\Mono.Cecil.Rocks.dll
