@@ -1,4 +1,6 @@
-﻿@using ReadMe.Web.Models.Reviews
+﻿@using Microsoft.AspNet.Identity;
+
+@using ReadMe.Web.Models.Reviews
 
 @model ICollection<ReviewViewModel>
 
@@ -11,14 +13,17 @@
             {
                 <div class="mbr-testimonial card">
                     <div class="card-block">
-                        @Ajax.ActionLink(" ", "Index", "Reviews", new { id = review.Id },
-                        new AjaxOptions
+                        @if (review.UserId == User.Identity.GetUserId())
                         {
-                            HttpMethod = "DELETE",
-                            Confirm = "Are you sure you want to delete review for " + review.Book.Title,
-                            OnSuccess = "removeReview"
-                        },
-                        new { @class = "btn btn-danger glyphicon glyphicon-trash", id = "delete-review" })
+                            @Ajax.ActionLink(" ", "Index", "Reviews", new { id = review.Id },
+                            new AjaxOptions
+                            {
+                                HttpMethod = "DELETE",
+                                Confirm = "Are you sure you want to delete review for " + review.Book.Title,
+                                OnSuccess = "removeReview"
+                            },
+                            new { @class = "btn btn-danger glyphicon glyphicon-trash", id = "delete-review" })
+                        }
 
                         <p>@review.Content</p>
                         <p style="font-size:1rem">Posted on @Html.DisplayFor(x => review.PostedOn)</p>
