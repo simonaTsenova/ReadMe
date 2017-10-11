@@ -54,9 +54,11 @@ namespace ReadMe.Services
 
         public void UpdateStatus(string userId, Guid bookId, ReadStatus status)
         {
-            var userBook = this.GetByUserIdAndBookId(userId, bookId);
+            var userBook = this.userBookRepository.All
+                .Where(ub => ub.UserId == userId && ub.BookId == bookId)
+                .FirstOrDefault();
 
-            if(userBook == null)
+            if (userBook == null)
             {
                 this.AddUserBook(userId, bookId, status);
             }

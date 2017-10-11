@@ -73,6 +73,10 @@
     <Compile Include="ReviewServiceTests\GetByBookId_Should.cs" />
     <Compile Include="ReviewServiceTests\GetByUserIdAndBookId_Should.cs" />
     <Compile Include="ReviewServiceTests\GetByUserId_Should.cs" />
+    <Compile Include="UserBookServiceTests\AddUserBook_Should.cs" />
+    <Compile Include="UserBookServiceTests\Constructor_Should.cs" />
+    <Compile Include="UserBookServiceTests\GetByUserIdAndBookId_Should.cs" />
+    <Compile Include="UserBookServiceTests\UpdateStatus_Shold.cs" />
     <Compile Include="UserServiceTests\Constructor_Should.cs" />
     <Compile Include="UserServiceTests\DeleteUser_Should.cs" />
     <Compile Include="UserServiceTests\Edit_Should.cs" />
@@ -114,7 +118,6 @@
     <Folder Include="AuthorServiceTests\" />
     <Folder Include="BookServiceTests\" />
     <Folder Include="PublisherServiceTests\" />
-    <Folder Include="UserBookServiceTests\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
