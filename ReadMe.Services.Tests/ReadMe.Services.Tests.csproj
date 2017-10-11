@@ -66,6 +66,13 @@
     <Compile Include="RatingServiceTests\GetAll_Should.cs" />
     <Compile Include="RatingServiceTests\GetByBookIdAndUserId_Should.cs" />
     <Compile Include="RatingServiceTests\UpdateRating_Should.cs" />
+    <Compile Include="ReviewServiceTests\AddReview_Should.cs" />
+    <Compile Include="ReviewServiceTests\Constructor_Should.cs" />
+    <Compile Include="ReviewServiceTests\DeleteReview_Shouldcs.cs" />
+    <Compile Include="ReviewServiceTests\GetAll_Should.cs" />
+    <Compile Include="ReviewServiceTests\GetByBookId_Should.cs" />
+    <Compile Include="ReviewServiceTests\GetByUserIdAndBookId_Should.cs" />
+    <Compile Include="ReviewServiceTests\GetByUserId_Should.cs" />
     <Compile Include="UserServiceTests\Constructor_Should.cs" />
     <Compile Include="UserServiceTests\DeleteUser_Should.cs" />
     <Compile Include="UserServiceTests\Edit_Should.cs" />
@@ -107,7 +114,6 @@
     <Folder Include="AuthorServiceTests\" />
     <Folder Include="BookServiceTests\" />
     <Folder Include="PublisherServiceTests\" />
-    <Folder Include="ReviewServiceTests\" />
     <Folder Include="UserBookServiceTests\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

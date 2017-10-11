@@ -5,8 +5,6 @@ using ReadMe.Factories;
 using ReadMe.Models;
 using ReadMe.Providers.Contracts;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace ReadMe.Services.Tests.RatingServiceTests
 {

@@ -4,8 +4,7 @@ using ReadMe.Services.Contracts;
 using ReadMe.Data.Contracts;
 using System;
 using ReadMe.Factories;
-using ReadMe.Data;
-using System.Data.SqlClient;
+using ReadMe.Providers.Contracts;
 
 namespace ReadMe.Services
 {
@@ -14,8 +13,10 @@ namespace ReadMe.Services
         private readonly IEfRepository<Review> reviewRepository;
         private readonly IUnitOfWork unitOfWork;
         private readonly IReviewFactory reviewFactory;
+        private readonly IDateTimeProvider provider;
 
-        public ReviewService(IEfRepository<Review> reviewRepository, IUnitOfWork unitOfWork, IReviewFactory reviewFactory)
+        public ReviewService(IEfRepository<Review> reviewRepository, IUnitOfWork unitOfWork,
+            IReviewFactory reviewFactory, IDateTimeProvider provider)
         {
             if (reviewRepository == null)
             {
@@ -32,14 +33,20 @@ namespace ReadMe.Services
                 throw new ArgumentNullException("Review factory cannot be null.");
             }
 
+            if (provider == null)
+            {
+                throw new ArgumentNullException("DateTime provider cannot be null.");
+            }
+
             this.reviewRepository = reviewRepository;
             this.unitOfWork = unitOfWork;
             this.reviewFactory = reviewFactory;
+            this.provider = provider;
         }
 
         public Review AddReview(string userId, Guid bookId, string content)
         {
-            var date = DateTime.Now;
+            var date = this.provider.GetCurrentTime();
             var review = this.reviewFactory.CreateReview(userId, bookId, content, date);
             this.reviewRepository.Add(review);
             this.unitOfWork.Commit();
