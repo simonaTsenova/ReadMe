@@ -4,6 +4,7 @@ using ReadMe.Models;
 using ReadMe.Data.Contracts;
 using ReadMe.Factories;
 using System.Linq;
+using ReadMe.Providers.Contracts;
 
 namespace ReadMe.Services
 {
@@ -12,8 +13,10 @@ namespace ReadMe.Services
         private readonly IEfRepository<Rating> ratingRepository;
         private readonly IUnitOfWork unitOfWork;
         private readonly IRatingFactory ratingFactory;
+        private readonly IDateTimeProvider provider;
 
-        public RatingService(IEfRepository<Rating> ratingRepository, IUnitOfWork unitOfWork, IRatingFactory ratingFactory)
+        public RatingService(IEfRepository<Rating> ratingRepository, IUnitOfWork unitOfWork,
+            IRatingFactory ratingFactory, IDateTimeProvider provider)
         {
             if (ratingRepository == null)
             {
@@ -30,14 +33,20 @@ namespace ReadMe.Services
                 throw new ArgumentNullException("Rating factory cannot be null.");
             }
 
+            if (provider == null)
+            {
+                throw new ArgumentNullException("DateTime provider cannot be null.");
+            }
+
             this.ratingRepository = ratingRepository;
             this.unitOfWork = unitOfWork;
             this.ratingFactory = ratingFactory;
+            this.provider = provider;
         }
 
         public void AddRating(Guid bookId, string userId, int stars)
         {
-            var date = DateTime.Now;
+            var date = this.provider.GetCurrentTime();
             var rating = this.ratingFactory.CreateRating(bookId, userId, stars, date);
             this.ratingRepository.Add(rating);
             this.unitOfWork.Commit();
@@ -59,7 +68,9 @@ namespace ReadMe.Services
 
         public void UpdateRating(Guid bookId, string userId, int stars)
         {
-            var rating = this.GetByBookIdAndUserId(bookId, userId);
+            var rating = this.ratingRepository.All
+                .Where(r => r.BookId == bookId && r.UserId == userId)
+                .FirstOrDefault();
 
             if (rating != null)
             {
