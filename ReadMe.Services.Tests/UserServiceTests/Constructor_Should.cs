@@ -48,7 +48,7 @@ namespace ReadMe.Services.Tests.UserServiceTests
         }
 
         [Test]
-        public void ShouldInitializeDependenciesCorrectly_WhenTheyAreNotNull()
+        public void InitializeDependenciesCorrectly_WhenTheyAreNotNull()
         {
             var userRepositoryMock = new Mock<IEfRepository<User>>();
             var unitOfWorkMock = new Mock<IUnitOfWork>();

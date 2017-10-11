@@ -37,12 +37,9 @@ namespace ReadMe.Services
 
         public void AddGenre(string name)
         {
-            if(this.genreRepository.All.Where(x => x.Name == name).Count() == 0)
-            {
-                var genre = this.genreFactory.CreateGenre(name);
-                this.genreRepository.Add(genre);
-                this.unitOfWork.Commit();
-            }
+            var genre = this.genreFactory.CreateGenre(name);
+            this.genreRepository.Add(genre);
+            this.unitOfWork.Commit();
         }
 
         public IQueryable<Genre> GetAll()
@@ -66,7 +63,7 @@ namespace ReadMe.Services
 
         public void UpdateGenre(Guid id, string name)
         {
-            var genre = this.GetById(id);
+            var genre = this.genreRepository.GetById(id);
 
             if(genre != null)
             {
