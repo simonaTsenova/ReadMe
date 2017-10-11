@@ -4,6 +4,7 @@ using System.Linq;
 using ReadMe.Models;
 using ReadMe.Data.Contracts;
 using ReadMe.Factories;
+using ReadMe.Providers.Contracts;
 
 namespace ReadMe.Services
 {
@@ -12,8 +13,10 @@ namespace ReadMe.Services
         private readonly IEfRepository<Author> authorRepository;
         private readonly IAuthorFactory authorFactory;
         private readonly IUnitOfWork unitOfWork;
+        private readonly IDateTimeProvider provider;
 
-        public AuthorService(IEfRepository<Author> authorRepository, IAuthorFactory authorFactory, IUnitOfWork unitOfWork)
+        public AuthorService(IEfRepository<Author> authorRepository, IAuthorFactory authorFactory,
+            IUnitOfWork unitOfWork, IDateTimeProvider provider)
         {
             if (authorRepository == null)
             {
@@ -30,9 +33,15 @@ namespace ReadMe.Services
                 throw new ArgumentNullException("Unit of work cannot be null.");
             }
 
+            if (provider == null)
+            {
+                throw new ArgumentNullException("DateTime provider cannot be null.");
+            }
+
             this.authorRepository = authorRepository;
             this.authorFactory = authorFactory;
             this.unitOfWork = unitOfWork;
+            this.provider = provider;
         }
 
         public void AddAuthor(string firstName, string lastName, string nationality, int age, string biography, string website)
@@ -46,7 +55,7 @@ namespace ReadMe.Services
         public void DeleteAuthor(Guid id)
         {
             var author = this.authorRepository.GetById(id);
-            var dateDeleted = DateTime.Now;
+            var dateDeleted = provider.GetCurrentTime();
 
             if(author != null)
             {

@@ -54,6 +54,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthorServiceTests\AddAuthor_Should.cs" />
+    <Compile Include="AuthorServiceTests\Constructor_Should.cs" />
+    <Compile Include="AuthorServiceTests\DeleteAuthor_Should.cs" />
+    <Compile Include="AuthorServiceTests\GetAllAndDeleted_Should.cs" />
+    <Compile Include="AuthorServiceTests\GetAuthorById_Should.cs" />
+    <Compile Include="AuthorServiceTests\GetAuthorByName_Should.cs" />
+    <Compile Include="AuthorServiceTests\RestoreAuthor_Should.cs" />
+    <Compile Include="AuthorServiceTests\UpdateAuthor_Should.cs" />
     <Compile Include="GenreServiceTests\AddGenre_Should.cs" />
     <Compile Include="GenreServiceTests\Constructor_Should.cs" />
     <Compile Include="GenreServiceTests\GetAllAndDeleted_Should.cs" />
@@ -123,7 +131,6 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="AuthorServiceTests\" />
     <Folder Include="BookServiceTests\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
