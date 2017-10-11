@@ -56,8 +56,13 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserServiceTests\Constructor_Should.cs" />
+    <Compile Include="UserServiceTests\DeleteUser_Should.cs" />
     <Compile Include="UserServiceTests\Edit_Should.cs" />
+    <Compile Include="UserServiceTests\GetAllAndDeleted_Should.cs" />
+    <Compile Include="UserServiceTests\GetAll_Should.cs" />
+    <Compile Include="UserServiceTests\GetUserById_Should.cs" />
     <Compile Include="UserServiceTests\GetUserByUsername_Should.cs" />
+    <Compile Include="UserServiceTests\RestoreUser_Should.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -70,6 +75,10 @@
     <ProjectReference Include="..\ReadMe.Models\ReadMe.Models.csproj">
       <Project>{F1375996-F7A4-4877-950D-B847D179DD20}</Project>
       <Name>ReadMe.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ReadMe.Providers\ReadMe.Providers.csproj">
+      <Project>{8569E373-BA03-4665-B7AE-8E1B1E868443}</Project>
+      <Name>ReadMe.Providers</Name>
     </ProjectReference>
     <ProjectReference Include="..\ReadMe.Services\ReadMe.Services.csproj">
       <Project>{26660FD5-B03E-4196-9879-90D3D0FFDC6D}</Project>

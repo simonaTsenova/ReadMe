@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using ReadMe.Data.Contracts;
 using ReadMe.Models;
+using ReadMe.Providers.Contracts;
 
 namespace ReadMe.Services.Tests.UserServiceTests
 {
@@ -14,8 +15,9 @@ namespace ReadMe.Services.Tests.UserServiceTests
         {
             var userRepositoryMock = new Mock<IEfRepository<User>>();
             var unitOfWorkMock = new Mock<IUnitOfWork>();
+            var provider = new Mock<IDateTimeProvider>();
 
-            var service = new UserService(userRepositoryMock.Object, unitOfWorkMock.Object);
+            var service = new UserService(userRepositoryMock.Object, unitOfWorkMock.Object, provider.Object);
 
             service.EditUser(id, email, firstName, lastName, nationality, age, favouriteQuote);
 
@@ -28,8 +30,9 @@ namespace ReadMe.Services.Tests.UserServiceTests
         {
             var userRepositoryMock = new Mock<IEfRepository<User>>();
             var unitOfWorkMock = new Mock<IUnitOfWork>();
+            var provider = new Mock<IDateTimeProvider>();
 
-            var service = new UserService(userRepositoryMock.Object, unitOfWorkMock.Object);
+            var service = new UserService(userRepositoryMock.Object, unitOfWorkMock.Object, provider.Object);
 
             service.EditUser(id, email, firstName, lastName, nationality, age, favouriteQuote);
 
@@ -42,8 +45,9 @@ namespace ReadMe.Services.Tests.UserServiceTests
         {
             var userRepositoryMock = new Mock<IEfRepository<User>>();
             var unitOfWorkMock = new Mock<IUnitOfWork>();
+            var provider = new Mock<IDateTimeProvider>();
 
-            var service = new UserService(userRepositoryMock.Object, unitOfWorkMock.Object);
+            var service = new UserService(userRepositoryMock.Object, unitOfWorkMock.Object, provider.Object);
 
             service.EditUser(id, email, firstName, lastName, nationality, age, favouriteQuote);
 
@@ -58,7 +62,8 @@ namespace ReadMe.Services.Tests.UserServiceTests
             var unitOfWorkMock = new Mock<IUnitOfWork>();
             var user = new Mock<User>();
             userRepositoryMock.Setup(r => r.GetById(It.IsAny<string>())).Returns(user.Object);
-            var service = new UserService(userRepositoryMock.Object, unitOfWorkMock.Object);
+            var provider = new Mock<IDateTimeProvider>();
+            var service = new UserService(userRepositoryMock.Object, unitOfWorkMock.Object, provider.Object);
 
             var edited = service.EditUser(id, email, firstName, lastName, nationality, age, favouriteQuote);
 
@@ -73,7 +78,8 @@ namespace ReadMe.Services.Tests.UserServiceTests
             var unitOfWorkMock = new Mock<IUnitOfWork>();
             var user = new Mock<User>();
             userRepositoryMock.Setup(r => r.GetById(It.IsAny<string>())).Returns(user.Object);
-            var service = new UserService(userRepositoryMock.Object, unitOfWorkMock.Object);
+            var provider = new Mock<IDateTimeProvider>();
+            var service = new UserService(userRepositoryMock.Object, unitOfWorkMock.Object, provider.Object);
 
             var edited = service.EditUser(id, email, firstName, lastName, nationality, age, favouriteQuote);
 
@@ -88,7 +94,8 @@ namespace ReadMe.Services.Tests.UserServiceTests
             var unitOfWorkMock = new Mock<IUnitOfWork>();
             var user = new Mock<User>();
             userRepositoryMock.Setup(r => r.GetById(It.IsAny<string>())).Returns(user.Object);
-            var service = new UserService(userRepositoryMock.Object, unitOfWorkMock.Object);
+            var provider = new Mock<IDateTimeProvider>();
+            var service = new UserService(userRepositoryMock.Object, unitOfWorkMock.Object, provider.Object);
 
             var edited = service.EditUser(id, email, firstName, lastName, nationality, age, favouriteQuote);
 
@@ -103,7 +110,8 @@ namespace ReadMe.Services.Tests.UserServiceTests
             var unitOfWorkMock = new Mock<IUnitOfWork>();
             var user = new Mock<User>();
             userRepositoryMock.Setup(r => r.GetById(It.IsAny<string>())).Returns(user.Object);
-            var service = new UserService(userRepositoryMock.Object, unitOfWorkMock.Object);
+            var provider = new Mock<IDateTimeProvider>();
+            var service = new UserService(userRepositoryMock.Object, unitOfWorkMock.Object, provider.Object);
 
             var edited = service.EditUser(id, email, firstName, lastName, nationality, age, favouriteQuote);
 
@@ -118,7 +126,8 @@ namespace ReadMe.Services.Tests.UserServiceTests
             var unitOfWorkMock = new Mock<IUnitOfWork>();
             var user = new Mock<User>();
             userRepositoryMock.Setup(r => r.GetById(It.IsAny<string>())).Returns(user.Object);
-            var service = new UserService(userRepositoryMock.Object, unitOfWorkMock.Object);
+            var provider = new Mock<IDateTimeProvider>();
+            var service = new UserService(userRepositoryMock.Object, unitOfWorkMock.Object, provider.Object);
 
             var edited = service.EditUser(id, email, firstName, lastName, nationality, age, favouriteQuote);
 
@@ -133,7 +142,8 @@ namespace ReadMe.Services.Tests.UserServiceTests
             var unitOfWorkMock = new Mock<IUnitOfWork>();
             var user = new Mock<User>();
             userRepositoryMock.Setup(r => r.GetById(It.IsAny<string>())).Returns(user.Object);
-            var service = new UserService(userRepositoryMock.Object, unitOfWorkMock.Object);
+            var provider = new Mock<IDateTimeProvider>();
+            var service = new UserService(userRepositoryMock.Object, unitOfWorkMock.Object, provider.Object);
 
             service.EditUser(id, email, firstName, lastName, nationality, age, favouriteQuote);
 
@@ -148,7 +158,8 @@ namespace ReadMe.Services.Tests.UserServiceTests
             var unitOfWorkMock = new Mock<IUnitOfWork>();
             var user = new Mock<User>();
             userRepositoryMock.Setup(r => r.GetById(It.IsAny<string>())).Returns(user.Object);
-            var service = new UserService(userRepositoryMock.Object, unitOfWorkMock.Object);
+            var provider = new Mock<IDateTimeProvider>();
+            var service = new UserService(userRepositoryMock.Object, unitOfWorkMock.Object, provider.Object);
 
             service.EditUser(id, email, firstName, lastName, nationality, age, favouriteQuote);
 

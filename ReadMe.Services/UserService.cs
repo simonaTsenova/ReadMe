@@ -1,5 +1,6 @@
 ﻿using ReadMe.Data.Contracts;
 using ReadMe.Models;
+using ReadMe.Providers.Contracts;
 using ReadMe.Services.Contracts;
 using System;
 using System.Data.Entity;
@@ -11,8 +12,9 @@ namespace ReadMe.Services
     {
         private readonly IEfRepository<User> userRepository;
         private readonly IUnitOfWork unitOfWork;
+        private readonly IDateTimeProvider dateProvider;
 
-        public UserService(IEfRepository<User> userRepository, IUnitOfWork unitOfWork)
+        public UserService(IEfRepository<User> userRepository, IUnitOfWork unitOfWork, IDateTimeProvider dateProvider)
         {
             if(userRepository == null)
             {
@@ -24,8 +26,14 @@ namespace ReadMe.Services
                 throw new ArgumentNullException("Unit of work cannot be null.");
             }
 
+            if (dateProvider == null)
+            {
+                throw new ArgumentNullException("Date provider cannot be null.");
+            }
+
             this.userRepository = userRepository;
             this.unitOfWork = unitOfWork;
+            this.dateProvider = dateProvider;
         }
 
         public IQueryable<User> GetUserByUsername(string username)
@@ -73,12 +81,12 @@ namespace ReadMe.Services
         public void DeleteUser(string userId)
         {
             var user = this.userRepository.GetById(userId);
-            var dateDeleted = DateTime.Now;
+            var dateDeleted = dateProvider.GetCurrentTime();
 
             if(user != null)
             {
                 user.IsDeleted = true;
-                user.DeletedOn = DateTime.Now;
+                user.DeletedOn = dateDeleted;
 
                 this.userRepository.Update(user);
                 this.unitOfWork.Commit();

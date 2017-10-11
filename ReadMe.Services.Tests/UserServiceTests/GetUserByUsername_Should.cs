@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using ReadMe.Data.Contracts;
 using ReadMe.Models;
+using ReadMe.Providers.Contracts;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,7 +17,8 @@ namespace ReadMe.Services.Tests.UserServiceTests
             var username = "simona";
             var userRepositoryMock = new Mock<IEfRepository<User>>();
             var unitOfWorkMock = new Mock<IUnitOfWork>();
-            var userService = new UserService(userRepositoryMock.Object, unitOfWorkMock.Object);
+            var provider = new Mock<IDateTimeProvider>();
+            var userService = new UserService(userRepositoryMock.Object, unitOfWorkMock.Object, provider.Object);
 
             userService.GetUserByUsername(username);
 
@@ -33,7 +35,8 @@ namespace ReadMe.Services.Tests.UserServiceTests
             var usersList = new List<User>{ userMock };
             var expected = usersList.AsQueryable();
             userRepositoryMock.SetupGet(x => x.All).Returns(expected);
-            var userService = new UserService(userRepositoryMock.Object, unitOfWorkMock.Object);
+            var provider = new Mock<IDateTimeProvider>();
+            var userService = new UserService(userRepositoryMock.Object, unitOfWorkMock.Object, provider.Object);
 
             var result = userService.GetUserByUsername(username);
 

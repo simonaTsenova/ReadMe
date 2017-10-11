@@ -85,6 +85,10 @@
       <Project>{F1375996-F7A4-4877-950D-B847D179DD20}</Project>
       <Name>ReadMe.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ReadMe.Providers\ReadMe.Providers.csproj">
+      <Project>{8569E373-BA03-4665-B7AE-8E1B1E868443}</Project>
+      <Name>ReadMe.Providers</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
