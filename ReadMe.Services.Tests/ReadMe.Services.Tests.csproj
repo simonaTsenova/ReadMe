@@ -61,6 +61,14 @@
     <Compile Include="GenreServiceTests\GetById_Should.cs" />
     <Compile Include="GenreServiceTests\UpdateGenre_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PublisherServiceTests\AddPublisher_Should.cs" />
+    <Compile Include="PublisherServiceTests\GetPublisherById_Should.cs" />
+    <Compile Include="PublisherServiceTests\Constructor_Should.cs" />
+    <Compile Include="PublisherServiceTests\DeletePublisher_Should.cs" />
+    <Compile Include="PublisherServiceTests\GetAllAndDeleted_Should.cs" />
+    <Compile Include="PublisherServiceTests\GetPublisherByName_Should.cs" />
+    <Compile Include="PublisherServiceTests\RestorePublisher_Should.cs" />
+    <Compile Include="PublisherServiceTests\UpdatePublisher_Should.cs" />
     <Compile Include="RatingServiceTests\AddRating_Should.cs" />
     <Compile Include="RatingServiceTests\Constructor_Should.cs" />
     <Compile Include="RatingServiceTests\GetAll_Should.cs" />
@@ -117,7 +125,6 @@
   <ItemGroup>
     <Folder Include="AuthorServiceTests\" />
     <Folder Include="BookServiceTests\" />
-    <Folder Include="PublisherServiceTests\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

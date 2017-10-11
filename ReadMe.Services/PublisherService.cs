@@ -1,12 +1,10 @@
 ﻿using ReadMe.Data.Contracts;
 using ReadMe.Factories;
 using ReadMe.Models;
+using ReadMe.Providers.Contracts;
 using ReadMe.Services.Contracts;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ReadMe.Services
 {
@@ -15,8 +13,10 @@ namespace ReadMe.Services
         private readonly IEfRepository<Publisher> publisherRepository;
         private readonly IPublisherFactory publisherFactory;
         private readonly IUnitOfWork unitOfWork;
+        private readonly IDateTimeProvider provider;
 
-        public PublisherService(IEfRepository<Publisher> publisherRepository, IPublisherFactory publisherFactory, IUnitOfWork unitOfWork)
+        public PublisherService(IEfRepository<Publisher> publisherRepository, IPublisherFactory publisherFactory,
+            IUnitOfWork unitOfWork, IDateTimeProvider provider)
         {
             if (publisherRepository == null)
             {
@@ -33,9 +33,15 @@ namespace ReadMe.Services
                 throw new ArgumentNullException("Unit of work cannot be null.");
             }
 
+            if (provider == null)
+            {
+                throw new ArgumentNullException("DateTime provider cannot be null.");
+            }
+
             this.publisherRepository = publisherRepository;
             this.publisherFactory = publisherFactory;
             this.unitOfWork = unitOfWork;
+            this.provider = provider;
         }
 
         public void AddPublisher(string name, string owner, string phone, string city, string address, string country, string website)
@@ -50,7 +56,7 @@ namespace ReadMe.Services
         public void DeletePublisher(Guid id)
         {
             var publisher = this.publisherRepository.GetById(id);
-            var dateDeleted = DateTime.Now;
+            var dateDeleted = this.provider.GetCurrentTime();
 
             if(publisher != null)
             {
