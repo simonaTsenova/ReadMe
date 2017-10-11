@@ -6,6 +6,7 @@ using ReadMe.Models;
 using ReadMe.Data.Contracts;
 using System.Data.Entity;
 using ReadMe.Factories;
+using ReadMe.Providers.Contracts;
 
 namespace ReadMe.Services
 {
@@ -14,8 +15,10 @@ namespace ReadMe.Services
         private readonly IEfRepository<Book> bookRepository;
         private readonly IBookFactory bookFactory;
         private readonly IUnitOfWork unitOfWork;
+        private readonly IDateTimeProvider provider;
 
-        public BookService(IEfRepository<Book> bookRepository, IBookFactory bookFactory, IUnitOfWork unitOfWork)
+        public BookService(IEfRepository<Book> bookRepository, IBookFactory bookFactory,
+            IUnitOfWork unitOfWork, IDateTimeProvider provider)
         {
             if (bookRepository == null)
             {
@@ -32,9 +35,15 @@ namespace ReadMe.Services
                 throw new ArgumentNullException("Unit of work cannot be null.");
             }
 
+            if (provider == null)
+            {
+                throw new ArgumentNullException("DateTime provider cannot be null.");
+            }
+
             this.bookRepository = bookRepository;
             this.bookFactory = bookFactory;
             this.unitOfWork = unitOfWork;
+            this.provider = provider;
         }
 
         public IQueryable<Book> GetBookById(Guid id)
@@ -139,7 +148,7 @@ namespace ReadMe.Services
 
         public void UpdateRating(Guid id, double rating)
         {
-            var book = this.GetBookById(id).FirstOrDefault();
+            var book = this.bookRepository.GetById(id);
 
             if(book != null)
             {
@@ -170,7 +179,7 @@ namespace ReadMe.Services
             string isbn, string summary, string language, ICollection<Genre> genres,
             Author author, Publisher publisher, string photoUrl)
         {
-            var book = this.GetBookById(id).FirstOrDefault();
+            var book = this.bookRepository.GetById(id);
 
             if (book != null)
             {
@@ -192,12 +201,12 @@ namespace ReadMe.Services
         public void DeleteBook(Guid bookId)
         {
             var book = this.bookRepository.GetById(bookId);
-            var dateDeleted = DateTime.Now;
+            var dateDeleted = this.provider.GetCurrentTime();
 
             if (book != null)
             {
                 book.IsDeleted = true;
-                book.DeletedOn = DateTime.Now;
+                book.DeletedOn = dateDeleted;
 
                 this.bookRepository.Update(book);
                 this.unitOfWork.Commit();
