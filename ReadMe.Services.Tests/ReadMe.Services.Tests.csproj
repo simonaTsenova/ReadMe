@@ -114,6 +114,9 @@
     <Compile Include="UserServiceTests\GetAll_Should.cs" />
     <Compile Include="UserServiceTests\GetUserById_Should.cs" />
     <Compile Include="UserServiceTests\GetUserByUsername_Should.cs" />
+    <Compile Include="UserServiceTests\GetUserCurrentlyReadingBooks_Should.cs" />
+    <Compile Include="UserServiceTests\GetUserReadBooks_Should.cs" />
+    <Compile Include="UserServiceTests\GetUserWantToReadBooks_Should.cs" />
     <Compile Include="UserServiceTests\RestoreUser_Should.cs" />
   </ItemGroup>
   <ItemGroup>

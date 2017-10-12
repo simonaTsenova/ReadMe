@@ -48,7 +48,7 @@ namespace ReadMe.Services.Tests.BookServiceTests
             var service = new BookService(repositoryMock.Object, factoryMock.Object,
                 unitOfWorkMock.Object, provider.Object);
 
-            var result = service.GetTopRatedBooks();
+            var result = service.GetLatestBooks();
 
             Assert.AreEqual(5, result.ToList().Count());
         }

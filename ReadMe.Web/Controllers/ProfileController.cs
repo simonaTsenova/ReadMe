@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using ReadMe.Authentication.Contracts;
-using ReadMe.Models.Enumerations;
 using ReadMe.Services.Contracts;
+using ReadMe.Web.Infrastructure.Factories;
 using ReadMe.Web.Models.Books;
 using ReadMe.Web.Models.Profile;
 using ReadMe.Web.Models.Reviews;
@@ -17,10 +17,11 @@ namespace ReadMe.Web.Controllers
         private readonly IAuthenticationProvider authProvider;
         private readonly IUserService userService;
         private readonly IReviewService reviewService;
+        private readonly IViewModelFactory modelFactory;
         private readonly IMapper mapper;
 
         public ProfileController(IAuthenticationProvider authProvider, IUserService userService,
-            IReviewService reviewService, IMapper mapper)
+            IReviewService reviewService, IViewModelFactory modelFactory, IMapper mapper)
         {
             if (authProvider == null)
             {
@@ -37,7 +38,12 @@ namespace ReadMe.Web.Controllers
                 throw new ArgumentNullException("Review service cannot be null.");
             }
 
-            if(mapper == null)
+            if (modelFactory == null)
+            {
+                throw new ArgumentNullException("Factory cannot be null.");
+            }
+
+            if (mapper == null)
             {
                 throw new ArgumentNullException("Mapper cannot be null");
             }
@@ -45,6 +51,7 @@ namespace ReadMe.Web.Controllers
             this.authProvider = authProvider;
             this.userService = userService;
             this.reviewService = reviewService;
+            this.modelFactory = modelFactory;
             this.mapper = mapper;
         }
 
@@ -60,27 +67,18 @@ namespace ReadMe.Web.Controllers
                 .ProjectTo<UserDetailsViewModel>()
                 .FirstOrDefault();
 
-            var currentlyReading = user
-                .FirstOrDefault().UserBooks
-                .Where(u => u.ReadStatus == ReadStatus.CurrentlyReading)
-                .Select(x => x.Book)
-                .AsQueryable()
+            var currentlyReading = this.userService
+                .GetUserCurrentlyReadingBooks(userModel.Id)
                 .ProjectTo<BookShortViewModel>()
                 .ToList();
 
-            var wishlist = user
-                .FirstOrDefault().UserBooks
-                .Where(u => u.ReadStatus == ReadStatus.WantToRead)
-                .Select(x => x.Book)
-                .AsQueryable()
+            var wishlist = this.userService
+                .GetUserWantToReadBooks(userModel.Id)
                 .ProjectTo<BookShortViewModel>()
                 .ToList();
 
-            var read = user
-                .FirstOrDefault().UserBooks
-                .Where(u => u.ReadStatus == ReadStatus.Read)
-                .Select(x => x.Book)
-                .AsQueryable()
+            var read = this.userService
+                .GetUserReadBooks(userModel.Id)
                 .ProjectTo<BookShortViewModel>()
                 .ToList();
 
@@ -89,14 +87,13 @@ namespace ReadMe.Web.Controllers
                 .ProjectTo<ReviewViewModel>()
                 .ToList();
 
-            var model = new ProfileViewModel()
-            {
-                UserDetailsViewModel = userModel,
-                WishlistBooks = wishlist,
-                CurrentlyReadingBooks = currentlyReading,
-                ReadBooks = read,
-                ReviewsModels = reviewsModel
-            };
+            var model = this.modelFactory.CreateProfileViewModel(
+                userModel,
+                wishlist,
+                currentlyReading,
+                read,
+                reviewsModel
+            );
 
             return View(model);
         }

@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using ReadMe.Models;
 using ReadMe.Web.Infrastructure;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace ReadMe.Web.Models.Profile

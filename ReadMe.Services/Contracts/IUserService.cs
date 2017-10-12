@@ -11,6 +11,12 @@ namespace ReadMe.Services.Contracts
 
         IQueryable<User> GetUserByUsername(string username);
 
+        IQueryable<Book> GetUserReadBooks(string userId);
+
+        IQueryable<Book> GetUserWantToReadBooks(string userId);
+
+        IQueryable<Book> GetUserCurrentlyReadingBooks(string userId);
+
         User GetUserById(string id);
 
         User EditUser(string id, string email, string firstName, string lastName,

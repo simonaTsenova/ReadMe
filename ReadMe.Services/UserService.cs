@@ -1,5 +1,6 @@
 ﻿using ReadMe.Data.Contracts;
 using ReadMe.Models;
+using ReadMe.Models.Enumerations;
 using ReadMe.Providers.Contracts;
 using ReadMe.Services.Contracts;
 using System;
@@ -110,6 +111,51 @@ namespace ReadMe.Services
         public IQueryable<User> GetAllAndDeleted()
         {
             return this.userRepository.AllAndDeleted;
+        }
+
+        public IQueryable<Book> GetUserReadBooks(string userId)
+        {
+            var books = this.userRepository
+                .All
+                .Where(u => u.Id == userId)
+                .Include(u => u.UserBooks)
+                .FirstOrDefault()
+                .UserBooks
+                .Where(b => b.ReadStatus == ReadStatus.Read)
+                .Select(u => u.Book)
+                .AsQueryable();
+
+            return books;
+        }
+
+        public IQueryable<Book> GetUserWantToReadBooks(string userId)
+        {
+            var books = this.userRepository
+                .All
+                .Where(u => u.Id == userId)
+                .Include(u => u.UserBooks)
+                .FirstOrDefault()
+                .UserBooks
+                .Where(b => b.ReadStatus == ReadStatus.WantToRead)
+                .Select(u => u.Book)
+                .AsQueryable();
+
+            return books;
+        }
+
+        public IQueryable<Book> GetUserCurrentlyReadingBooks(string userId)
+        {
+            var books = this.userRepository
+                .All
+                .Where(u => u.Id == userId)
+                .Include(u => u.UserBooks)
+                .FirstOrDefault()
+                .UserBooks
+                .Where(b => b.ReadStatus == ReadStatus.CurrentlyReading)
+                .Select(u => u.Book)
+                .AsQueryable();
+
+            return books;
         }
     }
 }
