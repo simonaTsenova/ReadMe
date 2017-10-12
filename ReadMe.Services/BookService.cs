@@ -258,5 +258,25 @@ namespace ReadMe.Services
 
             return books;
         }
+
+        public IQueryable<Book> GetTopRatedBooks()
+        {
+            var books = this.bookRepository
+                .All
+                .OrderByDescending(b => b.Rating)
+                .Take(5);
+
+            return books;
+        }
+
+        public IQueryable<Book> GetLatestBooks()
+        {
+            var books = this.bookRepository
+                .All
+                .OrderByDescending(b => b.Published)
+                .Take(5);
+
+            return books;
+        }
     }
 }

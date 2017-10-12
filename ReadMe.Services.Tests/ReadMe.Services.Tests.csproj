@@ -71,6 +71,8 @@
     <Compile Include="BookServiceTests\GetBookById_Shouldcs.cs" />
     <Compile Include="BookServiceTests\GetBooksByAuthor_Should.cs" />
     <Compile Include="BookServiceTests\GetBooksByPublisher_Should.cs" />
+    <Compile Include="BookServiceTests\GetLatestBooks_Should.cs" />
+    <Compile Include="BookServiceTests\GetTopRatedBooks_Should.cs" />
     <Compile Include="BookServiceTests\RestoreBook_Should.cs" />
     <Compile Include="BookServiceTests\UpdateBook_Should.cs" />
     <Compile Include="BookServiceTests\UpdateRating_Should.cs" />

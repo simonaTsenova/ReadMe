@@ -23,6 +23,10 @@ namespace ReadMe.Services.Contracts
 
         IQueryable<Book> GetAllBooksByPublisher(Guid publisherId);
 
+        IQueryable<Book> GetTopRatedBooks();
+
+        IQueryable<Book> GetLatestBooks();
+
         IQueryable<Book> Search(string pattern, string searchType, string[] genres);
 
         void UpdateRating(Guid id, double rating);
