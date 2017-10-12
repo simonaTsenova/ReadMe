@@ -1,5 +1,6 @@
 ﻿using AutoMapper.QueryableExtensions;
 using ReadMe.Services.Contracts;
+using ReadMe.Web.Infrastructure.Factories;
 using ReadMe.Web.Models.Books;
 using ReadMe.Web.Models.Search;
 using System;
@@ -12,8 +13,9 @@ namespace ReadMe.Web.Controllers
     {
         private readonly IBookService bookService;
         private readonly IGenreService genreService;
+        private readonly IViewModelFactory factory;
 
-        public SearchController(IBookService bookService, IGenreService genreService)
+        public SearchController(IBookService bookService, IGenreService genreService, IViewModelFactory factory)
         {
             if(bookService == null)
             {
@@ -25,8 +27,14 @@ namespace ReadMe.Web.Controllers
                 throw new ArgumentNullException("Genre service cannot be null.");
             }
 
+            if (factory == null)
+            {
+                throw new ArgumentNullException("Factory cannot be null.");
+            }
+
             this.bookService = bookService;
             this.genreService = genreService;
+            this.factory = factory;
         }
 
         // GET: Search
@@ -36,10 +44,7 @@ namespace ReadMe.Web.Controllers
                 .GetAll()
                 .ToList();
 
-            var model = new SearchViewModel()
-            {
-                Genres = genres
-            };
+            var model = this.factory.CreateSearchViewModel(genres);
 
             return View(model);
         }
