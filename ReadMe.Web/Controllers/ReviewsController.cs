@@ -50,10 +50,11 @@ namespace ReadMe.Web.Controllers
         public ActionResult Index(Guid id)
         {
             var review = this.reviewService.GetById(id);
+            var userName = review.User.UserName;
 
             this.reviewService.DeleteReview(id);
 
-            return this.RedirectToAction("Details", "Profile", new { username = review.User.UserName });
+            return this.RedirectToAction("Details", "Profile", new { username = userName });
         }
     }
 }
