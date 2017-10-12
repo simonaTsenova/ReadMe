@@ -111,6 +111,9 @@
     <Compile Include="Controllers\ProfileControllerTests\Edit_Should.cs" />
     <Compile Include="Controllers\RatingsControllerTests\Constructor_Should.cs" />
     <Compile Include="Controllers\RatingsControllerTests\Index_Should.cs" />
+    <Compile Include="Controllers\ReviewsControllerTests\Constructor_Should.cs" />
+    <Compile Include="Controllers\ReviewsControllerTests\Index_Should.cs" />
+    <Compile Include="Controllers\ReviewsControllerTests\Post_Should.cs" />
     <Compile Include="Controllers\SearchControllerTests\Constructor_Should.cs" />
     <Compile Include="Controllers\SearchControllerTests\Index_Should.cs" />
     <Compile Include="Controllers\SearchControllerTests\Search_Should.cs" />

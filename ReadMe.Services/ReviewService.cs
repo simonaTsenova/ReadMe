@@ -98,5 +98,12 @@ namespace ReadMe.Services
                 this.unitOfWork.Commit();
             }
         }
+
+        public Review GetById(Guid id)
+        {
+            var review = this.reviewRepository.GetById(id);
+
+            return review;
+        }
     }
 }

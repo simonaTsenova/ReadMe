@@ -8,6 +8,8 @@ namespace ReadMe.Services.Contracts
     {
         IQueryable<Review> GetAll();
 
+        Review GetById(Guid id);
+
         IQueryable<Review> GetByBookId(Guid id);
 
         IQueryable<Review> GetByUserId(string id);

@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using ReadMe.Services.Contracts;
+﻿using ReadMe.Services.Contracts;
 using ReadMe.Web.Models.Reviews;
 using System;
 using System.Web.Mvc;
@@ -50,9 +49,11 @@ namespace ReadMe.Web.Controllers
         [HttpDelete]
         public ActionResult Index(Guid id)
         {
+            var review = this.reviewService.GetById(id);
+
             this.reviewService.DeleteReview(id);
 
-            return this.RedirectToAction("Index", "Home");
+            return this.RedirectToAction("Details", "Profile", new { username = review.User.UserName });
         }
     }
 }
