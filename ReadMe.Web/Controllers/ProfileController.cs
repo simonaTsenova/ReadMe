@@ -63,6 +63,11 @@ namespace ReadMe.Web.Controllers
             ViewBag.Title = "Details";
             var user = this.userService.GetUserByUsername(username);
 
+            if(user.Count() == 0)
+            {
+                return this.View("Error");
+            }
+
             var userModel = user
                 .ProjectTo<UserDetailsViewModel>()
                 .FirstOrDefault();
@@ -95,7 +100,7 @@ namespace ReadMe.Web.Controllers
                 reviewsModel
             );
 
-            return View(model);
+            return this.View(model);
         }
 
         //

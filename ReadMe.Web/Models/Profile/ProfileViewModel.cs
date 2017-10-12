@@ -6,6 +6,10 @@ namespace ReadMe.Web.Models.Profile
 {
     public class ProfileViewModel
     {
+        public ProfileViewModel()
+        {
+        }
+
         public ProfileViewModel(UserDetailsViewModel userDetailsViewModel,
             ICollection<BookShortViewModel> wishlistViewModels,
             ICollection<BookShortViewModel> currentlyReadingViewModels, 
