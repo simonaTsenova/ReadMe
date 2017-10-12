@@ -10,21 +10,15 @@ namespace ReadMe.Web.Controllers
     public class RatingsController : Controller
     {
         private readonly IRatingService ratingService;
-        private readonly IUserService userService;
         private readonly IBookService bookService;
         private readonly IAuthenticationProvider authProvider;
 
-        public RatingsController(IRatingService ratingService, IUserService userService, 
+        public RatingsController(IRatingService ratingService, 
             IBookService bookService, IAuthenticationProvider authProvider)
         {
             if (ratingService == null)
             {
                 throw new ArgumentNullException("Rating service canot be null.");
-            }
-
-            if (userService == null)
-            {
-                throw new ArgumentNullException("User service canot be null.");
             }
 
             if (bookService == null)
@@ -38,7 +32,6 @@ namespace ReadMe.Web.Controllers
             }
 
             this.ratingService = ratingService;
-            this.userService = userService;
             this.bookService = bookService;
             this.authProvider = authProvider;
         }
