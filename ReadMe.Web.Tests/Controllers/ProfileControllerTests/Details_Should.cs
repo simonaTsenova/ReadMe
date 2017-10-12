@@ -11,7 +11,6 @@ using ReadMe.Web.Models.Profile;
 using ReadMe.Web.Models.Reviews;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using TestStack.FluentMVCTesting;
 
 namespace ReadMe.Web.Tests.Controllers.ProfileControllerTests

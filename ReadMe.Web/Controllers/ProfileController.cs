@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Microsoft.AspNet.Identity;
 using ReadMe.Authentication.Contracts;
 using ReadMe.Services.Contracts;
 using ReadMe.Web.Infrastructure.Factories;
@@ -115,10 +116,19 @@ namespace ReadMe.Web.Controllers
                 return this.PartialView("_EditUserPartial", model);
             }
 
-            var updatedUser = this.userService.EditUser(model.Id, model.Email, model.FirstName, model.LastName, model.Nationality, model.Age, model.FavouriteQuote);
+            var updatedUser = this.userService.EditUser(model.Id, model.Email, model.FirstName, 
+                model.LastName, model.Nationality, model.Age, model.FavouriteQuote);
             var userInfoModel = this.mapper.Map<UserDetailsViewModel>(updatedUser);
 
             return this.PartialView("_UserInfoPartial", userInfoModel);
+        }
+
+        private void AddErrors(IdentityResult result)
+        {
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error);
+            }
         }
     }
 }
