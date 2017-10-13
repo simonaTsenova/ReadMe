@@ -1,4 +1,5 @@
 ﻿using ReadMe.Models;
+using ReadMe.Web.Areas.Administration.Models;
 using ReadMe.Web.Models;
 using ReadMe.Web.Models.Books;
 using ReadMe.Web.Models.Profile;
@@ -21,5 +22,7 @@ namespace ReadMe.Web.Infrastructure.Factories
 
         BookDetailsViewModel CreateBookDetailsViewModel(BookInfoViewModel bookInfoViewModel, ICollection<ReviewViewModel> reviewViewModels,
             ReviewViewModel formReviewViewModel);
+
+        UserViewModel CreateUserViewModel(User user, bool isAdmin);
     }
 }

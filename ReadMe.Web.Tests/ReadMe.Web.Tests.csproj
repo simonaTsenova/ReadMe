@@ -131,6 +131,12 @@
     <Compile Include="Areas\Administration\Controllers\PublishersControllerTests\PostAdd_Should.cs" />
     <Compile Include="Areas\Administration\Controllers\PublishersControllerTests\PostEdit_Should.cs" />
     <Compile Include="Areas\Administration\Controllers\PublishersControllerTests\Restore_Should.cs" />
+    <Compile Include="Areas\Administration\Controllers\UsersControllerTests\AddAdmin_Should.cs" />
+    <Compile Include="Areas\Administration\Controllers\UsersControllerTests\Constructor_Should.cs" />
+    <Compile Include="Areas\Administration\Controllers\UsersControllerTests\Delete_Should.cs" />
+    <Compile Include="Areas\Administration\Controllers\UsersControllerTests\Index_Should.cs" />
+    <Compile Include="Areas\Administration\Controllers\UsersControllerTests\RemoveAdmin_Should.cs" />
+    <Compile Include="Areas\Administration\Controllers\UsersControllerTests\Restore_Should.cs" />
     <Compile Include="Controllers\AcoountControllerTests\Constructor_Should.cs" />
     <Compile Include="Controllers\AcoountControllerTests\Login_Should.cs" />
     <Compile Include="Controllers\AcoountControllerTests\LogOff_Should.cs" />
@@ -196,7 +202,6 @@
   <ItemGroup>
     <Folder Include="Areas\Administration\Controllers\BooksControllerTests\" />
     <Folder Include="Areas\Administration\Controllers\GenresControllerTests\" />
-    <Folder Include="Areas\Administration\Controllers\UsersControllerTests\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

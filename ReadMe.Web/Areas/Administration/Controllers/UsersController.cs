@@ -2,6 +2,7 @@
 using ReadMe.Authentication.Contracts;
 using ReadMe.Services.Contracts;
 using ReadMe.Web.Areas.Administration.Models;
+using ReadMe.Web.Infrastructure.Factories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,13 +15,20 @@ namespace ReadMe.Web.Areas.Administration.Controllers
     {
         private const int count = 15;
         private readonly IUserService userService;
+        private readonly IViewModelFactory factory;
         private readonly IAuthenticationProvider authProvider;
 
-        public UsersController(IUserService userService, IAuthenticationProvider authProvider)
+        public UsersController(IUserService userService,
+            IViewModelFactory factory, IAuthenticationProvider authProvider)
         {
             if (userService == null)
             {
                 throw new ArgumentNullException("User service cannot be null");
+            }
+
+            if (factory == null)
+            {
+                throw new ArgumentNullException("Viewmodel factory cannot be null");
             }
 
             if (authProvider == null)
@@ -29,6 +37,7 @@ namespace ReadMe.Web.Areas.Administration.Controllers
             }
 
             this.userService = userService;
+            this.factory = factory;
             this.authProvider = authProvider;
         }
 
@@ -42,7 +51,7 @@ namespace ReadMe.Web.Areas.Administration.Controllers
             foreach (var user in users)
             {
                 var isAdmin = this.authProvider.IsInRole(user.Id, "Admin");
-                var model = new UserViewModel(user, isAdmin);
+                var model = this.factory.CreateUserViewModel(user, isAdmin);
 
                 models.Add(model);
             }
