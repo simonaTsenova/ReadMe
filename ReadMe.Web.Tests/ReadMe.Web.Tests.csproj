@@ -58,6 +58,12 @@
     <Reference Include="nunit.framework, Version=3.8.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.8.1\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -108,6 +114,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Areas\Administration\Controllers\AuthorsControllerTests\Add_Should.cs" />
+    <Compile Include="Areas\Administration\Controllers\AuthorsControllerTests\Constructor_Should.cs" />
+    <Compile Include="Areas\Administration\Controllers\AuthorsControllerTests\Delete_Should.cs" />
+    <Compile Include="Areas\Administration\Controllers\AuthorsControllerTests\Edit_Should.cs" />
+    <Compile Include="Areas\Administration\Controllers\AuthorsControllerTests\Index_Should.cs" />
+    <Compile Include="Areas\Administration\Controllers\AuthorsControllerTests\PostAdd_Should.cs" />
+    <Compile Include="Areas\Administration\Controllers\AuthorsControllerTests\PostEdit_Should.cs" />
+    <Compile Include="Areas\Administration\Controllers\AuthorsControllerTests\Restore_Should.cs" />
+    <Compile Include="Areas\Administration\Controllers\MainControllerTests\Index_Should.cs" />
     <Compile Include="Controllers\AcoountControllerTests\Constructor_Should.cs" />
     <Compile Include="Controllers\AcoountControllerTests\Login_Should.cs" />
     <Compile Include="Controllers\AcoountControllerTests\LogOff_Should.cs" />
@@ -135,6 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
+    <Content Include="Content\PagedList.css" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -169,7 +185,12 @@
       <Name>ReadMe.Web</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Areas\Administration\Controllers\BooksControllerTests\" />
+    <Folder Include="Areas\Administration\Controllers\GenresControllerTests\" />
+    <Folder Include="Areas\Administration\Controllers\PublishersControllerTests\" />
+    <Folder Include="Areas\Administration\Controllers\UsersControllerTests\" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

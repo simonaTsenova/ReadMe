@@ -75,7 +75,6 @@ namespace ReadMe.Web.Areas.Administration.Controllers
             var author = this.authorService.GetAuthorById(authorId);
             if (author.Count() == 0)
             {
-                // TODO
                 return this.PartialView("Error");
             }
 

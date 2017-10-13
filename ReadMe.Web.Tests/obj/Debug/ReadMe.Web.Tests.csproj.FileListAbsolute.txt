@@ -92,3 +92,5 @@ D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web.Tests\bin\Debug\Moq.pdb
 D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web.Tests\bin\Debug\Moq.xml
 D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web.Tests\bin\Debug\nunit.framework.xml
 D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web.Tests\bin\Debug\TestStack.FluentMVCTesting.dll
+D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web.Tests\bin\Debug\PagedList.Mvc.dll
+D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web.Tests\bin\Debug\PagedList.Mvc.xml
