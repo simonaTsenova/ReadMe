@@ -42,7 +42,9 @@
     <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <HintPath>..\packages\Castle.Core.4.2.1\lib\net45\Castle.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework">
       <HintPath>..\packages\MSTest.TestFramework.1.1.17\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
@@ -107,6 +109,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AcoountControllerTests\Constructor_Should.cs" />
+    <Compile Include="Controllers\AcoountControllerTests\Login_Should.cs" />
+    <Compile Include="Controllers\AcoountControllerTests\LogOff_Should.cs" />
+    <Compile Include="Controllers\AcoountControllerTests\PostLogin_Should.cs" />
+    <Compile Include="Controllers\AcoountControllerTests\PostRegister_Should.cs" />
+    <Compile Include="Controllers\AcoountControllerTests\Register_Should.cs" />
     <Compile Include="Controllers\AuthorsControllerTests\Constructor_Should.cs" />
     <Compile Include="Controllers\AuthorsControllerTests\Details_Should.cs" />
     <Compile Include="Controllers\BooksControllerTests\Status_Should.cs" />

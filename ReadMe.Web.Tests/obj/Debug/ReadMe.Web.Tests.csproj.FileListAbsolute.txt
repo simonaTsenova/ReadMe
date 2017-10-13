@@ -18,8 +18,6 @@ D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web.Tests\bin\Debug\System.Web.WebP
 D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web.Tests\bin\Debug\System.Web.WebPages.Razor.dll
 D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web.Tests\bin\Debug\Microsoft.Owin.dll
 D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web.Tests\bin\Debug\System.Web.Optimization.dll
-D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web.Tests\bin\Debug\Microsoft.AspNet.Identity.Core.dll
-D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web.Tests\bin\Debug\Microsoft.AspNet.Identity.Owin.dll
 D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web.Tests\bin\Debug\Microsoft.Owin.Security.dll
 D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web.Tests\bin\Debug\Owin.dll
 D:\TelerikAcademy\ASP .NET MVC\ReadMe\ReadMe.Web.Tests\bin\Debug\EntityFramework.dll

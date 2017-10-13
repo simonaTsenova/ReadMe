@@ -64,13 +64,15 @@ namespace ReadMe.Web.Controllers
                 return View(model);
             }
 
+            returnUrl = string.IsNullOrEmpty(returnUrl) ? "/Home/Index" : returnUrl;
+
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = this.authProvider.SignInWithPassword(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    return this.Redirect(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.Failure:
@@ -149,43 +151,34 @@ namespace ReadMe.Web.Controllers
             }
         }
 
-        private ActionResult RedirectToLocal(string returnUrl)
-        {
-            if (Url.IsLocalUrl(returnUrl))
-            {
-                return Redirect(returnUrl);
-            }
-            return RedirectToAction("Index", "Home");
-        }
+        //internal class ChallengeResult : HttpUnauthorizedResult
+        //{
+        //    public ChallengeResult(string provider, string redirectUri)
+        //        : this(provider, redirectUri, null)
+        //    {
+        //    }
 
-        internal class ChallengeResult : HttpUnauthorizedResult
-        {
-            public ChallengeResult(string provider, string redirectUri)
-                : this(provider, redirectUri, null)
-            {
-            }
+        //    public ChallengeResult(string provider, string redirectUri, string userId)
+        //    {
+        //        LoginProvider = provider;
+        //        RedirectUri = redirectUri;
+        //        UserId = userId;
+        //    }
 
-            public ChallengeResult(string provider, string redirectUri, string userId)
-            {
-                LoginProvider = provider;
-                RedirectUri = redirectUri;
-                UserId = userId;
-            }
+        //    public string LoginProvider { get; set; }
+        //    public string RedirectUri { get; set; }
+        //    public string UserId { get; set; }
 
-            public string LoginProvider { get; set; }
-            public string RedirectUri { get; set; }
-            public string UserId { get; set; }
-
-            public override void ExecuteResult(ControllerContext context)
-            {
-                var properties = new AuthenticationProperties { RedirectUri = RedirectUri };
-                if (UserId != null)
-                {
-                    properties.Dictionary[XsrfKey] = UserId;
-                }
-                context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
-            }
-        }
+        //    public override void ExecuteResult(ControllerContext context)
+        //    {
+        //        var properties = new AuthenticationProperties { RedirectUri = RedirectUri };
+        //        if (UserId != null)
+        //        {
+        //            properties.Dictionary[XsrfKey] = UserId;
+        //        }
+        //        context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
+        //    }
+        //}
         #endregion
     }
 }
