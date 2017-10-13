@@ -1,9 +1,6 @@
 ﻿using ReadMe.Models;
 using ReadMe.Web.Infrastructure;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using AutoMapper;
 using System.ComponentModel.DataAnnotations;
 
@@ -11,6 +8,16 @@ namespace ReadMe.Web.Models.Reviews
 {
     public class ReviewViewModel : IMapFrom<Review>, ICustomMapping
     {
+        public ReviewViewModel()
+        {
+        }
+
+        //public ReviewViewModel(string userId, Guid bookId)
+        //{
+        //    this.UserId = userId;
+        //    this.BookId = bookId;
+        //}
+
         public Guid Id { get; set; }
 
         public Guid BookId { get; set; }

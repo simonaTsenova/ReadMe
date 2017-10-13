@@ -1,4 +1,5 @@
 ﻿using ReadMe.Models;
+using ReadMe.Web.Models;
 using ReadMe.Web.Models.Books;
 using ReadMe.Web.Models.Profile;
 using ReadMe.Web.Models.Reviews;
@@ -15,5 +16,10 @@ namespace ReadMe.Web.Infrastructure.Factories
             ICollection<BookShortViewModel> currentlyReadingViewModels, ICollection<BookShortViewModel> readViewModels, ICollection<ReviewViewModel> reviewViewModels);
 
         SearchViewModel CreateSearchViewModel(ICollection<Genre> genres);
+
+        ReviewViewModel CreateReviewViewModel();
+
+        BookDetailsViewModel CreateBookDetailsViewModel(BookInfoViewModel bookInfoViewModel, ICollection<ReviewViewModel> reviewViewModels,
+            ReviewViewModel formReviewViewModel);
     }
 }

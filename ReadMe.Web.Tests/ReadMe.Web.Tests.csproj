@@ -108,6 +108,9 @@
   <ItemGroup>
     <Compile Include="Controllers\AuthorsControllerTests\Constructor_Should.cs" />
     <Compile Include="Controllers\AuthorsControllerTests\Details_Should.cs" />
+    <Compile Include="Controllers\BooksControllerTests\Status_Should.cs" />
+    <Compile Include="Controllers\BooksControllerTests\Constructor_Should.cs" />
+    <Compile Include="Controllers\BooksControllerTests\Details_Should.cs" />
     <Compile Include="Controllers\ProfileControllerTests\Constructor_Should.cs" />
     <Compile Include="Controllers\ProfileControllerTests\Details_Should.cs" />
     <Compile Include="Controllers\ProfileControllerTests\Edit_Should.cs" />
@@ -158,6 +161,7 @@
       <Name>ReadMe.Web</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

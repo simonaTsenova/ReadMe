@@ -2,7 +2,7 @@
 using ReadMe.Authentication.Contracts;
 using ReadMe.Models.Enumerations;
 using ReadMe.Services.Contracts;
-using ReadMe.Web.Models;
+using ReadMe.Web.Infrastructure.Factories;
 using ReadMe.Web.Models.Books;
 using ReadMe.Web.Models.Reviews;
 using System;
@@ -15,11 +15,12 @@ namespace ReadMe.Web.Controllers
     {
         private readonly IBookService bookService;
         private readonly IReviewService reviewService;
-        private readonly IAuthenticationProvider authProvider;
         private readonly IUserBookService userBookService;
+        private readonly IViewModelFactory factory;
+        private readonly IAuthenticationProvider authProvider;
 
         public BooksController(IBookService bookService, IReviewService reviewService,
-            IAuthenticationProvider authProvider, IUserBookService userBookService)
+            IUserBookService userBookService, IViewModelFactory factory, IAuthenticationProvider authProvider)
         {
             if(bookService == null)
             {
@@ -31,35 +32,41 @@ namespace ReadMe.Web.Controllers
                 throw new ArgumentNullException("Review service canot be null.");
             }
 
-            if (authProvider == null)
-            {
-                throw new ArgumentNullException("Auth provider canot be null.");
-            }
-
             if (userBookService == null)
             {
                 throw new ArgumentNullException("UserBook service canot be null.");
             }
 
+            if (factory == null)
+            {
+                throw new ArgumentNullException("Factory canot be null.");
+            }
+
+            if (authProvider == null)
+            {
+                throw new ArgumentNullException("Auth provider canot be null.");
+            }
+
             this.bookService = bookService;
             this.reviewService = reviewService;
-            this.authProvider = authProvider;
             this.userBookService = userBookService;
+            this.factory = factory;
+            this.authProvider = authProvider;
         }
 
         // GET: Books/Details/{id}
         public ActionResult Details(Guid id)
         {
-            ViewBag.Title = "Book details";
             var book = this.bookService.GetBookById(id);
 
             if (!book.Any())
             {
-                // TODO - return error page
-                return RedirectToAction("Index", "Home");
+                return this.View("Error");
             }
 
-            var bookInfoModel = book.ProjectTo<BookInfoViewModel>()
+            ViewBag.Title = "Book details";
+            var bookInfoModel = book
+                .ProjectTo<BookInfoViewModel>()
                 .FirstOrDefault();
 
             var reviewModels = this.reviewService
@@ -70,13 +77,12 @@ namespace ReadMe.Web.Controllers
             var currentUserId = this.authProvider.CurrentUserId;
             var currentBookId = book.FirstOrDefault().Id;
             ReviewViewModel formReviewModel = null;
-            if (this.reviewService.GetByUserIdAndBookId(currentUserId, currentBookId) == null)
+            var review = this.reviewService.GetByUserIdAndBookId(currentUserId, currentBookId);
+            if (review == null)
             {
-                formReviewModel = new ReviewViewModel()
-                {
-                    UserId = currentUserId,
-                    BookId = currentBookId
-                };
+                formReviewModel = this.factory.CreateReviewViewModel();
+                formReviewModel.UserId = currentUserId;
+                formReviewModel.BookId = currentBookId;
             }
 
             ReadStatus status = bookInfoModel.UserBooks
@@ -86,12 +92,11 @@ namespace ReadMe.Web.Controllers
 
             bookInfoModel.CurrentStatus = status;
 
-            var model = new BookDetailsViewModel()
-            {
-                BookInfoViewModel = bookInfoModel,
-                ReviewViewModels = reviewModels,
-                FormReviewViewModel = formReviewModel,
-            };
+            var model = this.factory.CreateBookDetailsViewModel(
+                bookInfoModel,
+                reviewModels,
+                formReviewModel
+            );
 
             return View(model);
         }
@@ -106,9 +111,11 @@ namespace ReadMe.Web.Controllers
                 var userId = this.authProvider.CurrentUserId;
 
                 this.userBookService.UpdateStatus(userId, model.Id, model.CurrentStatus);
+
+                return this.Content("Status updated");
             }
 
-            return this.Content("Status updated");
+            return this.Content("Oops! Status could not be updated");
         }
     }
 }
