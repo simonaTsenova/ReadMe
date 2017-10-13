@@ -122,6 +122,11 @@
     <Compile Include="Areas\Administration\Controllers\AuthorsControllerTests\PostAdd_Should.cs" />
     <Compile Include="Areas\Administration\Controllers\AuthorsControllerTests\PostEdit_Should.cs" />
     <Compile Include="Areas\Administration\Controllers\AuthorsControllerTests\Restore_Should.cs" />
+    <Compile Include="Areas\Administration\Controllers\GenresControllerTests\Add_Should.cs" />
+    <Compile Include="Areas\Administration\Controllers\GenresControllerTests\Constructor_Should.cs" />
+    <Compile Include="Areas\Administration\Controllers\GenresControllerTests\Edit_Should.cs" />
+    <Compile Include="Areas\Administration\Controllers\GenresControllerTests\Index_Should.cs" />
+    <Compile Include="Areas\Administration\Controllers\GenresControllerTests\PostAdd_Should.cs" />
     <Compile Include="Areas\Administration\Controllers\MainControllerTests\Index_Should.cs" />
     <Compile Include="Areas\Administration\Controllers\PublishersControllerTests\Add_Should.cs" />
     <Compile Include="Areas\Administration\Controllers\PublishersControllerTests\Constructor_Should.cs" />
@@ -201,7 +206,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Administration\Controllers\BooksControllerTests\" />
-    <Folder Include="Areas\Administration\Controllers\GenresControllerTests\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
