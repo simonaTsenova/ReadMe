@@ -1,13 +1,9 @@
-﻿using AutoMapper;
-using Moq;
+﻿using Moq;
 using NUnit.Framework;
-using ReadMe.Models;
 using ReadMe.Services.Contracts;
 using ReadMe.Web.Areas.Administration.Controllers;
 using ReadMe.Web.Areas.Administration.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using TestStack.FluentMVCTesting;
 
 namespace ReadMe.Web.Tests.Areas.Administration.Controllers.AuthorsControllerTests

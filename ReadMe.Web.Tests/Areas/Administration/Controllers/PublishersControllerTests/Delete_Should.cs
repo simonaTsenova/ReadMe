@@ -8,25 +8,25 @@ using System.Collections.Generic;
 using System.Linq;
 using TestStack.FluentMVCTesting;
 
-namespace ReadMe.Web.Tests.Areas.Administration.Controllers.AuthorsControllerTests
+namespace ReadMe.Web.Tests.Areas.Administration.Controllers.PublishersControllerTests
 {
     [TestFixture]
     public class Delete_Should
     {
         [Test]
-        public void CallBookServiceGetBooksByAuthor_WhenInvoked()
+        public void CallBookServiceGetBooksByPublisher_WhenInvoked()
         {
             var id = Guid.NewGuid();
             var page = 1;
 
-            var authorServiceMock = new Mock<IAuthorService>();
+            var publisherServiceMock = new Mock<IPublisherService>();
             var bookServiceMock = new Mock<IBookService>();
-            var controller = new AuthorsController(
-                authorServiceMock.Object, bookServiceMock.Object);
+            var controller = new PublishersController(
+                publisherServiceMock.Object, bookServiceMock.Object);
 
             controller.Delete(id, page);
 
-            bookServiceMock.Verify(s => s.GetBooksByAuthor(id), Times.Once);
+            bookServiceMock.Verify(s => s.GetBooksByPublisher(id), Times.Once);
         }
 
         [Test]
@@ -40,11 +40,11 @@ namespace ReadMe.Web.Tests.Areas.Administration.Controllers.AuthorsControllerTes
                 new Book(),
                 new Book()
             }.AsQueryable();
-            var authorServiceMock = new Mock<IAuthorService>();
+            var publisherServiceMock = new Mock<IPublisherService>();
             var bookServiceMock = new Mock<IBookService>();
-            bookServiceMock.Setup(s => s.GetBooksByAuthor(id)).Returns(books);
-            var controller = new AuthorsController(
-                authorServiceMock.Object, bookServiceMock.Object);
+            bookServiceMock.Setup(s => s.GetBooksByPublisher(id)).Returns(books);
+            var controller = new PublishersController(
+                publisherServiceMock.Object, bookServiceMock.Object);
 
             controller.Delete(id, page);
 
@@ -52,19 +52,19 @@ namespace ReadMe.Web.Tests.Areas.Administration.Controllers.AuthorsControllerTes
         }
 
         [Test]
-        public void CallAuthorServiceDeleteAuthor_WhenInvoked()
+        public void CallPublisherServiceDeletePublisher_WhenInvoked()
         {
             var id = Guid.NewGuid();
             var page = 1;
 
-            var authorServiceMock = new Mock<IAuthorService>();
+            var publisherServiceMock = new Mock<IPublisherService>();
             var bookServiceMock = new Mock<IBookService>();
-            var controller = new AuthorsController(
-                authorServiceMock.Object, bookServiceMock.Object);
+            var controller = new PublishersController(
+                publisherServiceMock.Object, bookServiceMock.Object);
 
             controller.Delete(id, page);
 
-            authorServiceMock.Verify(s => s.DeleteAuthor(id), Times.Once);
+            publisherServiceMock.Verify(s => s.DeletePublisher(id), Times.Once);
         }
 
         [Test]
@@ -73,10 +73,10 @@ namespace ReadMe.Web.Tests.Areas.Administration.Controllers.AuthorsControllerTes
             var id = Guid.NewGuid();
             var page = 1;
 
-            var authorServiceMock = new Mock<IAuthorService>();
+            var publisherServiceMock = new Mock<IPublisherService>();
             var bookServiceMock = new Mock<IBookService>();
-            var controller = new AuthorsController(
-                authorServiceMock.Object, bookServiceMock.Object);
+            var controller = new PublishersController(
+                publisherServiceMock.Object, bookServiceMock.Object);
 
             controller.WithCallTo(c => c.Delete(id, page))
                 .ShouldRedirectTo(c => c.Index(page));
