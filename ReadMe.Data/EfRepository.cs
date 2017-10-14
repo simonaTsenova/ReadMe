@@ -1,8 +1,6 @@
 ﻿using ReadMe.Data.Contracts;
 using ReadMe.Models.Contracts;
 using System;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
 
 namespace ReadMe.Data
@@ -10,9 +8,9 @@ namespace ReadMe.Data
     public class EfRepository<T> : IEfRepository<T>
         where T : class, IDeletable
     {
-        private readonly ReadMeDbContext dbContext;
+        private readonly IReadMeDbContext dbContext;
 
-        public EfRepository(ReadMeDbContext dbContext)
+        public EfRepository(IReadMeDbContext dbContext)
         {
             if(dbContext == null)
             {
@@ -26,7 +24,6 @@ namespace ReadMe.Data
         {
             get
             {
-                //  TODO where clause
                 return this.dbContext.DbSet<T>().Where(x => !x.IsDeleted);
             }
         }
@@ -46,20 +43,17 @@ namespace ReadMe.Data
 
         public void Add(T entity)
         {
-            DbEntityEntry entry = this.dbContext.Entry(entity);
-            entry.State = EntityState.Added;
+            this.dbContext.Add(entity);
         }
 
         public void Delete(T entity)
         {
-            DbEntityEntry entry = this.dbContext.Entry(entity);
-            entry.State = EntityState.Deleted;
+            this.dbContext.Delete(entity);
         }
 
         public void Update(T entity)
         {
-            DbEntityEntry entry = this.dbContext.Entry(entity);
-            entry.State = EntityState.Modified;
+            this.dbContext.Update(entity);
         }
     }
 }

@@ -107,7 +107,7 @@ namespace ReadMe.Web.App_Start
 
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
             kernel.Bind(typeof(IEfRepository<>)).To(typeof(EfRepository<>)).InRequestScope();
-            kernel.Bind<ReadMeDbContext>().ToSelf().InRequestScope();
+            kernel.Bind<IReadMeDbContext>().To<ReadMeDbContext>().InRequestScope();
             kernel.Bind<IMapper>().ToMethod(x => Mapper.Instance).InSingletonScope();
         }
     }

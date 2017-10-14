@@ -1,25 +1,25 @@
 ﻿using ReadMe.Data.Contracts;
-using System.Threading.Tasks;
+using System;
 
 namespace ReadMe.Data
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly ReadMeDbContext dbContext;
+        private readonly IReadMeDbContext dbContext;
 
-        public UnitOfWork(ReadMeDbContext dbContext)
+        public UnitOfWork(IReadMeDbContext dbContext)
         {
+            if(dbContext == null)
+            {
+                throw new ArgumentNullException("Db context cannot be null");
+            }
+
             this.dbContext = dbContext;
         }
 
         public void Commit()
         {
             this.dbContext.SaveChanges();
-        }
-
-        public async Task CommitAsync()
-        {
-            await this.dbContext.SaveChangesAsync();
         }
     }
 }

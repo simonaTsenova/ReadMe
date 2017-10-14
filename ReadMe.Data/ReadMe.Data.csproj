@@ -68,6 +68,7 @@
     <Compile Include="Configurations\UserBooksEntityConfiguration.cs" />
     <Compile Include="Configurations\UserEntityConfiguration.cs" />
     <Compile Include="Contracts\IEfRepository.cs" />
+    <Compile Include="Contracts\IReadMeDbContext.cs" />
     <Compile Include="Contracts\IUnitOfWork.cs" />
     <Compile Include="EfRepository.cs" />
     <Compile Include="Migrations\201710012138246_Initial.cs" />

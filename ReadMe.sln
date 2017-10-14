@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadMe.Services", "ReadMe.S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadMe.Services.Tests", "ReadMe.Services.Tests\ReadMe.Services.Tests.csproj", "{BEEE7BFF-39F2-4079-920D-F8279BA2C4EE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadMe.Data.Tests", "ReadMe.Data.Tests\ReadMe.Data.Tests.csproj", "{75E45E98-94FF-4076-9A7D-6DE815301EBB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{BEEE7BFF-39F2-4079-920D-F8279BA2C4EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BEEE7BFF-39F2-4079-920D-F8279BA2C4EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BEEE7BFF-39F2-4079-920D-F8279BA2C4EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75E45E98-94FF-4076-9A7D-6DE815301EBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75E45E98-94FF-4076-9A7D-6DE815301EBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75E45E98-94FF-4076-9A7D-6DE815301EBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75E45E98-94FF-4076-9A7D-6DE815301EBB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
