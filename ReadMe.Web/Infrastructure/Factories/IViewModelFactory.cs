@@ -24,5 +24,7 @@ namespace ReadMe.Web.Infrastructure.Factories
             ReviewViewModel formReviewViewModel);
 
         UserViewModel CreateUserViewModel(User user, bool isAdmin);
+
+        AddBookViewModel CreateAddBookViewModel(ICollection<Genre> genres);
     }
 }

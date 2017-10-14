@@ -122,6 +122,13 @@
     <Compile Include="Areas\Administration\Controllers\AuthorsControllerTests\PostAdd_Should.cs" />
     <Compile Include="Areas\Administration\Controllers\AuthorsControllerTests\PostEdit_Should.cs" />
     <Compile Include="Areas\Administration\Controllers\AuthorsControllerTests\Restore_Should.cs" />
+    <Compile Include="Areas\Administration\Controllers\BooksControllerTests\Add_Should.cs" />
+    <Compile Include="Areas\Administration\Controllers\BooksControllerTests\Constructor_Should.cs" />
+    <Compile Include="Areas\Administration\Controllers\BooksControllerTests\Delete_Should.cs" />
+    <Compile Include="Areas\Administration\Controllers\BooksControllerTests\Edit_Should.cs" />
+    <Compile Include="Areas\Administration\Controllers\BooksControllerTests\Index_Should.cs" />
+    <Compile Include="Areas\Administration\Controllers\BooksControllerTests\PostEdit_Should.cs" />
+    <Compile Include="Areas\Administration\Controllers\BooksControllerTests\Restore_Should.cs" />
     <Compile Include="Areas\Administration\Controllers\GenresControllerTests\Add_Should.cs" />
     <Compile Include="Areas\Administration\Controllers\GenresControllerTests\Constructor_Should.cs" />
     <Compile Include="Areas\Administration\Controllers\GenresControllerTests\Edit_Should.cs" />
@@ -150,6 +157,7 @@
     <Compile Include="Controllers\AcoountControllerTests\Register_Should.cs" />
     <Compile Include="Controllers\AuthorsControllerTests\Constructor_Should.cs" />
     <Compile Include="Controllers\AuthorsControllerTests\Details_Should.cs" />
+    <Compile Include="Areas\Administration\Controllers\BooksControllerTests\PostAdd_Should.cs" />
     <Compile Include="Controllers\BooksControllerTests\Status_Should.cs" />
     <Compile Include="Controllers\BooksControllerTests\Constructor_Should.cs" />
     <Compile Include="Controllers\BooksControllerTests\Details_Should.cs" />
@@ -204,9 +212,7 @@
       <Name>ReadMe.Web</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Areas\Administration\Controllers\BooksControllerTests\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

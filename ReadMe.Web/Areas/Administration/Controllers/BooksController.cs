@@ -3,7 +3,7 @@ using PagedList;
 using ReadMe.Models;
 using ReadMe.Services.Contracts;
 using ReadMe.Web.Areas.Administration.Models;
-using ReadMe.Web.Models.Books;
+using ReadMe.Web.Infrastructure.Factories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,9 +19,10 @@ namespace ReadMe.Web.Areas.Administration.Controllers
         private readonly IGenreService genreService;
         private readonly IAuthorService authorService;
         private readonly IPublisherService publisherService;
+        private readonly IViewModelFactory factory;
 
         public BooksController(IBookService bookService, IGenreService genreService,
-            IAuthorService authorService, IPublisherService publisherService)
+            IAuthorService authorService, IPublisherService publisherService, IViewModelFactory factory)
         {
             if (bookService == null)
             {
@@ -43,10 +44,16 @@ namespace ReadMe.Web.Areas.Administration.Controllers
                 throw new ArgumentNullException("Publisher service cannot be null");
             }
 
+            if (factory == null)
+            {
+                throw new ArgumentNullException("Viewmodel factory cannot be null");
+            }
+
             this.bookService = bookService;
             this.genreService = genreService;
             this.authorService = authorService;
             this.publisherService = publisherService;
+            this.factory = factory;
         }
 
         // GET: Administration/Books
@@ -66,10 +73,7 @@ namespace ReadMe.Web.Areas.Administration.Controllers
         {
             var genres = this.genreService.GetAll().ToList();
 
-            var model = new AddBookViewModel()
-            {
-                Genres = genres
-            };
+            var model = this.factory.CreateAddBookViewModel(genres);
 
             return this.PartialView("_AddBookPartial", model);
         }
@@ -107,7 +111,6 @@ namespace ReadMe.Web.Areas.Administration.Controllers
             var book = this.bookService.GetBookById(bookId);
             if(book.Count() == 0)
             {
-                // TODO
                 return this.PartialView("Error");
             }
 

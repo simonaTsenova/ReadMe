@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using ReadMe.Models;
 using ReadMe.Web.Infrastructure;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
@@ -8,6 +9,15 @@ namespace ReadMe.Web.Areas.Administration.Models
 {
     public class AddBookViewModel : BookViewModel, IMapFrom<Book>, ICustomMapping
     {
+        public AddBookViewModel()
+        {
+        }
+
+        public AddBookViewModel(ICollection<Genre> genres)
+        {
+            this.Genres = genres;
+        }
+
         [Required]
         [Remote("CheckTitleExists", "Books")]
         [StringLength(60, ErrorMessage = "Title must be between 4 and 60 characters long", MinimumLength = 4)]
