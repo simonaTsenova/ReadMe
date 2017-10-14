@@ -176,7 +176,7 @@ namespace ReadMe.Services
         }
 
         public void UpdateBook(Guid id, string title, DateTime published, 
-            string isbn, string summary, string language, ICollection<Genre> genres,
+            string isbn, string summary, string language,
             Author author, Publisher publisher, string photoUrl)
         {
             var book = this.bookRepository.GetById(id);
@@ -188,7 +188,6 @@ namespace ReadMe.Services
                 book.ISBN = isbn;
                 book.Summary = summary;
                 book.Language = language;
-                book.Genres = genres;
                 book.Author = author;
                 book.Publisher = publisher;
                 book.PhotoUrl = photoUrl;

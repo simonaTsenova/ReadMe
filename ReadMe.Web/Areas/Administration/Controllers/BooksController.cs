@@ -130,19 +130,12 @@ namespace ReadMe.Web.Areas.Administration.Controllers
                 return this.PartialView("_EditBookPartial", model);
             }
 
-            var bookGenres = new List<Genre>();
-            foreach (var i in model.GenresIds)
-            {
-                var genre = this.genreService.GetById(i);
-                bookGenres.Add(genre);
-            }
-
             var authorNames = model.Author.Split(' ');
             var author = this.authorService.GetAuthorByName(authorNames[0], authorNames[1]);
             var publisher = this.publisherService.GetPublisherByName(model.Publisher);
 
             this.bookService.UpdateBook(model.Id, model.Title, model.Published, model.ISBN,
-                model.Summary, model.Language, bookGenres, author, publisher, model.PhotoUrl);
+                model.Summary, model.Language, author, publisher, model.PhotoUrl);
 
             return this.RedirectToAction("Index", "Books");
         }

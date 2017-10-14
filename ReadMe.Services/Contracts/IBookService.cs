@@ -32,7 +32,7 @@ namespace ReadMe.Services.Contracts
         void UpdateRating(Guid id, double rating);
 
         void UpdateBook(Guid id, string title, DateTime published, string isbn,
-                string summary, string language, ICollection<Genre> genres, Author author, Publisher publisher, string photoUrl);
+                string summary, string language, Author author, Publisher publisher, string photoUrl);
 
         void DeleteBook(Guid bookId);
 

@@ -20,7 +20,6 @@ namespace ReadMe.Services.Tests.BookServiceTests
             var authorMock = new Mock<Author>();
             var publisherMock = new Mock<Publisher>();
             var date = DateTime.Now;
-            var genresMock = new Mock<List<Genre>>();
 
             var repositoryMock = new Mock<IEfRepository<Book>>();
             var factoryMock = new Mock<IBookFactory>();
@@ -30,7 +29,7 @@ namespace ReadMe.Services.Tests.BookServiceTests
                 unitOfWorkMock.Object, provider.Object);
 
             service.UpdateBook(id, title, date, isbn, summary, language,
-                genresMock.Object, authorMock.Object, publisherMock.Object, photoUrl);
+                authorMock.Object, publisherMock.Object, photoUrl);
 
             repositoryMock.Verify(r => r.GetById(id), Times.Once);
         }
@@ -43,7 +42,6 @@ namespace ReadMe.Services.Tests.BookServiceTests
             var authorMock = new Mock<Author>();
             var publisherMock = new Mock<Publisher>();
             var date = DateTime.Now;
-            var genresMock = new Mock<List<Genre>>();
 
             var repositoryMock = new Mock<IEfRepository<Book>>();
             var factoryMock = new Mock<IBookFactory>();
@@ -53,7 +51,7 @@ namespace ReadMe.Services.Tests.BookServiceTests
                 unitOfWorkMock.Object, provider.Object);
 
             service.UpdateBook(id, title, date, isbn, summary, language,
-                genresMock.Object, authorMock.Object, publisherMock.Object, photoUrl);
+                authorMock.Object, publisherMock.Object, photoUrl);
 
             repositoryMock.Verify(r => r.Update(It.IsAny<Book>()), Times.Never);
         }
@@ -66,7 +64,6 @@ namespace ReadMe.Services.Tests.BookServiceTests
             var authorMock = new Mock<Author>();
             var publisherMock = new Mock<Publisher>();
             var date = DateTime.Now;
-            var genresMock = new Mock<List<Genre>>();
 
             var repositoryMock = new Mock<IEfRepository<Book>>();
             var factoryMock = new Mock<IBookFactory>();
@@ -76,7 +73,7 @@ namespace ReadMe.Services.Tests.BookServiceTests
                 unitOfWorkMock.Object, provider.Object);
 
             service.UpdateBook(id, title, date, isbn, summary, language,
-                genresMock.Object, authorMock.Object, publisherMock.Object, photoUrl);
+                authorMock.Object, publisherMock.Object, photoUrl);
 
             unitOfWorkMock.Verify(u => u.Commit(), Times.Never);
         }
@@ -89,7 +86,6 @@ namespace ReadMe.Services.Tests.BookServiceTests
             var authorMock = new Mock<Author>();
             var publisherMock = new Mock<Publisher>();
             var date = DateTime.Now;
-            var genresMock = new Mock<List<Genre>>();
 
             var bookMock = new Mock<Book>();
             var repositoryMock = new Mock<IEfRepository<Book>>();
@@ -101,7 +97,7 @@ namespace ReadMe.Services.Tests.BookServiceTests
                 unitOfWorkMock.Object, provider.Object);
 
             service.UpdateBook(id, title, date, isbn, summary, language,
-                genresMock.Object, authorMock.Object, publisherMock.Object, photoUrl);
+                authorMock.Object, publisherMock.Object, photoUrl);
 
             repositoryMock.Verify(r => r.Update(It.IsAny<Book>()), Times.Once);
         }
@@ -114,7 +110,6 @@ namespace ReadMe.Services.Tests.BookServiceTests
             var authorMock = new Mock<Author>();
             var publisherMock = new Mock<Publisher>();
             var date = DateTime.Now;
-            var genresMock = new Mock<List<Genre>>();
 
             var bookMock = new Mock<Book>();
             var repositoryMock = new Mock<IEfRepository<Book>>();
@@ -126,7 +121,7 @@ namespace ReadMe.Services.Tests.BookServiceTests
                 unitOfWorkMock.Object, provider.Object);
 
             service.UpdateBook(id, title, date, isbn, summary, language,
-                genresMock.Object, authorMock.Object, publisherMock.Object, photoUrl);
+                authorMock.Object, publisherMock.Object, photoUrl);
 
             unitOfWorkMock.Verify(u => u.Commit(), Times.Once);
         }
@@ -139,7 +134,6 @@ namespace ReadMe.Services.Tests.BookServiceTests
             var authorMock = new Mock<Author>();
             var publisherMock = new Mock<Publisher>();
             var date = DateTime.Now;
-            var genresMock = new Mock<List<Genre>>();
 
             var bookMock = new Mock<Book>();
             bookMock.Setup(b => b.Author).Returns(authorMock.Object);
@@ -153,14 +147,13 @@ namespace ReadMe.Services.Tests.BookServiceTests
                 unitOfWorkMock.Object, provider.Object);
 
             service.UpdateBook(id, title, date, isbn, summary, language,
-                genresMock.Object, authorMock.Object, publisherMock.Object, photoUrl);
+                authorMock.Object, publisherMock.Object, photoUrl);
 
             Assert.AreEqual(title, bookMock.Object.Title);
             Assert.AreEqual(date, bookMock.Object.Published);
             Assert.AreEqual(isbn, bookMock.Object.ISBN);
             Assert.AreEqual(summary, bookMock.Object.Summary);
             Assert.AreEqual(language, bookMock.Object.Language);
-            CollectionAssert.AreEqual(genresMock.Object, bookMock.Object.Genres);
             Assert.AreSame(authorMock.Object, bookMock.Object.Author);
             Assert.AreSame(publisherMock.Object, bookMock.Object.Publisher);
             Assert.AreEqual(photoUrl, bookMock.Object.PhotoUrl);
