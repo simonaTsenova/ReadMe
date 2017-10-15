@@ -33,6 +33,10 @@ namespace ReadMe.Web
                       "~/Content/bootstrap.css",
                       "~/Content/admin.css"));
 
+            bundles.Add(new StyleBundle("~/Content/home-css").Include(
+                      "~/Content/bootstrap.css",
+                      "~/Content/homepage.css"));
+
             bundles.Add(new ScriptBundle("~/bundles/search").Include(
                      //"~/Scripts/jquery.unobtrusive-ajax.min.js",
                      "~/Scripts/Custom/search.js"));

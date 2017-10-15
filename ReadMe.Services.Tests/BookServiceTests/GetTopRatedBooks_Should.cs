@@ -50,7 +50,7 @@ namespace ReadMe.Services.Tests.BookServiceTests
 
             var result = service.GetTopRatedBooks();
 
-            Assert.AreEqual(5, result.ToList().Count());
+            Assert.AreEqual(4, result.ToList().Count());
         }
 
         [Test]
@@ -68,7 +68,7 @@ namespace ReadMe.Services.Tests.BookServiceTests
             var booksQueryable = books.AsQueryable();
             var expected = new List<Book>
             {
-                books[0], books[2], books[4], books[5], books[3]
+                books[0], books[2], books[4], books[5]
             }.AsQueryable();
             var repositoryMock = new Mock<IEfRepository<Book>>();
             repositoryMock.Setup(r => r.All).Returns(booksQueryable);
