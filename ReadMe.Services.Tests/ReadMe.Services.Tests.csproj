@@ -110,6 +110,7 @@
     <Compile Include="ReviewServiceTests\GetById_Should.cs" />
     <Compile Include="ReviewServiceTests\GetByUserIdAndBookId_Should.cs" />
     <Compile Include="ReviewServiceTests\GetByUserId_Should.cs" />
+    <Compile Include="ReviewServiceTests\GetLatestReviews_Should.cs" />
     <Compile Include="UserBookServiceTests\AddUserBook_Should.cs" />
     <Compile Include="UserBookServiceTests\Constructor_Should.cs" />
     <Compile Include="UserBookServiceTests\GetByUserIdAndBookId_Should.cs" />

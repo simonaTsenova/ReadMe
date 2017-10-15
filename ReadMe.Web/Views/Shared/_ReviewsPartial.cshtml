@@ -3,6 +3,20 @@
 @foreach (var review in Model)
 {
     <div class="row">
+        <blockquote>
+            @review.Content
+            <cite>
+                <span><img src="@review.User.PhotoUrl" alt="Profile img" /></span>
+                <span>@Html.ActionLink(@review.User.UserName, "Details", new { controller = "Profile", username = review.User.UserName })</span>
+                <span>on</span>
+                <span>@Html.ActionLink(@review.Book.Title, "Details", new { controller = "Books", id = review.Book.Id })</span>
+            </cite>
+        </blockquote>
+    </div>
+
+    <hr />
+
+    @*<div class="row">
         <div class="col-md-3">
             <div class="profile">
                 <div class="pic"><img src="@review.User.PhotoUrl" alt=""></div>
@@ -15,6 +29,6 @@
                 <div> - @review.Book.Title by @review.Book.Author.FirstName @review.Book.Author.LastName</div>
             </div>
         </div>
-    </div>
-    
-}
+    </div>*@
+
+                 }

@@ -105,5 +105,14 @@ namespace ReadMe.Services
 
             return review;
         }
+
+        public IQueryable<Review> GetLatestReviews()
+        {
+            var reviews = this.reviewRepository.All
+                .OrderByDescending(r => r.PostedOn)
+                .Take(4);
+
+            return reviews;
+        }
     }
 }

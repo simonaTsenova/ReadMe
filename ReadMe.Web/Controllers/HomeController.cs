@@ -63,9 +63,7 @@ namespace ReadMe.Web.Controllers
         public ActionResult LatestReviews()
         {
             var latestReviews = this.reviewService
-                .GetAll()
-                .OrderByDescending(r => r.PostedOn)
-                .Take(3)
+                .GetLatestReviews()
                 .ProjectTo<ReviewViewModel>()
                 .ToList();
 
