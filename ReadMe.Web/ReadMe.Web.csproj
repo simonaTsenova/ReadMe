@@ -344,8 +344,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
@@ -367,12 +365,15 @@
     <Content Include="Views\Books\_BookReviewsPartial.cshtml" />
     <Content Include="Views\Profile\_UserReviewsPartial.cshtml" />
     <Content Include="Views\Books\_FormReviewPartial.cshtml" />
-    <Content Include="Views\Shared\_ReviewPartial.cshtml" />
+    <Content Include="Views\Shared\_ReviewsPartial.cshtml" />
     <Content Include="Views\Authors\Details.cshtml" />
+    <Content Include="Views\Home\_TopBooksListPartial.cshtml" />
+    <Content Include="Views\Home\_LatestBooksListPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Views\Shared\" />
+    <Folder Include="Models\Home\" />
     <Folder Include="Views\Ratings\" />
   </ItemGroup>
   <ItemGroup>

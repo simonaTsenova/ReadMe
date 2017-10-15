@@ -263,7 +263,7 @@ namespace ReadMe.Services
             var books = this.bookRepository
                 .All
                 .OrderByDescending(b => b.Rating)
-                .Take(5);
+                .Take(4);
 
             return books;
         }
@@ -273,7 +273,7 @@ namespace ReadMe.Services
             var books = this.bookRepository
                 .All
                 .OrderByDescending(b => b.Published)
-                .Take(5);
+                .Take(4);
 
             return books;
         }

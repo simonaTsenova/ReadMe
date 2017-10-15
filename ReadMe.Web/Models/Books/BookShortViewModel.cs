@@ -20,6 +20,8 @@ namespace ReadMe.Web.Models.Books
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public DateTime Published { get; set; }
 
+        public double Rating { get; set; }
+
         public void CreateMappings(IMapperConfigurationExpression configuration)
         {
             configuration.CreateMap<Book, BookShortViewModel>()
@@ -32,7 +34,9 @@ namespace ReadMe.Web.Models.Books
                 .ForMember(bookViewModel => bookViewModel.Author,
                     cfg => cfg.MapFrom(book => book.Author))
                 .ForMember(bookViewModel => bookViewModel.PhotoUrl,
-                    cfg => cfg.MapFrom(book => book.PhotoUrl));
+                    cfg => cfg.MapFrom(book => book.PhotoUrl))
+                .ForMember(bookViewModel => bookViewModel.Rating,
+                    cfg => cfg.MapFrom(book => book.Rating));
         }
     }
 }

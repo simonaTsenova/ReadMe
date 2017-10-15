@@ -1,0 +1,18 @@
+﻿@model ICollection<ReadMe.Web.Models.Books.BookShortViewModel>
+
+<div class="row">
+    @foreach (var book in Model)
+    {
+        <div class="col-md-3">
+            <div class="member">
+                <div class="pic"><img src="@book.PhotoUrl" alt=""></div>
+                <h4>@Html.ActionLink(@book.Title, "Details", "Books", routeValues: new { area = "", id = book.Id }, htmlAttributes: null)</h4>
+
+                <span>@book.Author.FirstName @book.Author.LastName</span>
+                <span>@book.Rating <i class="fa fa-star star" aria-hidden="true"></i></span>
+            </div>
+        </div>
+    }
+
+</div>
+

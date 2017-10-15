@@ -1,0 +1,20 @@
+﻿@model ICollection<ReadMe.Web.Models.Reviews.ReviewViewModel>
+
+@foreach (var review in Model)
+{
+    <div class="row">
+        <div class="col-md-3">
+            <div class="profile">
+                <div class="pic"><img src="@review.User.PhotoUrl" alt=""></div>
+                <h4>@review.User.UserName</h4>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="quote">
+                @review.Content
+                <div> - @review.Book.Title by @review.Book.Author.FirstName @review.Book.Author.LastName</div>
+            </div>
+        </div>
+    </div>
+    
+}

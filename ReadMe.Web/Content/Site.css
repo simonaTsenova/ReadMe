@@ -1,274 +1,274 @@
 ﻿@import url('https://fonts.googleapis.com/css?family=Playball');
 
 body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-    font-family: Garamond, sans-serif;
-    font-size: 20px;
+padding-top: 50px;
+/*padding-bottom: 20px;*/
+font-family: Garamond, sans-serif;
+font-size: 20px;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+padding-left: 15px;
+padding-right: 15px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
+will truncate terms that are too long to fit in the left column 
 */
 .dl-horizontal dt {
-    white-space: normal;
+white-space: normal;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
 textarea {
-    max-width: 280px;
+max-width: 280px;
 }
 
 h2.title {
-    font-family: 'Playball', cursive;
+font-family: 'Playball', cursive;
 }
 
 .bounceInLeft, .bounceInRight {
-    background-color: #f0f8ed;
-    border-radius: 9px;
-    box-shadow: 0px 1px 1px 0px;
+background-color: #f0f8ed;
+border-radius: 9px;
+box-shadow: 0px 1px 1px 0px;
 }
 
 .bounceInLeft, .bounceInRight {
-    margin-left: 3%;
+margin-left: 3%;
 }
 
 .bounceInRight {
-    padding: 25px 25px;
+padding: 25px 25px;
 }
 
 .bounceInLeft {
-    padding: 50px 35px;
+padding: 50px 35px;
 }
 
 h4.card-title a {
-    color: black;
+color: black;
 }
 
 input#search-pattern.form-control {
-    display: inline;
+display: inline;
 }
 
 div.panel.search-panel {
-    margin-top: 10%;
+margin-top: 10%;
 }
 
 div#search-results div.card {
-    margin-top: 5%;
-    margin-left: 7%;
+margin-top: 5%;
+margin-left: 7%;
 }
 
 
 .mbr-testimonial {
-    border-radius: 0;
-    border: 0;
-    margin-bottom: 0;
-    text-align: center;
+border-radius: 0;
+border: 0;
+margin-bottom: 0;
+text-align: center;
 }
 
-    .mbr-testimonial + * {
-        padding-top: 40px;
-    }
+.mbr-testimonial + * {
+    padding-top: 40px;
+}
 
-    .mbr-testimonial.card {
-        background-color: transparent;
-    }
+.mbr-testimonial.card {
+    background-color: transparent;
+}
 
-    .mbr-testimonial .card-block {
-        background: #f4f4f4;
-        color: #565656;
-        font-family: "Lora";
-        font-size: 2rem;
-        font-style: italic;
-        font-weight: 400;
-        line-height: 2;
-        padding: 1.875rem;
-        position: relative;
-    }
+.mbr-testimonial .card-block {
+    background: #f4f4f4;
+    color: #565656;
+    font-family: "Lora";
+    font-size: 2rem;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 2;
+    padding: 1.875rem;
+    position: relative;
+}
 
-        .mbr-testimonial .card-block:after {
-            background-color: inherit;
-            bottom: -7px;
-            content: "";
-            display: block;
-            height: 14px;
-            left: 50%;
-            margin-left: -7px;
-            position: absolute;
-            -webkit-transform: rotate(45deg);
-            transform: rotate(45deg);
-            width: 14px;
-        }
+    .mbr-testimonial .card-block:after {
+        background-color: inherit;
+        bottom: -7px;
+        content: "";
+        display: block;
+        height: 14px;
+        left: 50%;
+        margin-left: -7px;
+        position: absolute;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+        width: 14px;
+    }
 
 .mbr-testimonial-lg .card-block {
-    padding-bottom: 90px;
+padding-bottom: 90px;
 }
 
 .mbr-testimonial .card-footer {
-    background: none;
-    border: 0;
-    padding: 0;
-    position: relative;
-    z-index: 2;
+background: none;
+border: 0;
+padding: 0;
+position: relative;
+z-index: 2;
 }
 
-    .mbr-testimonial .card-footer:last-child {
-        border-radius: 0;
-    }
+.mbr-testimonial .card-footer:last-child {
+    border-radius: 0;
+}
 
 /*-------
 
-   Testimonials / Author
+Testimonials / Author
 
 -------*/
 .mbr-author-img {
-    margin-top: -2.5rem;
+margin-top: -2.5rem;
 }
 
-    .mbr-author-img img {
-        height: 5rem;
-        width: 5rem;
-    }
+.mbr-author-img img {
+    height: 5rem;
+    width: 5rem;
+}
 
 .mbr-author-name {
-    color: #2d2d2d;
-    font-family: "Montserrat";
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: -1px;
-    line-height: 1.3;
-    padding-top: 1.25rem;
+color: #2d2d2d;
+font-family: "Montserrat";
+font-size: 1.5rem;
+font-weight: 700;
+letter-spacing: -1px;
+line-height: 1.3;
+padding-top: 1.25rem;
 }
 
 .mbr-author-desc {
-    color: #a7a7a7;
-    font-family: "Lora";
-    font-size: 0.875rem;
-    font-style: italic;
-    font-weight: 400;
-    line-height: 1.597;
+color: #a7a7a7;
+font-family: "Lora";
+font-size: 0.875rem;
+font-style: italic;
+font-weight: 400;
+line-height: 1.597;
 }
 
 /*-------
 
-   Info
+Info
 
 -------*/
 .mbr-info-subtitle, .mbr-info-extra .mbr-info-title {
-    margin-bottom: 0;
+margin-bottom: 0;
 }
 
 .mbr-info-extra .mbr-info-subtitle {
-    margin-bottom: 0.5rem;
+margin-bottom: 0.5rem;
 }
 
 /*-------
 
-   Subscribe
+Subscribe
 
 -------*/
 .mbr-subscribe {
-    background: #f5f5f5;
-    border-radius: 3px;
-    border: 1px solid #e8e8e8;
-    height: 4rem;
-    padding: 0;
-    position: relative;
+background: #f5f5f5;
+border-radius: 3px;
+border: 1px solid #e8e8e8;
+height: 4rem;
+padding: 0;
+position: relative;
 }
 
-    .mbr-subscribe .form-control {
-        background: none;
-        border: 0;
-        position: relative;
-        top: 0.4375rem;
-    }
+.mbr-subscribe .form-control {
+    background: none;
+    border: 0;
+    position: relative;
+    top: 0.4375rem;
+}
 
-    .mbr-subscribe .input-group-btn {
-        position: static;
-    }
+.mbr-subscribe .input-group-btn {
+    position: static;
+}
 
-        .mbr-subscribe .input-group-btn::after {
-            border-radius: 3px;
-            border: 1px solid transparent;
-            bottom: -1px;
-            content: "";
-            display: block;
-            left: -1px;
-            position: absolute;
-            right: -1px;
-            top: -1px;
-        }
+    .mbr-subscribe .input-group-btn::after {
+        border-radius: 3px;
+        border: 1px solid transparent;
+        bottom: -1px;
+        content: "";
+        display: block;
+        left: -1px;
+        position: absolute;
+        right: -1px;
+        top: -1px;
+    }
 
 .form-active .mbr-subscribe .form-control:invalid ~ .input-group-btn::after {
-    border-color: #f28281;
+border-color: #f28281;
 }
 
 .mbr-subscribe .btn {
-    border-radius: 3px !important;
-    margin-bottom: 0;
-    margin-right: 0.5625rem;
+border-radius: 3px !important;
+margin-bottom: 0;
+margin-right: 0.5625rem;
 }
 
 .mbr-subscribe-dark {
-    background: none;
-    border-color: rgba(255, 255, 255, 0.2);
+background: none;
+border-color: rgba(255, 255, 255, 0.2);
 }
 
-    .mbr-subscribe-dark .form-control {
-        color: #fff;
-    }
+.mbr-subscribe-dark .form-control {
+    color: #fff;
+}
 
 /*-------
 
-   Small footer
+Small footer
 
 -------*/
 .mbr-small-footer {
-    background: #323232;
-    color: #acacac;
-    font-size: 0.8125rem;
-    padding: 1.75rem 0;
+background: #323232;
+color: #acacac;
+font-size: 0.8125rem;
+padding: 1.75rem 0;
 }
 
-    .mbr-small-footer p {
-        margin-bottom: 0;
-    }
+.mbr-small-footer p {
+    margin-bottom: 0;
+}
 
-    .mbr-small-footer a {
-        color: #c0a375;
-    }
+.mbr-small-footer a {
+    color: #c0a375;
+}
 
-        .mbr-small-footer a:hover {
-            text-decoration: none;
-        }
+    .mbr-small-footer a:hover {
+        text-decoration: none;
+    }
 
 #stat-message {
-    color: orange;
-    font-size: 20px;
-    font-weight: bolder;
+color: orange;
+font-size: 20px;
+font-weight: bolder;
 }
 
 .star {
-    color: #f70;
+color: #f70;
 }
 
 /*Rating*/
 #book-rating {
-    margin-top: 10%;
+margin-top: 10%;
 }
 /***************************
 Pulls the stars container to the left
 ***************************/
 .rating {
-   float: left;
+float: left;
 }
 /***************************
 Hides the radio buttons
@@ -292,12 +292,12 @@ Default stars styles
     line-height: 1.2;
     color: #ddd;
 }
-/***************************
+    /***************************
 Adds the star symbol to the labels
 ***************************/
-.rating:not(:checked) > label:before {
-    content: '★ ';
-}
+    .rating:not(:checked) > label:before {
+        content: '★ ';
+    }
 /***************************
 Colour for the applied rating stars
 ***************************/
@@ -321,7 +321,131 @@ Colour for hovered stars when decreasing the rating
 }
 
 #post-review-btn {
-    margin-top: 1%;
-    margin-left: auto;
-    margin-right: auto;
+margin-top: 1%;
+margin-left: auto;
+margin-right: auto;
+}
+
+
+/*Sections*/
+.section-title {
+font-size: 32px;
+font-family: 'Playball', cursive;
+color: #111;
+text-align: center;
+font-weight: 700;
+}
+
+.section-description {
+text-align: center;
+margin-bottom: 40px;
+}
+
+.section-title-divider {
+width: 50px;
+height: 3px;
+background: #4eb980;
+margin: 0 auto;
+margin-bottom: 20px;
+}
+
+/*Top Rated Books*/
+/* ==========================================
+Offers Section
+========================================== */
+#team {
+background: #fff;
+padding: 80px 0 60px 0;
+}
+
+#team .member {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+    #team .member .pic {
+        margin-bottom: 15px;
+        overflow: hidden;
+        height: 350px;
+    }
+
+        #team .member .pic img {
+            max-width: 90%;
+        }
+
+    #team .member h4 {
+        font-weight: 700;
+        margin-bottom: 2px;
+    }
+
+        #team .member h4 a {
+            color: #333333;
+            text-decoration: none;
+        }
+
+            #team .member h4 a:hover {
+                color: #4eb980;
+            }
+
+    #team .member span {
+        font-style: italic;
+        display: block;
+        font-size: 13px;
+    }
+
+#testimonials {
+background: #f6f6f6;
+padding: 80px 0;
+}
+
+#testimonials .profile {
+    text-align: center;
+}
+
+#testimonials .profile .pic {
+    border-radius: 50%;
+    border: 6px solid #fff;
+    margin-bottom: 15px;
+    overflow: hidden;
+    height: 260px;
+    width: 260px;
+}
+
+    #testimonials .profile .pic img {
+        max-width: 100%;
+    }
+
+#testimonials .profile h4 {
+    font-weight: 700;
+    color: #03C4EB;
+    margin-bottom: 5px;
+}
+
+#testimonials .profile span {
+    color: #333333;
+}
+
+#testimonials .quote {
+    position: relative;
+    background: #fff;
+    padding: 60px;
+    margin-top: 40px;
+    font-size: 16px;
+    font-style: italic;
+    border-radius: 5px;
+}
+
+#testimonials .quote b {
+    display: inline-block;
+    font-size: 22px;
+    left: -9px;
+    position: relative;
+    top: -8px;
+}
+
+#testimonials .quote small {
+    display: inline-block;
+    right: -9px;
+    position: relative;
+    top: 4px;
 }

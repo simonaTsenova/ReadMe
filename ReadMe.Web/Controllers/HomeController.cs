@@ -1,26 +1,75 @@
-﻿using System.Web.Mvc;
+﻿using AutoMapper.QueryableExtensions;
+using ReadMe.Services.Contracts;
+using ReadMe.Web.Models.Books;
+using ReadMe.Web.Models.Reviews;
+using System;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace ReadMe.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IBookService bookService;
+        private readonly IReviewService reviewService;
+
+        public HomeController(IBookService bookService, IReviewService reviewService)
+        {
+            if(bookService == null)
+            {
+                throw new ArgumentNullException("Book service cannot be null.");
+            }
+
+            if (reviewService == null)
+            {
+                throw new ArgumentNullException("Review service cannot be null.");
+            }
+
+            this.bookService = bookService;
+            this.reviewService = reviewService;
+        }
+
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult About()
+        [OutputCache(Duration = 60 * 4)]
+        [ChildActionOnly]
+        public ActionResult TopBooks()
         {
-            ViewBag.Message = "Your application description page.";
+            var topRatedBooks = this.bookService
+                .GetTopRatedBooks()
+                .ProjectTo<BookShortViewModel>()
+                .ToList();
 
-            return View();
+            return this.PartialView("_TopBooksListPartial", topRatedBooks);
         }
 
-        public ActionResult Contact()
+        [OutputCache(Duration = 60 * 4)]
+        [ChildActionOnly]
+        public ActionResult LatestBooks()
         {
-            ViewBag.Message = "Your contact page.";
+            var latestPublishedBooks = this.bookService
+                .GetLatestBooks()
+                .ProjectTo<BookShortViewModel>()
+                .ToList();
 
-            return View();
+            return this.PartialView("_LatestBooksListPartial", latestPublishedBooks);
+        }
+
+        [OutputCache(Duration = 60 * 4)]
+        [ChildActionOnly]
+        public ActionResult LatestReviews()
+        {
+            var latestReviews = this.reviewService
+                .GetAll()
+                .OrderByDescending(r => r.PostedOn)
+                .Take(3)
+                .ProjectTo<ReviewViewModel>()
+                .ToList();
+
+            return this.PartialView("_ReviewsPartial", latestReviews);
         }
     }
 }
