@@ -53,6 +53,7 @@ namespace ReadMe.Web.Areas.Administration.Controllers
 
         // POST: Administration/Publishers/Add
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Add(AddPublisherViewModel model)
         {
             if (!ModelState.IsValid)
@@ -84,6 +85,7 @@ namespace ReadMe.Web.Areas.Administration.Controllers
 
         // POST: Administration/Publishers/Edit
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(PublisherViewModel model)
         {
             if (!ModelState.IsValid)

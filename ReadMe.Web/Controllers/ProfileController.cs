@@ -108,7 +108,7 @@ namespace ReadMe.Web.Controllers
         // POST: Profile/Edit
         [Authorize]
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public PartialViewResult Edit(UserDetailsViewModel model)
         {
             if (!ModelState.IsValid)

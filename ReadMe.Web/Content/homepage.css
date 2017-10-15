@@ -131,10 +131,16 @@ Offers Section
     margin-bottom: 1%;
 }
 
+#testimonials hr {
+    border: 1px solid #4eb980;
+    width: 200px;
+}
+
 #testimonials .review img {
     border: 6px solid #fff;
     overflow: hidden;
     max-width: 10%;
+    margin-top: 3%;
     margin-bottom: 3%;
 }
 

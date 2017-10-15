@@ -369,6 +369,7 @@
     <Content Include="Views\Authors\Details.cshtml" />
     <Content Include="Views\Home\_TopBooksListPartial.cshtml" />
     <Content Include="Views\Home\_LatestBooksListPartial.cshtml" />
+    <Content Include="Views\Shared\_ReviewPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

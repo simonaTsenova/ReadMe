@@ -80,6 +80,7 @@ namespace ReadMe.Web.Areas.Administration.Controllers
 
         // POST: Administration/Books/Add
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Add(AddBookViewModel model)
         {
             if(!ModelState.IsValid)
@@ -123,6 +124,7 @@ namespace ReadMe.Web.Areas.Administration.Controllers
 
         // POST: Administration/Books/Edit
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(BookViewModel model)
         {
             if (!ModelState.IsValid)

@@ -54,7 +54,7 @@ namespace ReadMe.Web.Areas.Administration.Controllers
         }
 
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(GenreViewModel model)
         {
             this.genreService.UpdateGenre(model.Id, model.Name);
