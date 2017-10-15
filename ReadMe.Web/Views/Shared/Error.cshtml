@@ -4,6 +4,30 @@
     ViewBag.Title = "Error";
 }
 
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
+@Styles.Render("~/Content/error-css")
+
+<div class="sign error-page-wrapper background-color background-image">
+    <div class="sign-container">
+        <div class="nob"></div>
+        <div class="post left"></div>
+        <div class="post right"></div>
+        <div class="pane">
+            <div class="headline sign-text-color">
+                404
+            </div>
+            <div class="context sign-text-color">
+                Oops, the page you're<br>
+                looking for does not exist.
+            </div>
+            <div class="home sign-text-color">
+                @Html.ActionLink(" ", "Index", new { controller = "Home" }, new { @class = "fa fa-3x fa-home"})
+            </div>
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/jquery");
+@Scripts.Render("~/bundles/error")
+
+
 

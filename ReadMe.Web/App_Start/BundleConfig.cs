@@ -29,6 +29,10 @@ namespace ReadMe.Web
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
+            bundles.Add(new StyleBundle("~/Content/error-css").Include(
+                "~/Content/bootstrap.css",
+                "~/Content/error.css"));
+
             bundles.Add(new StyleBundle("~/Content/admin-css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/admin.css"));
@@ -36,6 +40,11 @@ namespace ReadMe.Web
             bundles.Add(new StyleBundle("~/Content/home-css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/homepage.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/error").Include(
+                //"~/Scripts/jquery.unobtrusive-ajax.min.js",
+                "~/Scripts/jquery-ui-1.12.1.min.js",
+                "~/Scripts/Custom/error.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/search").Include(
                      //"~/Scripts/jquery.unobtrusive-ajax.min.js",
