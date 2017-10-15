@@ -15,9 +15,5 @@ $("input[type='radio']").click(function () {
 })
 
 $("input[type='checkbox']").click(function () {
-    if ($('#search-pattern').val().length > 0) {
-        $('#search-form').submit();
-    } else {
-        $('#search-results').empty();
-    }
+    $('#search-form').submit();
 })

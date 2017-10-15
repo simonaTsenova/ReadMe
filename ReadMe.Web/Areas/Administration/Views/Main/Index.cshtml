@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Admin panel";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -19,7 +18,6 @@
                                     InsertionMode = InsertionMode.Replace,
                                     UpdateTargetId = "admin-main"
                                 });
-                @*<a href="/administration/genres">Genres</a>*@
             </li>
             <li>
                 @Ajax.ActionLink("Books",
@@ -31,7 +29,6 @@
                                     InsertionMode = InsertionMode.Replace,
                                     UpdateTargetId = "admin-main"
                                 });
-                @*<a href="/administration/books">Books</a>*@
             </li>
             <li>
                 @Ajax.ActionLink("Users",
@@ -43,19 +40,6 @@
                                     InsertionMode = InsertionMode.Replace,
                                     UpdateTargetId = "admin-main"
                                 });
-                @*<a href="/administration/users">Users</a>*@
-            </li>
-            <li>
-                @*@Ajax.ActionLink("Reviews",
-                                "Index",
-                                "Reviews",
-                                new AjaxOptions
-                                {
-                                    HttpMethod = "GET",
-                                    InsertionMode = InsertionMode.Replace,
-                                    UpdateTargetId = "admin-main"
-                                });*@
-                @*<a href="/administration/reviews">Reviews</a>*@
             </li>
             <li>
                 @Ajax.ActionLink("Authors",
@@ -67,7 +51,6 @@
                                     InsertionMode = InsertionMode.Replace,
                                     UpdateTargetId = "admin-main"
                                 });
-                @*<a href="/administration/authors">Authors</a>*@
             </li>
             <li>
                 @Ajax.ActionLink("Publishers",
@@ -79,7 +62,6 @@
                                     InsertionMode = InsertionMode.Replace,
                                     UpdateTargetId = "admin-main"
                                 });
-                @*<a href="/administration/publishers">Publishers</a>*@
             </li>
         </ul>
     </div>
@@ -95,3 +77,12 @@
     </div>
     <!-- /#page-content-wrapper -->
 </div>
+
+@section scripts {
+    <script>
+            $("#menu-toggle").click(function (e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+    </script>
+}

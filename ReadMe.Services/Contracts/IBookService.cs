@@ -11,6 +11,8 @@ namespace ReadMe.Services.Contracts
                     Author author, string summary, string language,
                     Publisher publisher, ICollection<Genre> genres);
 
+        IQueryable<Book> GetAll();
+
         IQueryable<Book> GetAllAndDeleted();
 
         IQueryable<Book> GetBookById(Guid id);

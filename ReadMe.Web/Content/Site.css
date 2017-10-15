@@ -46,31 +46,46 @@ padding: 25px 25px;
 }
 
 .bounceInLeft {
-padding: 50px 35px;
+    padding: 50px 35px;
 }
 
 h4.card-title a {
-color: black;
+    color: black;
 }
 
 input#search-pattern.form-control {
-display: inline;
+    display: inline;
 }
 
 div.panel.search-panel {
     margin-bottom: 10%;
-    padding: 3% 15%;
+    /*padding: 3% 15%;*/
 }
 
-div.panel.search-panel form div {
-    padding: 3% 2%;
+div.panel.search-panel form .genres-filter {
+    padding: 3% 0;
+    margin-left: 6%;
+}
+
+div.panel.search-panel form .genres-filter h2 {
+    font-weight: bolder;
+}
+
+#search-form div.container {
+    font-size: 2rem;
+    color: white;
+    background-image: url("./assets/banner-background.jpg");
+    padding: 9% 32% 1% 32%;
+}
+
+div#search-results {
+    padding: 4% 0;
 }
 
 div#search-results div.card {
-margin-top: 5%;
-margin-left: 7%;
+    margin-top: 5%;
+    margin-left: 7%;
 }
-
 
 .mbr-testimonial {
 border-radius: 0;

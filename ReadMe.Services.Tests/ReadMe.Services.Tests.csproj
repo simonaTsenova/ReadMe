@@ -74,6 +74,7 @@
     <Compile Include="BookServiceTests\GetAllAndDeleted_Should.cs" />
     <Compile Include="BookServiceTests\GetAllBooksByAuthor_Should.cs" />
     <Compile Include="BookServiceTests\GetAllBooksByPublisher_Should.cs" />
+    <Compile Include="BookServiceTests\GetAll_Should.cs" />
     <Compile Include="BookServiceTests\GetBookById_Shouldcs.cs" />
     <Compile Include="BookServiceTests\GetBooksByAuthor_Should.cs" />
     <Compile Include="BookServiceTests\GetBooksByPublisher_Should.cs" />

@@ -23,8 +23,8 @@
             @Html.RadioButtonFor(m => m.SearchType, "year") @Html.Label("year")
         </div>
 
-        <div class="col-md-2">
-            <h3>Filter by genres</h3>
+        <div class="col-md-2 genres-filter">
+            <h2>Filter by genres</h2>
             @foreach (var genre in @Model.Genres)
             {
                 <div id="checkbox-field">
@@ -35,7 +35,9 @@
         </div>
     }
 
-    <div class="col-md-10" id="search-results"></div>
+    <div class="col-md-9" id="search-results">
+        @Html.Action("GetAllBooks", new { controller = "Search" })
+    </div>
 </div>
 
 @section scripts {

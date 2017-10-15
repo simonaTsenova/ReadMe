@@ -81,9 +81,18 @@ namespace ReadMe.Services
 
         public IQueryable<Book> SearchByTitle(string searchPattern, string[] genres)
         {
-            var books = this.bookRepository.All
+            IQueryable<Book> books = bookRepository.All;
+            if(searchPattern == null)
+            {
+                books = books
+                    .Include(b => b.Genres);
+            }
+            else
+            {
+                books = books
                 .Where(book => book.Title.ToLower().Contains(searchPattern.ToLower()))
                 .Include(b => b.Genres);
+            }
 
             if (genres != null)
             {
@@ -276,6 +285,11 @@ namespace ReadMe.Services
                 .Take(4);
 
             return books;
+        }
+
+        public IQueryable<Book> GetAll()
+        {
+            return this.bookRepository.All;
         }
     }
 }

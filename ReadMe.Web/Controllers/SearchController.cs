@@ -49,6 +49,17 @@ namespace ReadMe.Web.Controllers
             return View(model);
         }
 
+        [ChildActionOnly]
+        public ActionResult GetAllBooks()
+        {
+            var all = this.bookService
+                .GetAll()
+                .ProjectTo<BookShortViewModel>()
+                .ToList();
+
+            return this.PartialView("_BooksListPartial", all);
+        }
+
         // POST: Search/Search/{pattern}
         [HttpPost]
         [ValidateAntiForgeryToken]

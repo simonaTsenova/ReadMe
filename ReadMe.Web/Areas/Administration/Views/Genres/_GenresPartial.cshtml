@@ -1,8 +1,6 @@
 ﻿@using PagedList.Mvc;
 @model PagedList.IPagedList<ReadMe.Web.Areas.Administration.Models.GenreViewModel>
 
-@Scripts.Render("~/bundles/jqueryval")
-
 <h2>Genres</h2>
 <div id="add-genre">
     @Ajax.ActionLink(
@@ -54,4 +52,5 @@
 </div>
 
 @Scripts.Render("~/bundles/admin-area")
+@Scripts.Render("~/bundles/jqueryval")
 
