@@ -260,7 +260,6 @@
     <Compile Include="Infrastructure\Factories\IViewModelFactory.cs" />
     <Compile Include="Infrastructure\ICustomMapping.cs" />
     <Compile Include="Infrastructure\IMapFrom.cs" />
-    <Compile Include="Infrastructure\QueryableExtensions.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Authors\AuthorViewModel.cs" />
     <Compile Include="Models\Books\BookDetailsViewModel.cs" />

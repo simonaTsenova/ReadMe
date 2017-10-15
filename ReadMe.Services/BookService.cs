@@ -79,7 +79,7 @@ namespace ReadMe.Services
             }
         }
 
-        private IQueryable<Book> SearchByTitle(string searchPattern, string[] genres)
+        public IQueryable<Book> SearchByTitle(string searchPattern, string[] genres)
         {
             var books = this.bookRepository.All
                 .Where(book => book.Title.ToLower().Contains(searchPattern.ToLower()))
@@ -95,7 +95,7 @@ namespace ReadMe.Services
             return books;
         }
 
-        private IQueryable<Book> SearchByAuthor(string searchPattern, string[] genres)
+        public IQueryable<Book> SearchByAuthor(string searchPattern, string[] genres)
         {
             var books = this.bookRepository.All
                 .Where(book =>
@@ -114,7 +114,7 @@ namespace ReadMe.Services
             return books;
         }
 
-        private IQueryable<Book> SearchByYear(string searchPattern, string[] genres)
+        public IQueryable<Book> SearchByYear(string searchPattern, string[] genres)
         {
             var books = this.bookRepository.All
                 .Where(book => book.Published.ToString().ToLower().Contains(searchPattern.ToLower()))

@@ -80,6 +80,9 @@
     <Compile Include="BookServiceTests\GetLatestBooks_Should.cs" />
     <Compile Include="BookServiceTests\GetTopRatedBooks_Should.cs" />
     <Compile Include="BookServiceTests\RestoreBook_Should.cs" />
+    <Compile Include="BookServiceTests\SearchByAuthor_Should.cs" />
+    <Compile Include="BookServiceTests\SearchByTitle_Should.cs" />
+    <Compile Include="BookServiceTests\SearchByYear_Should.cs" />
     <Compile Include="BookServiceTests\UpdateBook_Should.cs" />
     <Compile Include="BookServiceTests\UpdateRating_Should.cs" />
     <Compile Include="GenreServiceTests\AddGenre_Should.cs" />
