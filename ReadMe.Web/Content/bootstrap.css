@@ -759,8 +759,8 @@ pre code {
 }
 
 .container {
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: 0;
+  padding-left: 0;
   margin-right: auto;
   margin-left: auto;
 }
@@ -1245,7 +1245,7 @@ pre code {
 
 @media (min-width: 1200px) {
   .container {
-    max-width: 1170px;
+    max-width: 100%;
   }
   .col-lg-1,
   .col-lg-2,
@@ -4031,7 +4031,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
     margin-bottom: 20px;
     border: 1px solid transparent;
     font-family: 'Playball', cursive;
-    font-size: 20px;
+    font-size: 25px;
 }
 
 .navbar:before,
@@ -4507,6 +4507,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar-inverse {
     background-color: #4eb980;
     border-color: #4eb980;
+    padding: 0 4%;
+    margin-bottom: 2%;
 }
 
 .navbar-inverse .navbar-brand {

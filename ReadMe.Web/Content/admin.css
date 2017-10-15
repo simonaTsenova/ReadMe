@@ -5,7 +5,8 @@
 }
 
 #wrapper {
-    padding-left: 0;
+    padding-left: 10%;
+    padding-right: 10%;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -13,7 +14,8 @@
 }
 
 #wrapper.toggled {
-    padding-left: 80px;
+    padding-left: 15%;
+    padding-right: 15%;
 }
 
 #sidebar-wrapper {
@@ -38,7 +40,10 @@
 #page-content-wrapper {
     width: 100%;
     position: absolute;
-    padding: 15px;
+}
+
+div#page-content-wrapper {
+    padding: 0 15% !important;
 }
 
 #wrapper.toggled #page-content-wrapper {
@@ -96,11 +101,13 @@
 
 @media(min-width:768px) {
     #wrapper {
-        padding-left: 0;
+        padding-left: 10%;
+        padding-right: 10%;
     }
 
     #wrapper.toggled {
-        padding-left: 80px;
+        padding-left: 15%;
+        padding-right: 10%;
     }
 
     #sidebar-wrapper {

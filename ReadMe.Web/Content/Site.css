@@ -9,8 +9,8 @@ font-size: 20px;
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-padding-left: 15px;
-padding-right: 15px;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -58,7 +58,13 @@ display: inline;
 }
 
 div.panel.search-panel {
-margin-top: 10%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    padding: 0 15%;
+}
+
+div.panel.search-panel form div {
+    padding: 3% 2%;
 }
 
 div#search-results div.card {
@@ -320,9 +326,51 @@ Colour for hovered stars when decreasing the rating
     color: #ea0;
 }
 
-#post-review-btn {
-margin-top: 1%;
-margin-left: auto;
-margin-right: auto;
+.delete-review {
+    float: right;
 }
 
+#post-review-btn {
+    margin-top: 1%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container .title {
+    padding: 0 13%;
+}
+
+.container .user-profile, .container .book-details, .container .author-details {
+    padding: 0 16%;
+}
+
+#register {
+    font-family: 'Playball', cursive;
+    padding: 3% 30%;
+    background-image: url("assets/banner-background.jpg");
+    background-size: cover;
+}
+
+#register form {
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 6% 0 6% 15%;
+    border-radius: 5%;
+}
+
+#login {
+    font-family: 'Playball', cursive;
+    padding: 10% 30%;
+    background-image: url("assets/banner-background.jpg");
+    background-size: cover;
+}
+
+#login form {
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 6% 0 6% 15%;
+    border-radius: 5%;
+}
+
+#register h4, #register h2, #login h4, #login h2 {
+    color: white;
+    font-size: 4rem;
+}
