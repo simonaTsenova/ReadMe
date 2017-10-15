@@ -1,17 +1,15 @@
-﻿@using ReadMe.Web.Models.Reviews
-
-@model ReviewViewModel
+﻿@model ReadMe.Web.Models.Reviews.ReviewViewModel
 
 <div class="mbr-testimonial card">
     <div class="card-block">
-        <p>@model.Content</p>
-        <p style="font-size:1rem">Posted on @Html.DisplayFor(x => @model.PostedOn)</p>
+        <p>@Model.Content</p>
+        <p style="font-size:1rem">Posted on @Html.DisplayFor(Model => Model.PostedOn)</p>
     </div>
     <div class="mbr-author card-footer">
         <div class="mbr-author-name">
             by
-            <img id="review-user-img" class="img-circle" src="@model.User.PhotoUrl" width="2%" />
-            - @Html.ActionLink(@model.User.UserName, "Details", "Profile", new { id = @model.User.UserName }, null)
+            <img id="review-user-img" class="img-circle" src="@Model.User.PhotoUrl" width="2%" />
+            - @Model.User.UserName
         </div>
-    </div>  
+    </div>
 </div>
