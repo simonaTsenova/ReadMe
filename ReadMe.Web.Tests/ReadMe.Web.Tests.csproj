@@ -161,6 +161,11 @@
     <Compile Include="Controllers\BooksControllerTests\Status_Should.cs" />
     <Compile Include="Controllers\BooksControllerTests\Constructor_Should.cs" />
     <Compile Include="Controllers\BooksControllerTests\Details_Should.cs" />
+    <Compile Include="Controllers\HomeControllerTests\Constructor_Should.cs" />
+    <Compile Include="Controllers\HomeControllerTests\Index_Should.cs" />
+    <Compile Include="Controllers\HomeControllerTests\LatestBooks_Should.cs" />
+    <Compile Include="Controllers\HomeControllerTests\LatestReviews_Should.cs" />
+    <Compile Include="Controllers\HomeControllerTests\TopBooks_Should.cs" />
     <Compile Include="Controllers\ProfileControllerTests\Constructor_Should.cs" />
     <Compile Include="Controllers\ProfileControllerTests\Details_Should.cs" />
     <Compile Include="Controllers\ProfileControllerTests\Edit_Should.cs" />
@@ -173,7 +178,6 @@
     <Compile Include="Controllers\SearchControllerTests\Index_Should.cs" />
     <Compile Include="Controllers\SearchControllerTests\Search_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
