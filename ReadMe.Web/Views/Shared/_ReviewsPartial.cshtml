@@ -2,33 +2,24 @@
 
 @foreach (var review in Model)
 {
-    <div class="row">
-        <blockquote>
-            @review.Content
-            <cite>
-                <span><img src="@review.User.PhotoUrl" alt="Profile img" /></span>
-                <span>@Html.ActionLink(@review.User.UserName, "Details", new { controller = "Profile", username = review.User.UserName })</span>
-                <span>on</span>
-                <span>@Html.ActionLink(@review.Book.Title, "Details", new { controller = "Books", id = review.Book.Id })</span>
-            </cite>
-        </blockquote>
+    <div class="review">
+        <div>
+            <a href="/Profile/Details/@review.User.UserName">
+                <img class="img-responsive img-circle img-center" src="@review.User.PhotoUrl"/>
+            </a>
+        </div>
+        <div class="row">
+            <blockquote>
+                @review.Content
+                <cite>
+                    <span>@Html.ActionLink(@review.User.UserName, "Details", new { controller = "Profile", username = review.User.UserName })</span>
+                    <span>for</span>
+                    <span>@Html.ActionLink(@review.Book.Title, "Details", new { controller = "Books", id = review.Book.Id })</span>
+                </cite>
+            </blockquote>
+        </div>
     </div>
 
     <hr />
 
-    @*<div class="row">
-        <div class="col-md-3">
-            <div class="profile">
-                <div class="pic"><img src="@review.User.PhotoUrl" alt=""></div>
-                <h4>@review.User.UserName</h4>
-            </div>
-        </div>
-        <div class="col-md-9">
-            <div class="quote">
-                @review.Content
-                <div> - @review.Book.Title by @review.Book.Author.FirstName @review.Book.Author.LastName</div>
-            </div>
-        </div>
-    </div>*@
-
-                 }
+}

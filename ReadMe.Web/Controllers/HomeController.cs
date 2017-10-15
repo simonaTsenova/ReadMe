@@ -58,7 +58,7 @@ namespace ReadMe.Web.Controllers
             return this.PartialView("_LatestBooksListPartial", latestPublishedBooks);
         }
 
-        [OutputCache(Duration = 60 * 4)]
+        //[OutputCache(Duration = 60 * 4)]
         [ChildActionOnly]
         public ActionResult LatestReviews()
         {
