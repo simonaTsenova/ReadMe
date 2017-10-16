@@ -2,7 +2,7 @@
 A course project for ASP .NET MVC course in Telerik Academy
 ## Summary
 This app is for all book lovers who want to browse through infinite number of books. It provides search engine to search books by author, title and year of publishing and filter them by genre. Once you have found the book you're looking for you can mark it as Read, Want to Read or Currently Reading and update this status as much as you want. And when you have strong opinion of a book you can also rate it or leave a review to share it with everyone. Your profile keeps all your collections of books and reviews.
-
+![Homepage](./images/homepage-banner.png)
 ## Description
 The project allows for a visitor to be a normal user or an admin which gives one certain privileges.
 
