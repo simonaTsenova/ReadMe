@@ -22,15 +22,14 @@ else
     </div>
 
     <div class="panel">
-        <h2>
-            <b>Books</b>
-        </h2>
-        <hr />
+        <div class="col-md-12">
+            <h3 class="section-title">Book collections</h3>
+            <div class="section-title-divider"></div>
+        </div>
         <div class="profile-wishlist">
-            <h3>
+            <h3 class="section-title">
                 <b>Want To Read</b>
             </h3>
-            <hr />
 
             @if (Model.WishlistBooks.Count == 0)
             {
@@ -42,30 +41,27 @@ else
             }
 
         </div>
-        <hr />
+        <hr/>
         <div class="profile-currently-reading">
-            <h3>
+            <h3 class="section-title">
                 <b>Currently Reading</b>
             </h3>
-            <hr />
 
             @if (Model.CurrentlyReadingBooks.Count == 0)
             {
-                <div class="list-group">No books added with this status</div>
+                <div>No books added with this status</div>
             }
             else
             {
                 @Html.Partial("_BooksListPartial", Model.CurrentlyReadingBooks)
             }
         </div>
-        <hr />
+        <hr/>
 
         <div class="profile-read">
-            <h3>
+            <h3 class="section-title">
                 <b>Read books</b>
             </h3>
-            <hr />
-
             @if (Model.ReadBooks.Count == 0)
             {
                 <div class="list-group">No books added with this status</div>
@@ -77,12 +73,11 @@ else
 
         </div>
     </div>
-
     <div class="panel">
-        <h2>
-            <b>Reviews</b>
-        </h2>
-        <hr />
+        <div class="col-md-12">
+            <h3 class="section-title">Reviews</h3>
+            <div class="section-title-divider"></div>
+        </div>
         @Html.Partial("_UserReviewsPartial", @Model.ReviewsModels)
     </div>
 

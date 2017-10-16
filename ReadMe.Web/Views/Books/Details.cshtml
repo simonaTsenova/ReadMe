@@ -11,12 +11,12 @@
     
     @Html.Partial("_BookInfoPartial", @Model.BookInfoViewModel)
 
-    <h2>
-        <b>Reviews</b>
-    </h2>
+    <div class="col-md-12">
+        <h3 class="section-title">Reviews</h3>
+        <div class="section-title-divider"></div>
+    </div>
     @if (Model.FormReviewViewModel != null && User.Identity.IsAuthenticated)
     {
-        <hr />
         @Html.Partial("_FormReviewPartial", @Model.FormReviewViewModel)
     }
 

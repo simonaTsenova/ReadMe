@@ -11,7 +11,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-10">
-                            <h2>@Model.UserName</h2>
+                            <h2 class="title">@Model.UserName</h2>
                         </div>
                         <div class="col-md-2">
                             @if (@Model.Id == User.Identity.GetUserId())
@@ -32,7 +32,7 @@
 
                         </div>
                     </div>
-                    <p>
+                    <p class="title">
                         <i class="fa fa-envelope one" style="width:50px;"></i>
                         @Model.Email
                     </p>
